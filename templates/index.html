@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>MLB Player Stats</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 40px;
+            }
+            input {
+                padding: 8px;
+                width: 250px;
+            }
+            button {
+                padding: 8px 12px;
+            }
+            pre {
+                background: #f4f4f4;
+                padding: 10px;
+                border-radius: 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Do You Know Ball?</h1>
+        <input type="text" id="playerName" placeholder="Enter player name" />
+        <button onclick="searchPlayer()">Search</button>
+        <br/><br/>
+        <button onclick="allPlayers()">All Players</button>
+
+        <script>
+            function searchPlayer() {
+                const name = document.getElementById("playerName").value;
+                if (!name) {
+                    alert("Please enter a player name!");
+                    return;
+                }
+                window.location.href = `/player?name=${encodeURIComponent(name)}`;
+            }
+            function allPlayers() {
+                window.location.href = "/players";
+            }
+        </script>
+    </body>
+</html>
