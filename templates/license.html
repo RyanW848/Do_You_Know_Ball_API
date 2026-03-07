@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Do You Know Ball API — License</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #fff9f5;
+      color: #1a1008;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 2px solid #f97316;
+      padding-bottom: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.25rem;
+    }
+
+    header p {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: #a3681e;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    h2 {
+      font-size: 0.75rem;
+      font-family: 'IBM Plex Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #f97316;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #4a3520;
+      margin-bottom: 0.75rem;
+    }
+
+    .endpoint {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0.6rem 0;
+    }
+
+    .method {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      color: #f97316;
+      border: 1px solid #f97316;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    .path {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.88rem;
+      color: #1a1008;
+    }
+
+    pre {
+      background: #fff1e6;
+      border-left: 3px solid #f97316;
+      padding: 0.9rem 1.1rem;
+      margin: 0.6rem 0;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+
+    pre code {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+      color: #7c3a0a;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #fde0c8;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Do You Know Ball API</h1>
+    <p>License &amp; Developer Guide · v1.0</p>
+  </header>
+
+  <section>
+    <h2>Overview</h2>
+    <p>All endpoints are protected by API key authentication. Register an account, log in to get a token, use that token to generate an API key, then include it in every request.</p>
+  </section>
+
+  <hr/>
+
+  <section>
+    <h2>Account Registration</h2>
+    <p>Create an account by posting a username and password.</p>
+    <div class="endpoint"><span class="method">POST</span><span class="path">/register</span></div>
+    <pre><code>{
+  "username": "your_username",
+  "password": "your_password"
+}</code></pre>
+  </section>
+
+  <hr/>
+
+  <section>
+    <h2>Authentication</h2>
+    <p>Log in to receive a JWT token. The token expires after 7 days.</p>
+    <div class="endpoint"><span class="method">POST</span><span class="path">/login</span></div>
+    <pre><code>{
+  "username": "your_username",
+  "password": "your_password"
+}</code></pre>
+    <pre><code>{ "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." }</code></pre>
+  </section>
+
+  <hr/>
+
+  <section>
+    <h2>Generating an API Key</h2>
+    <p>Use your JWT token to generate an API key. Multiple keys per account are allowed.</p>
+    <div class="endpoint"><span class="method">POST</span><span class="path">/api-keys/generate</span></div>
+    <pre><code>Authorization: Bearer &lt;your_jwt_token&gt;</code></pre>
+    <pre><code>{ "api_key": "3f7a2c1e8b4d9f0a6e5c2b1d8a7f4e3c..." }</code></pre>
+  </section>
+
+  <hr/>
+
+  <section>
+    <h2>Using Your API Key</h2>
+    <p>Pass your API key in the <code style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem">X-API-Key</code> header on every request.</p>
+    <pre><code>X-API-Key: your_api_key_here</code></pre>
+    <pre><code>curl https://your-api.onrender.com/endpoint \
+  -H "X-API-Key: your_api_key_here"</code></pre>
+  </section>
+
+</div>
+</body>
+</html>
