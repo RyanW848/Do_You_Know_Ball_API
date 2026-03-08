@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from db import users_collection
+from core.db import users_collection
 import bcrypt
 import jwt
 import datetime

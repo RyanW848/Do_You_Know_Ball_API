@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from db import db
+from core.db import db
 import jwt
 import os
 import secrets
