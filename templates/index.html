@@ -1,46 +1,245 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>MLB Player Stats</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 40px;
-            }
-            input {
-                padding: 8px;
-                width: 250px;
-            }
-            button {
-                padding: 8px 12px;
-            }
-            pre {
-                background: #f4f4f4;
-                padding: 10px;
-                border-radius: 4px;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Do You Know Ball?</h1>
-        <input type="text" id="playerName" placeholder="Enter player name" />
-        <button onclick="searchPlayer()">Search</button>
-        <br/><br/>
-        <button onclick="allPlayers()">All Players</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Do You Know Ball API — Docs</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        <script>
-            function searchPlayer() {
-                const name = document.getElementById("playerName").value;
-                if (!name) {
-                    alert("Please enter a player name!");
-                    return;
-                }
-                window.location.href = `/player?name=${encodeURIComponent(name)}`;
-            }
-            function allPlayers() {
-                window.location.href = "/players";
-            }
-        </script>
-    </body>
+    body {
+      background: #fff9f5;
+      color: #1a1008;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 2px solid #f97316;
+      padding-bottom: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.25rem;
+    }
+
+    header p {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: #a3681e;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    h2 {
+      font-size: 0.75rem;
+      font-family: 'IBM Plex Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #f97316;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #4a3520;
+      margin-bottom: 0.75rem;
+    }
+
+    .endpoint {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0.6rem 0;
+    }
+
+    .method {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      color: #f97316;
+      border: 1px solid #f97316;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    .path {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.88rem;
+      color: #1a1008;
+    }
+
+    pre {
+      background: #fff1e6;
+      border-left: 3px solid #f97316;
+      padding: 0.9rem 1.1rem;
+      margin: 0.6rem 0;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+
+    pre code {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+      color: #7c3a0a;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.75rem 0 1rem;
+      font-size: 0.88rem;
+    }
+
+    th {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #a3681e;
+      text-align: left;
+      padding: 0.4rem 0.75rem;
+      border-bottom: 1px solid #fde0c8;
+    }
+
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #fef0e6;
+      color: #4a3520;
+      vertical-align: top;
+    }
+
+    td:first-child {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+      color: #c2520a;
+      white-space: nowrap;
+    }
+
+    .tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      padding: 0.1rem 0.35rem;
+      border-radius: 2px;
+      margin-left: 0.4rem;
+    }
+
+    .tag.required { background: #fee2e2; color: #b91c1c; }
+    .tag.optional { background: #fde0c8; color: #92400e; }
+
+    hr {
+      border: none;
+      border-top: 1px solid #fde0c8;
+      margin: 2rem 0;
+    }
+
+    code {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Do You Know Ball API</h1>
+    <p>Endpoint Reference · v1.0</p>
+  </header>
+
+  <section>
+    <h2>Authentication</h2>
+    <p>All endpoints require an API key passed as a request header.</p>
+    <pre><code>X-API-Key: your_api_key_here</code></pre>
+    <p>Don't have an API key? See <a href="/license" style="color:#f97316;text-decoration:underline;font-family:'IBM Plex Mono',monospace;font-size:0.88rem">/license</a> for instructions on how to register and generate one.</p>
+
+  </section>
+
+  <hr/>
+
+  <!-- /player -->
+  <section>
+    <h2>Get Player Stats</h2>
+    <p>Retrieve stats for a single player. Optionally filter by timeframe or specific stat columns.</p>
+    <div class="endpoint"><span class="method">GET</span><span class="path">/player</span></div>
+
+    <table>
+      <thead>
+        <tr><th>Parameter</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>name<span class="tag required">required</span></td>
+          <td>—</td>
+          <td>Full player name (e.g. Juan Soto)</td>
+        </tr>
+        <tr>
+          <td>timeframe<span class="tag optional">optional</span></td>
+          <td>2025</td>
+          <td>One of <code>2025</code>, <code>3year</code>, or <code>projections</code></td>
+        </tr>
+        <tr>
+          <td>stats<span class="tag optional">optional</span></td>
+          <td>all</td>
+          <td>Comma-separated columns (e.g. <code>AB,R,H,1B,2B,3B,HR,RBI,BB,K,SB,CS,AVG,OBP,SLG,FPTS</code>). Returns all if omitted.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <pre><code>curl "https://do-you-know-ball-api.onrender.com/player?name=Juan%20Soto" \
+  -H "X-API-Key: your_api_key_here"
+
+curl "https://do-you-know-ball-api.onrender.com/player?name=Juan%20Soto&timeframe=3year" \
+  -H "X-API-Key: your_api_key_here"
+
+curl "https://do-you-know-ball-api.onrender.com/player?name=Juan%20Soto&stats=HR,AVG,FPTS" \
+  -H "X-API-Key: your_api_key_here"</code></pre>
+
+    <pre><code>{
+  "Player":   "Juan Soto",
+  "Position": "OF",
+  "Team":     "NYM",
+  "AB":       577,
+  "HR":       43,
+  "AVG":      0.263,
+  "FPTS":     911
+}</code></pre>
+  </section>
+
+  <hr/>
+
+  <!-- /players -->
+  <section>
+    <h2>List All Players</h2>
+    <p>Returns a list of every available player name in the 2025 dataset.</p>
+    <div class="endpoint"><span class="method">GET</span><span class="path">/players</span></div>
+
+    <pre><code>curl "https://do-you-know-ball-api.onrender.com/players" \
+  -H "X-API-Key: your_api_key_here"</code></pre>
+
+    <pre><code>[
+  "Shohei Ohtani",
+  "Juan Soto",
+  "Aaron Judge",
+  "Mookie Betts",
+  ...
+]</code></pre>
+  </section>
+
+</div>
+</body>
 </html>
