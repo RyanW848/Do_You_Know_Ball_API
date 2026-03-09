@@ -18,6 +18,8 @@ app.register_blueprint(api_keys_bp)
 # Require API key for all routes 
 @app.before_request
 def require_api_key():
+    if request.method == "OPTIONS":
+        return None
     if request.path in ["/register", "/login", "/api-keys/generate", "/", "/license"]:
         return None
     
