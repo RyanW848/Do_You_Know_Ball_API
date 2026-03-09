@@ -10,7 +10,7 @@ from core.api_keys import api_keys_bp, api_keys_collection
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, origins=["https://www.citrus-kit.com"])
+CORS(app, supports_credentials=True, origins=["http://localhost:3000", "https://www.citrus-kit.com"])
 app.json.sort_keys = False
 app.register_blueprint(auth_bp)
 app.register_blueprint(api_keys_bp)
