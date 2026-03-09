@@ -174,7 +174,7 @@
   <!-- /player -->
   <section>
     <h2>Get Player Stats</h2>
-    <p>Retrieve stats for a single player. Optionally filter by timeframe or specific stat columns.</p>
+    <p>Retrieve stats for a single player. Optionally filter by dataset or specific stat columns.</p>
     <div class="endpoint"><span class="method">GET</span><span class="path">/player</span></div>
 
     <table>
@@ -188,7 +188,7 @@
           <td>Full player name (e.g. Juan Soto)</td>
         </tr>
         <tr>
-          <td>timeframe<span class="tag optional">optional</span></td>
+          <td>dataset<span class="tag optional">optional</span></td>
           <td>2025</td>
           <td>One of <code>2025</code>, <code>3year</code>, or <code>projections</code></td>
         </tr>
@@ -203,7 +203,7 @@
     <pre><code>curl "https://do-u-know-ball.com/player?name=Juan%20Soto" \
   -H "X-API-Key: your_api_key_here"
 
-curl "https://do-u-know-ball.com/player?name=Juan%20Soto&timeframe=3year" \
+curl "https://do-u-know-ball.com/player?name=Juan%20Soto&dataset=3year" \
   -H "X-API-Key: your_api_key_here"
 
 curl "https://do-u-know-ball.com/player?name=Juan%20Soto&stats=HR,AVG,FPTS" \
