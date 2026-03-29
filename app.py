@@ -1,11 +1,11 @@
 import os
 from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
-import statsapi
-import pandas as pd
+import requests
 from dotenv import load_dotenv
 from core.auth import auth_bp
 from core.api_keys import api_keys_bp, api_keys_collection
+from core.db import players_collection
 
 load_dotenv()
 
@@ -23,13 +23,13 @@ def require_api_key():
     if request.path in ["/register", "/login", "/api-keys/generate", "/", "/license"]:
         return None
     
-    api_key = request.headers.get("X-API-Key")
-    if not api_key:
-        return jsonify({"error": "API key required"}), 401
+    # api_key = request.headers.get("X-API-Key")
+    # if not api_key:
+    #     return jsonify({"error": "API key required"}), 401
 
-    key = api_keys_collection.find_one({"api_key": api_key})
-    if not key:
-        return jsonify({"error": "Invalid API key"}), 401
+    # key = api_keys_collection.find_one({"api_key": api_key})
+    # if not key:
+    #     return jsonify({"error": "Invalid API key"}), 401
 
 # Home page
 @app.route("/")
@@ -41,82 +41,152 @@ def home():
 def license_page():
     return render_template("license.html")
 
-DATASETS = {
-    '2025': 'data/2025-player-NL-stats.csv',
-    '3year': 'data/3Year-average-NL-stats.csv',
-    'projections': 'data/projections-NL.csv',
-}
+# Takes a player name and optional DOB, returns the unique MLB ID
+@app.route("/get-player-id")
+def get_player_id():
+    name_query = request.args.get("name")
+    dob_query = request.args.get("dob")
 
-@app.route('/player', methods=['GET'])
-def get_player():
-    name = request.args.get('name')
-    if not name:
-        return jsonify({'error': 'name is required'}), 400
+    if not name_query:
+        return jsonify({"error": "Missing 'name' parameter"}), 400
 
-    dataset = request.args.get('dataset', '2025')
-    if dataset not in DATASETS:
-        return jsonify({'error': f'dataset must be one of {list(DATASETS.keys())}'}), 400
+    search_name = name_query.lower().strip()
 
-    stats = request.args.get('stats')
-    requested_cols = [s.strip() for s in stats.split(',')] if stats else None
+    query = {"searchName": search_name}
+    if dob_query:
+        query["birthDate"] = dob_query
 
-    df = pd.read_csv(DATASETS[dataset])
-    match = df[df['Player'].str.lower() == name.lower()]
+    try:
+        matches = list(players_collection.find(query, {"_id": 0}))
 
-    if match.empty:
-        return jsonify({'error': f'Player "{name}" not found'}), 404
-
-    if requested_cols:
-        invalid = [c for c in requested_cols if c not in df.columns]
-        if invalid:
-            return jsonify({'error': f'Invalid stats: {invalid}', 'valid': list(df.columns)}), 400
-        match = match[['Player'] + requested_cols]
-
-    return jsonify(match.to_dict(orient='records')[0])
-
-@app.route('/players', methods=['GET'])
-def get_players():
-    df = pd.read_csv(DATASETS['2025'])
-    return jsonify(df['Player'].tolist())
-
-# This is for outside api
-
-# # Return all player names
-# @app.route("/players")
-# def all_players():
-#     try:
-#         search = request.args.get("search", "a") 
-#         players = statsapi.lookup_player(search)
-#         names = [p['firstLastName'] for p in players]
-#         return jsonify({"players": names})
-#     except Exception as e:
-#         return jsonify({"error": str(e)}), 500
-
-# # Return player stats by name
-# @app.route("/player")
-# def player():
-#     player_name = request.args.get("name")
-#     if not player_name:
-#         return jsonify({"error": "Please provide ?name=Player Name"}), 400
-
-#     try:
-#         players = statsapi.lookup_player(player_name)
-#         if not players:
-#             return jsonify({"error": "Player not found"}), 404
-
-#         selected_player = players[0]
-#         player_id = selected_player["id"]
-
-#         stats = statsapi.player_stat_data(player_id, group="[hitting,pitching]", type="career")
+        if not matches:
+            return jsonify({"error": f"No player found for '{name_query}'"}), 404
         
-#         return jsonify({
-#             "id": player_id,
-#             "fullName": selected_player.get("fullName"),
-#             "stats": stats
-#         })
+        if len(matches) > 1 and not dob_query:
+            return jsonify({
+                "error": "Multiple players found with that name.",
+                "message": "Please provide a 'dob' parameter (YYYY-MM-DD) to disambiguate.",
+                "options": [
+                    {"fullName": p["fullName"], "birthDate": p["birthDate"]} 
+                    for p in matches
+                ]
+            }), 300
 
-#     except Exception as e:
-#         return jsonify({"error": str(e)}), 500
+        player = matches[0]
+        return jsonify({
+            "fullName": player["fullName"],
+            "mlbId": player["mlbId"],
+        })
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# Returns all player names
+@app.route("/players")
+def all_players():
+    try:
+        cursor = players_collection.find({}, {"_id": 0, "fullName": 1})
+        player_names = [p['fullName'] for p in cursor]
+        player_names.sort()
+
+        return jsonify({
+            "count": len(player_names),
+            "players": player_names
+        })
+
+    except Exception as e:
+        print(f"Error fetching all players: {e}")
+        return jsonify({"error": "Internal server error"}), 500
+
+    except Exception as e:
+        print(f"Error in /players: {e}")
+        return jsonify({"error": "Internal server error"}), 500
+
+# This endpoint takes a comma-separated list of player IDs and an optional year, and returns their stats
+@app.route("/player-stats")
+def get_multiple_player_stats():
+    ids_param = request.args.get("ids")
+    year = request.args.get("year", "2025")
+
+    if not ids_param:
+        return jsonify({"error": "Missing 'ids' parameter"}), 400
+
+    player_ids = [pid.strip() for pid in ids_param.split(",")]
+    
+    all_players_data = []
+    team_cache = {}
+
+    try:
+        for player_id in player_ids:
+            # 1. Bio for Position
+            bio_url = f"https://statsapi.mlb.com/api/v1/people/{player_id}"
+            bio_res = requests.get(bio_url).json()
+            if not bio_res.get("people"):
+                continue # Skip if ID is invalid
+                
+            person = bio_res["people"][0]
+            position = person.get("primaryPosition", {}).get("name", "Unknown")
+            full_name = person.get("fullName")
+
+            # 2. Stats (Hitting & Pitching)
+            stats_url = f"https://statsapi.mlb.com/api/v1/people/{player_id}/stats"
+            params = {"stats": "season", "season": year, "group": "hitting,pitching"}
+            stats_json = requests.get(stats_url, params=params).json()
+
+            merged_stats = {}
+            player_team_info = {}
+
+            for group_data in stats_json.get("stats", []):
+                splits = group_data.get("splits", [])
+                if not splits:
+                    continue
+                
+                s = splits[0]
+                current_stats = s.get("stat", {})
+                t_id = s["team"]["id"]
+
+                # 3. Handle Team Info & Abbreviation 
+                if not player_team_info:
+                    if t_id not in team_cache:
+                        t_url = f"https://statsapi.mlb.com/api/v1/teams/{t_id}"
+                        t_res = requests.get(t_url).json()
+                        team_cache[t_id] = {
+                            "id": t_id,
+                            "name": s["team"]["name"],
+                            "abbreviation": t_res["teams"][0].get("abbreviation")
+                        }
+                    player_team_info = team_cache[t_id]
+
+                # 4. Merging Logic
+                for key, value in current_stats.items():
+                    if key == "age": 
+                        merged_stats[key] = value # Don't sum age
+                        continue
+                        
+                    if isinstance(value, (int, float)):
+                        merged_stats[key] = merged_stats.get(key, 0) + value
+                    else:
+                        merged_stats[key] = value
+
+            # Append this player's compiled data to our main list
+            all_players_data.append({
+                "player": {
+                    "id": player_id,
+                    "name": full_name,
+                    "position": position
+                },
+                "team": player_team_info,
+                "year": year,
+                "stats": merged_stats
+            })
+
+        return jsonify({
+            "count": len(all_players_data),
+            "results": all_players_data
+        })
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
