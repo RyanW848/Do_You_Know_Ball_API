@@ -1,0 +1,19 @@
+name: Deploy via SSH
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy with SSH
+        uses: appleboy/ssh-action@v1.0.3 # Use a specific version of the action
+        with:
+          host: do-u-know-ball.com
+          username: 'root' # e.g., 'ubuntu' or 'root'
+          key: ${{ secrets.DEPLOY_KEY }}
+          script: |
+            cd /opt/Do_You_Know_Ball_API/
+            git pull
+            systemctl reload gunicorn.socket
