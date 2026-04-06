@@ -16,5 +16,6 @@ jobs:
           script: |
             cd /opt/Do_You_Know_Ball_API/
             git pull
+            pip install -r requirements.txt
             systemctl restart gunicorn.service
             systemctl restart gunicorn.socket
