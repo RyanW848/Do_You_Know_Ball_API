@@ -42,65 +42,67 @@ def home():
 def license_page():
     return render_template("license.html")
 
-# Takes a player name and optional DOB, returns the unique MLB ID
-@app.route("/get-player-id")
-def get_player_id():
-    name_query = request.args.get("name")
-    dob_query = request.args.get("dob")
+# @app.route("/get-player-id")
+# def get_player_id():
+#     name_query = request.args.get("name")
+#     dob_query = request.args.get("dob")
 
-    if not name_query:
-        return jsonify({"error": "Missing 'name' parameter"}), 400
+#     if not name_query:
+#         return jsonify({"error": "Missing 'name' parameter"}), 400
 
-    search_name = name_query.lower().strip()
+#     search_name = name_query.lower().strip()
 
-    query = {"searchName": search_name}
-    if dob_query:
-        query["birthDate"] = dob_query
+#     query = {"searchName": search_name}
+#     if dob_query:
+#         query["birthDate"] = dob_query
 
-    try:
-        matches = list(players_collection.find(query, {"_id": 0}))
+#     try:
+#         matches = list(players_collection.find(query, {"_id": 0}))
 
-        if not matches:
-            return jsonify({"error": f"No player found for '{name_query}'"}), 404
+#         if not matches:
+#             return jsonify({"error": f"No player found for '{name_query}'"}), 404
         
-        if len(matches) > 1 and not dob_query:
-            return jsonify({
-                "error": "Multiple players found with that name.",
-                "message": "Please provide a 'dob' parameter (YYYY-MM-DD) to disambiguate.",
-                "options": [
-                    {"fullName": p["fullName"], "birthDate": p["birthDate"]} 
-                    for p in matches
-                ]
-            }), 300
+#         if len(matches) > 1 and not dob_query:
+#             return jsonify({
+#                 "error": "Multiple players found with that name.",
+#                 "message": "Please provide a 'dob' parameter (YYYY-MM-DD) to disambiguate.",
+#                 "options": [
+#                     {"fullName": p["fullName"], "birthDate": p["birthDate"]} 
+#                     for p in matches
+#                 ]
+#             }), 300
 
-        player = matches[0]
-        return jsonify({
-            "fullName": player["fullName"],
-            "mlbId": player["mlbId"],
-        })
+#         player = matches[0]
+#         return jsonify({
+#             "fullName": player["fullName"],
+#             "mlbId": player["mlbId"],
+#         })
 
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+#     except Exception as e:
+#         return jsonify({"error": str(e)}), 500
 
-# Returns all player names
+# Returns all player names and their IDs
 @app.route("/players")
 def all_players():
     try:
-        cursor = players_collection.find({}, {"_id": 0, "fullName": 1})
-        player_names = [p['fullName'] for p in cursor]
-        player_names.sort()
+        cursor = players_collection.find({}, {"_id": 0, "fullName": 1, "mlbId": 1})
+
+        player_list = []
+        for p in cursor:
+            player_list.append({
+                "name": p.get("fullName"),
+                "id": p.get("mlbId")
+            })
+            
+        player_list.sort(key=lambda x: x["name"])
 
         return jsonify({
-            "count": len(player_names),
-            "players": player_names
+            "count": len(player_list),
+            "players": player_list
         })
 
     except Exception as e:
         print(f"Error fetching all players: {e}")
-        return jsonify({"error": "Internal server error"}), 500
-
-    except Exception as e:
-        print(f"Error in /players: {e}")
         return jsonify({"error": "Internal server error"}), 500
 
 # This endpoint takes a comma-separated list of player IDs and an optional year, and returns their stats
