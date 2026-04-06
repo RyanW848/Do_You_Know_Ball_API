@@ -282,6 +282,60 @@ curl "https://do-u-know-ball.com/player-stats?ids=665742&year=2024" \
 }</code></pre>
   </section>
 
+  <hr/>
+
+  <section>
+    <h2>List All Teams</h2>
+    <p>Returns a list of all 30 MLB teams with their unique IDs and abbreviations.</p>
+    <div class="endpoint"><span class="method">GET</span><span class="path">/teams</span></div>
+
+    <pre><code>curl "https://do-u-know-ball.com/teams" \
+  -H "X-API-Key: your_api_key_here"</code></pre>
+
+    <pre><code>{
+  "count": 30,
+  "teams": [
+    { "id": 113, "name": "Cincinnati Reds", "abbreviation": "CIN" },
+    ...
+  ]
+}</code></pre>
+  </section>
+
+  <hr/>
+
+  <section>
+    <h2>Get Depth Chart</h2>
+    <p>Returns a team's depth chart organized by position, including current player injury status.</p>
+    <div class="endpoint"><span class="method">GET</span><span class="path">/depth-chart</span></div>
+
+    <table>
+      <thead>
+        <tr><th>Parameter</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>teamId<span class="tag required">required</span></td>
+          <td>—</td>
+          <td>The MLB team ID (e.g. <code>113</code>)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <pre><code>curl "https://do-u-know-ball.com/depth-chart?teamId=113" \
+  -H "X-API-Key: your_api_key_here"</code></pre>
+  </section>
+
+  <hr/>
+
+  <section>
+    <h2>Daily Transactions</h2>
+    <p>Returns all Major League transactions (trades, IL placements, call-ups) for the current day.</p>
+    <div class="endpoint"><span class="method">GET</span><span class="path">/transactions</span></div>
+
+    <pre><code>curl "https://do-u-know-ball.com/transactions" \
+  -H "X-API-Key: your_api_key_here"</code></pre>
+  </section>
+
 </div>
 </body>
 </html>
