@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from core.auth import auth_bp
 from core.api_keys import api_keys_bp, api_keys_collection
 from core.db import players_collection
+from datetime import datetime
 
 load_dotenv()
 
@@ -104,7 +105,7 @@ def all_players():
 
 # This endpoint takes a comma-separated list of player IDs and an optional year, and returns their stats
 @app.route("/player-stats")
-def get_multiple_player_stats():
+def get_player_stats():
     ids_param = request.args.get("ids")
     year = request.args.get("year", "2025")
 
@@ -187,6 +188,117 @@ def get_multiple_player_stats():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+# Returns a list of all 30 AL/NL teams with their IDs
+@app.route("/teams")
+def get_mlb_teams():
+    try:
+        url = "https://statsapi.mlb.com/api/v1/teams?sportId=1"
+        response = requests.get(url)
+        data = response.json()
+
+        teams_list = []
+        for team in data.get("teams", []):
+            teams_list.append({
+                "id": team.get("id"),
+                "name": team.get("name"),
+                "abbreviation": team.get("abbreviation"),
+            })
+
+        teams_list.sort(key=lambda x: x["name"])
+
+        return jsonify({
+            "count": len(teams_list),
+            "teams": teams_list
+        })
+
+    except Exception as e:
+        print(f"Error fetching teams: {e}")
+        return jsonify({"error": "Internal server error"}), 500
+
+# Also gets injuries
+@app.route("/depth-chart")
+def get_depth_chart():
+    team_id = request.args.get("teamId")
+    
+    if not team_id:
+        return jsonify({"error": "Missing teamId parameter"}), 400
+
+    try:
+        url = f"https://statsapi.mlb.com/api/v1/teams/{team_id}/roster"
+        params = {
+            "rosterType": "depthChart",
+            "season": "2026"
+        }
+        
+        response = requests.get(url, params=params)
+        data = response.json()
+
+        if "roster" not in data:
+            return jsonify({"error": f"No roster data found for team {team_id}"}), 404
+
+        organized_depth_chart = {}
+
+        for entry in data["roster"]:
+            pos_name = entry["position"]["name"]
+            
+            player_entry = {
+                "id": entry["person"]["id"],
+                "name": entry["person"]["fullName"],
+                "status": entry["status"]["description"]
+            }
+
+            if pos_name not in organized_depth_chart:
+                organized_depth_chart[pos_name] = []
+            
+            organized_depth_chart[pos_name].append(player_entry)
+
+        return jsonify({
+            "teamId": team_id,
+            "positions": organized_depth_chart
+        })
+
+    except Exception as e:
+        return jsonify({"error": "Internal server error", "message": str(e)}), 500
+   
+@app.route("/transactions")
+def get_daily_transactions():
+    try:
+        today_iso = datetime.now().strftime("%Y-%m-05")
+        
+        mlb_url = "https://statsapi.mlb.com/api/v1/transactions"
+        params = {
+            "date": today_iso,
+            "sportId": 1
+        }
+        
+        response = requests.get(mlb_url, params=params)
+        if response.status_code != 200:
+            return jsonify({"error": "Failed to fetch data from MLB"}), 502
+            
+        data = response.json()
+        raw_transactions = data.get("transactions", [])
+
+        results = []
+        for tx in raw_transactions:
+            results.append({
+                "playerId": tx.get("person", {}).get("id"),
+                "playerName": tx.get("person", {}).get("fullName"),
+                "fromTeam": tx.get("fromTeam", {}).get("name"),
+                "fromTeamId": tx.get("fromTeam", {}).get("id"),
+                "toTeam": tx.get("toTeam", {}).get("name"),
+                "toTeamId": tx.get("toTeam", {}).get("id"),
+                "description": tx.get("description")
+            })
+
+        return jsonify({
+            "date": today_iso,
+            "count": len(results),
+            "transactions": results
+        })
+
+    except Exception as e:
+        return jsonify({"error": "Internal server error", "details": str(e)}), 500
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))

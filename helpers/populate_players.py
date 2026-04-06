@@ -16,7 +16,7 @@ def sync_mlb_players():
         db = client[DB_NAME]
         players_col = db[COLLECTION_NAME]
 
-        seasons = [2025, 2026]
+        seasons = 2026
         all_operations = {}
 
         for season in seasons:
@@ -47,11 +47,6 @@ def sync_mlb_players():
                     },
                     upsert=True
                 )
-
-        if all_operations:
-            print(f"Syncing {len(all_operations)} unique players to MongoDB...")
-            result = players_col.bulk_write(list(all_operations.values()))
-            print(f"Sync Complete!")
 
         players_col.create_index([("searchName", ASCENDING), ("birthDate", ASCENDING)])
         
