@@ -85,7 +85,7 @@ def get_player_id():
 @app.route("/players")
 def all_players():
     try:
-        cursor = players_collection.find({}, {"_id": 0, "fullName": 1, "mlbId": 1})
+        cursor = players_collection.find({}, {"_id": 0, "fullName": 1, "mlbId": 1, "headshotUrl": 1})
 
         player_list = []
         for p in cursor:
