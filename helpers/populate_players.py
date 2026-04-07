@@ -40,6 +40,7 @@ def sync_mlb_players():
                     person = p.get("person", {})
                     player_id = person.get("id")
                     full_name = person.get("fullName", "")
+                    headshot_url = f"https://securea.mlb.com/mlb/images/players/head_shot/{player_id}.jpg"
 
                     if not player_id:
                         continue
@@ -52,6 +53,7 @@ def sync_mlb_players():
                                 "fullName": full_name,
                                 "searchName": full_name.lower().strip(),
                                 "currentTeamId": team_id,
+                                "headshotUrl": headshot_url
                             }
                         },
                         upsert=True
