@@ -85,14 +85,15 @@ def get_player_id():
 @app.route("/players")
 def all_players():
     try:
-        cursor = players_collection.find({}, {"_id": 0, "fullName": 1, "mlbId": 1, "headshotUrl": 1})
+        cursor = players_collection.find({}, {"_id": 0, "fullName": 1, "mlbId": 1, "headshotUrl": 1, "positions": 1})
 
         player_list = []
         for p in cursor:
             player_list.append({
                 "name": p.get("fullName"),
                 "id": p.get("mlbId"),
-                "headshotUrl": p.get("headshotUrl")
+                "headshotUrl": p.get("headshotUrl"),
+                "positions": p.get("positions")
             })
             
         player_list.sort(key=lambda x: x["name"])
