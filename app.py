@@ -303,6 +303,99 @@ def get_daily_transactions():
 
     except Exception as e:
         return jsonify({"error": "Internal server error", "details": str(e)}), 500
+    
+
+@app.route('/value', methods=['POST'])
+def value_players():
+    data = request.get_json()
+    budget = data.get('budget', 0)
+    players_left = data.get('players_left_to_draft', 1)
+    avg_player_budget = budget / players_left if players_left > 0 else 0
+    raw_stats = data.get('relevant_stats', "")
+    relevant_stats = [s.strip() for s in raw_stats.split(',') if s.strip()]
+
+    if not relevant_stats:
+        return jsonify({"error": "No relevant_stats provided"}), 400
+
+    all_players = list(players_collection.find({}))
+    results = []
+
+    # Get total player count for "worst rank" fallback
+    total_in_db = len(all_players)
+
+    for p in all_players:
+        depth_map = p.get('depthRanks', {})
+        best_pos_score = 0
+        
+        # --- 1. CALCULATE BASE SCORE ---
+        rank_sum = 0
+        stat_count = 0
+        for stat in relevant_stats:
+            rank = p.get('statRanks', {}).get(stat)
+            if rank:
+                rank_sum += rank
+                stat_count += 1
+        
+        # FALLBACK: If they have NO stats, give them the worst possible average rank
+        if stat_count == 0:
+            avg_rank = total_in_db 
+        else:
+            avg_rank = rank_sum / stat_count
+
+        # Scale
+        scaled_base = 0.25 + (600 - avg_rank) / 600
+
+        # --- 2. APPLY DEPTH CHART LOGIC ---
+        if depth_map:
+            # Player is active: find best position multiplier
+            for pos, x_rank in depth_map.items():
+                depth_mult = 1.3 * (0.9 ** (x_rank - 1))
+                current_val = scaled_base * depth_mult
+                if current_val > best_pos_score:
+                    best_pos_score = current_val
+        else:
+            # Player is NOT in depth chart: apply your 0.5x penalty
+            best_pos_score = scaled_base * 0.5
+
+        # --- 3. GLOBAL MULTIPLIERS ---
+        final_score = best_pos_score
+
+        # Age Multipliers
+        age = p.get('currentAge', 20)
+        if age > 35:
+            final_score *= 0.9
+        elif 25 <= age <= 30:
+            final_score *= 1.05
+        
+        # Versatility: Use 1 as default if not in depth chart
+        pos_count = len(depth_map) if depth_map else 1
+        final_score *= (0.05 * pos_count + 0.95)
+
+        # Injury Multiplier
+        inj = p.get('injuryStatus', 'A')
+        injury_map = {
+            'D7': 0.9, '7D': 0.9, 'D10': 0.8, '10D': 0.8,
+            'D15': 0.7, '15D': 0.7, 'D60': 0.3, '60D': 0.3
+        }
+        final_score *= injury_map.get(inj, 1.0)
+        
+        player_value = final_score * avg_player_budget
+
+        results.append({
+            "mlbId": p.get("mlbId"),
+            "fullName": p.get("fullName"),
+            "score": round(final_score, 4),
+            "value": round(player_value, 2),
+        })
+
+    results.sort(key=lambda x: x['score'], reverse=True)
+
+    return jsonify({
+        "budget": budget,
+        "relevant_stats": relevant_stats,
+        "player_count": len(results),
+        "results": results
+    })
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
