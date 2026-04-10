@@ -307,6 +307,37 @@ def get_daily_transactions():
 
 @app.route('/value', methods=['POST'])
 def value_players():
+    def get_age_multiplier(age):
+        if age > 35:
+            return 0.9
+        elif 25 <= age <= 30:
+            return 1.05
+        else:
+            return 1
+
+    def get_versatility_multiplier(pos_count):
+        return 0.05 * pos_count + 0.95
+    
+    def get_injury_multiplier(inj):
+        injury_map = {
+            'D7': 0.9, '7D': 0.9, 'D10': 0.8, '10D': 0.8,
+            'D15': 0.7, '15D': 0.7, 'D60': 0.3, '60D': 0.3
+        }
+        return injury_map.get(inj, 1.0)
+    
+    def get_depth_multiplier(depth_map):
+        if not depth_map:
+            return 0.5
+        multiplier = max(
+            1.3 * (0.9 ** (x_rank - 1)) 
+            for x_rank in depth_map.values()
+        )
+        return multiplier
+    
+    def get_scaled_score(avg_rank, total_players):
+        avg_players = total_players / 2
+        return 0.25 + (avg_players - avg_rank) / avg_players
+            
     data = request.get_json()
     budget = data.get('budget', 0)
     players_left = data.get('players_left_to_draft', 1)
@@ -325,7 +356,6 @@ def value_players():
 
     for p in all_players:
         depth_map = p.get('depthRanks', {})
-        best_pos_score = 0
         
         # --- 1. CALCULATE BASE SCORE ---
         rank_sum = 0
@@ -343,41 +373,24 @@ def value_players():
             avg_rank = rank_sum / stat_count
 
         # Scale
-        scaled_base = 0.25 + (600 - avg_rank) / 600
+        scaled_base = get_scaled_score(avg_rank, total_in_db)
 
-        # --- 2. APPLY DEPTH CHART LOGIC ---
-        if depth_map:
-            # Player is active: find best position multiplier
-            for pos, x_rank in depth_map.items():
-                depth_mult = 1.3 * (0.9 ** (x_rank - 1))
-                current_val = scaled_base * depth_mult
-                if current_val > best_pos_score:
-                    best_pos_score = current_val
-        else:
-            # Player is NOT in depth chart: apply your 0.5x penalty
-            best_pos_score = scaled_base * 0.5
-
-        # --- 3. GLOBAL MULTIPLIERS ---
-        final_score = best_pos_score
+        # DEPTH CHART LOGIC 
+        depth_chart_multiplier = get_depth_multiplier(depth_map)
 
         # Age Multipliers
         age = p.get('currentAge', 20)
-        if age > 35:
-            final_score *= 0.9
-        elif 25 <= age <= 30:
-            final_score *= 1.05
+        age_multiplier = get_age_multiplier(age) 
         
         # Versatility: Use 1 as default if not in depth chart
         pos_count = len(depth_map) if depth_map else 1
-        final_score *= (0.05 * pos_count + 0.95)
+        versatility_multiplier = get_versatility_multiplier(pos_count)
 
         # Injury Multiplier
         inj = p.get('injuryStatus', 'A')
-        injury_map = {
-            'D7': 0.9, '7D': 0.9, 'D10': 0.8, '10D': 0.8,
-            'D15': 0.7, '15D': 0.7, 'D60': 0.3, '60D': 0.3
-        }
-        final_score *= injury_map.get(inj, 1.0)
+        injury_multiplier = get_injury_multiplier(inj)
+
+        final_score = scaled_base * depth_chart_multiplier * age_multiplier * versatility_multiplier * injury_multiplier
         
         player_value = final_score * avg_player_budget
 
@@ -385,7 +398,7 @@ def value_players():
             "mlbId": p.get("mlbId"),
             "fullName": p.get("fullName"),
             "score": round(final_score, 4),
-            "value": round(player_value, 2),
+            "value": round(player_value, 0),
         })
 
     results.sort(key=lambda x: x['score'], reverse=True)

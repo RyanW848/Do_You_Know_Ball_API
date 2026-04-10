@@ -33,10 +33,15 @@ def get_stats_for_years(stats_groups, target_years):
             s = split.get("stat", {})
 
             if group_name == "fielding" and season == "2025":
-                raw_pos = split.get("position", {}).get("abbreviation")
-                if raw_pos in of_pos: positions_2025.add("OF")
-                elif raw_pos in valid_pos: positions_2025.add(raw_pos)
-                elif raw_pos in ["DH", "TW"]: positions_2025.add("UT")
+                games_at_pos = s.get("gamesPlayed", 0)
+                if games_at_pos >= 5:
+                    raw_pos = split.get("position", {}).get("abbreviation")
+                    if raw_pos in of_pos: 
+                        positions_2025.add("OF")
+                    elif raw_pos in valid_pos: 
+                        positions_2025.add(raw_pos)
+                    elif raw_pos in ["DH", "TW"]: 
+                        positions_2025.add("UT")
 
             def to_f(val):
                 try: return float(val)
@@ -126,7 +131,7 @@ def sync_mlb_players():
         players_col = db[COLLECTION_NAME]
         players_col.delete_many({})
 
-        print("Gathering player list and depth charts...")
+        print("Gathering player list")
         teams_url = "https://statsapi.mlb.com/api/v1/teams?sportId=1"
         teams = requests.get(teams_url).json().get("teams", [])
         
@@ -135,6 +140,7 @@ def sync_mlb_players():
 
         for team in teams:
             t_id = team.get("id")
+            print(f"Processing team {team.get('name')} (ID: {t_id})")
             # --- FETCH DEPTH CHART ---
             depth_url = f"https://statsapi.mlb.com/api/v1/teams/{t_id}/roster?rosterType=depthChart"
             try:
@@ -207,7 +213,7 @@ def sync_mlb_players():
         if all_operations:
             players_col.bulk_write(all_operations)
             players_col.create_index([("searchName", ASCENDING)])
-            print("Sync complete. Depth ranks and injury statuses are now live in DB.")
+            print("Sync complete. Now calculating weighted ranks...")
 
         calculate_weighted_ranks(db)
         client.close()
