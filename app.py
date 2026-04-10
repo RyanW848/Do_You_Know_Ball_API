@@ -51,23 +51,51 @@ def get_player_id():
         return jsonify({"error": "Missing 'name' parameter"}), 400
 
     search_name = name_query.lower().strip()
-
     query = {"searchName": search_name}
     if dob_query:
         query["birthDate"] = dob_query
+        
+    def check_initial_match(query_name, players_collection, dob_query=None):
+        # Clean the query name (remove periods and extra spaces)
+        clean_name = query_name.replace(".", "").strip()
+        parts = clean_name.split()
+
+        if len(parts) < 2:
+            return []
+
+        first_part = parts[0]
+        last_name = " ".join(parts[1:])
+
+        # Check if the first part is an initial 
+        if len(first_part) <= 2:
+            regex_pattern = f"^{first_part[0]}.* {last_name}$"
+            fallback_query = {"fullName": {"$regex": regex_pattern, "$options": "i"}}
+            
+            if dob_query:
+                fallback_query["birthDate"] = dob_query
+                
+            return list(players_collection.find(fallback_query, {"_id": 0}))
+        
+        return []
 
     try:
+        # --- Attempt 1: Exact searchName Match ---
         matches = list(players_collection.find(query, {"_id": 0}))
+
+        # --- Attempt 2: Initial Fallback (if no matches found) ---
+        if not matches:
+            matches = check_initial_match(name_query, players_collection, dob_query)
 
         if not matches:
             return jsonify({"error": f"No player found for '{name_query}'"}), 404
         
+        # --- Disambiguation / Results logic remains the same ---
         if len(matches) > 1 and not dob_query:
             return jsonify({
                 "error": "Multiple players found with that name.",
                 "message": "Please provide a 'dob' parameter (YYYY-MM-DD) to disambiguate.",
                 "options": [
-                    {"fullName": p["fullName"], "birthDate": p["birthDate"]} 
+                    {"fullName": p["fullName"], "birthDate": p.get("birthDate")} 
                     for p in matches
                 ]
             }), 300
