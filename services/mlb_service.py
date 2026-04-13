@@ -3,10 +3,6 @@ import requests
 BASE_URL = "https://statsapi.mlb.com/api/v1"
 
 def mlb_get(endpoint, params=None):
-    """
-    Centralized wrapper for MLB API GET requests.
-    Handles URL construction, timeouts, and basic error checking.
-    """
     url = f"{BASE_URL}/{endpoint}"
     try:
         response = requests.get(url, params=params, timeout=10)

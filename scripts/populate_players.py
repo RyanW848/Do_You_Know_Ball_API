@@ -189,8 +189,8 @@ def sync_mlb_players():
                     if pid not in depth_data:
                         depth_data[pid] = {"depthRanks": {}, "injuryStatus": inj}
                     depth_data[pid]["depthRanks"][abbr] = pos_counters[abbr]
-            except:
-                pass
+            except Exception as e:
+                print(f"Error: {e}")
 
             # --- FETCH 40 MAN ---
             try:
@@ -200,8 +200,8 @@ def sync_mlb_players():
                         "fullName": p["person"]["fullName"],
                         "teamId": t_id,
                     }
-            except:
-                continue
+            except Exception as e:
+                print(f"Error: {e}")
 
         pids = list(all_players_metadata.keys())
         batch_size = 160
