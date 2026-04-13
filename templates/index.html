@@ -70,12 +70,14 @@
     .method {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.7rem;
-      color: #f97316;
-      border: 1px solid #f97316;
+      border: 1px solid;
       padding: 0.1rem 0.4rem;
       border-radius: 3px;
       flex-shrink: 0;
     }
+
+    .method.get  { color: #f97316; border-color: #f97316; }
+    .method.post { color: #16a34a; border-color: #16a34a; }
 
     .path {
       font-family: 'IBM Plex Mono', monospace;
@@ -174,13 +176,11 @@
   <!-- /get-player-id -->
   <section>
     <h2>Get Player ID</h2>
-    <p>Looks up a player by name and returns their unique MLB ID. If multiple players share the same name, provide a date of birth to disambiguate.</p>
-    <div class="endpoint"><span class="method">GET</span><span class="path">/get-player-id</span></div>
+    <p>Looks up a player by name and returns their unique MLB ID. Supports initials (e.g. <code>J. Smith</code>). If multiple players share the same name, provide a date of birth to disambiguate.</p>
+    <div class="endpoint"><span class="method get">GET</span><span class="path">/get-player-id</span></div>
 
     <table>
-      <thead>
-        <tr><th>Parameter</th><th>Default</th><th>Description</th></tr>
-      </thead>
+      <thead><tr><th>Parameter</th><th>Default</th><th>Description</th></tr></thead>
       <tbody>
         <tr>
           <td>name<span class="tag required">required</span></td>
@@ -203,7 +203,7 @@
   "mlbId": 665742
 }</code></pre>
 
-    <p>If multiple players share the same name, a <code>300</code> response is returned with options:</p>
+    <p>If multiple players share the same name, a <code>300</code> response is returned:</p>
     <pre><code>{
   "error": "Multiple players found with that name.",
   "message": "Please provide a 'dob' parameter (YYYY-MM-DD) to disambiguate.",
@@ -219,8 +219,8 @@
   <!-- /players -->
   <section>
     <h2>List All Players</h2>
-    <p>Returns an alphabetically sorted list of every available player name.</p>
-    <div class="endpoint"><span class="method">GET</span><span class="path">/players</span></div>
+    <p>Returns an alphabetically sorted list of all players, including their MLB ID, headshot URL, and eligible positions.</p>
+    <div class="endpoint"><span class="method get">GET</span><span class="path">/players</span></div>
 
     <pre><code>curl "https://do-u-know-ball.com/players" \
   -H "X-API-Key: your_api_key_here"</code></pre>
@@ -228,9 +228,12 @@
     <pre><code>{
   "count": 1200,
   "players": [
-    "Aaron Judge",
-    "Adolis Garcia",
-    "Alex Bregman",
+    {
+      "name": "Aaron Judge",
+      "id": 592450,
+      "headshotUrl": "https://img.mlbstatic.com/...",
+      "positions": ["RF", "DH"]
+    },
     ...
   ]
 }</code></pre>
@@ -242,12 +245,10 @@
   <section>
     <h2>Get Player Stats</h2>
     <p>Returns hitting and/or pitching stats for one or more players by MLB ID. Optionally filter by season year.</p>
-    <div class="endpoint"><span class="method">GET</span><span class="path">/player-stats</span></div>
+    <div class="endpoint"><span class="method get">GET</span><span class="path">/player-stats</span></div>
 
     <table>
-      <thead>
-        <tr><th>Parameter</th><th>Default</th><th>Description</th></tr>
-      </thead>
+      <thead><tr><th>Parameter</th><th>Default</th><th>Description</th></tr></thead>
       <tbody>
         <tr>
           <td>ids<span class="tag required">required</span></td>
@@ -284,10 +285,11 @@ curl "https://do-u-know-ball.com/player-stats?ids=665742&year=2024" \
 
   <hr/>
 
+  <!-- /teams -->
   <section>
     <h2>List All Teams</h2>
-    <p>Returns a list of all 30 MLB teams with their unique IDs and abbreviations.</p>
-    <div class="endpoint"><span class="method">GET</span><span class="path">/teams</span></div>
+    <p>Returns all 30 MLB teams with their unique IDs and abbreviations, sorted alphabetically.</p>
+    <div class="endpoint"><span class="method get">GET</span><span class="path">/teams</span></div>
 
     <pre><code>curl "https://do-u-know-ball.com/teams" \
   -H "X-API-Key: your_api_key_here"</code></pre>
@@ -296,6 +298,7 @@ curl "https://do-u-know-ball.com/player-stats?ids=665742&year=2024" \
   "count": 30,
   "teams": [
     { "id": 113, "name": "Cincinnati Reds", "abbreviation": "CIN" },
+    { "id": 147, "name": "New York Yankees", "abbreviation": "NYY" },
     ...
   ]
 }</code></pre>
@@ -303,37 +306,130 @@ curl "https://do-u-know-ball.com/player-stats?ids=665742&year=2024" \
 
   <hr/>
 
+  <!-- /depth-chart -->
   <section>
     <h2>Get Depth Chart</h2>
-    <p>Returns a team's depth chart organized by position, including current player injury status.</p>
-    <div class="endpoint"><span class="method">GET</span><span class="path">/depth-chart</span></div>
+    <p>Returns a team's roster organized by position, including each player's current injury status.</p>
+    <div class="endpoint"><span class="method get">GET</span><span class="path">/depth-chart</span></div>
 
     <table>
-      <thead>
-        <tr><th>Parameter</th><th>Default</th><th>Description</th></tr>
-      </thead>
+      <thead><tr><th>Parameter</th><th>Default</th><th>Description</th></tr></thead>
       <tbody>
         <tr>
           <td>teamId<span class="tag required">required</span></td>
           <td>—</td>
-          <td>The MLB team ID (e.g. <code>113</code>)</td>
+          <td>MLB team ID (e.g. <code>113</code> for Cincinnati Reds). Use <code>/teams</code> to look up IDs.</td>
         </tr>
       </tbody>
     </table>
 
     <pre><code>curl "https://do-u-know-ball.com/depth-chart?teamId=113" \
   -H "X-API-Key: your_api_key_here"</code></pre>
+
+    <pre><code>{
+  "teamId": "113",
+  "positions": {
+    "Pitcher": [
+      { "id": 669302, "name": "Hunter Greene", "status": "Active" },
+      ...
+    ],
+    "Catcher": [
+      { "id": 663728, "name": "Tyler Stephenson", "status": "10-Day IL" }
+    ],
+    ...
+  }
+}</code></pre>
   </section>
 
   <hr/>
 
+  <!-- /transactions -->
   <section>
     <h2>Daily Transactions</h2>
-    <p>Returns all Major League transactions (trades, IL placements, call-ups) for the current day.</p>
-    <div class="endpoint"><span class="method">GET</span><span class="path">/transactions</span></div>
+    <p>Returns all Major League transactions for the current day, including trades, IL placements, and call-ups.</p>
+    <div class="endpoint"><span class="method get">GET</span><span class="path">/transactions</span></div>
 
     <pre><code>curl "https://do-u-know-ball.com/transactions" \
   -H "X-API-Key: your_api_key_here"</code></pre>
+
+    <pre><code>{
+  "date": "2025-05-01",
+  "count": 12,
+  "transactions": [
+    {
+      "playerId": 123456,
+      "playerName": "Carlos Correa",
+      "fromTeam": "Minnesota Twins",
+      "fromTeamId": 142,
+      "toTeam": "New York Mets",
+      "toTeamId": 121,
+      "description": "Traded to New York Mets"
+    },
+    ...
+  ]
+}</code></pre>
+  </section>
+
+  <hr/>
+
+  <!-- /value -->
+  <section>
+    <h2>Value Players</h2>
+    <p>The core valuation endpoint. Given a budget, draft context, and the stats that matter to your league, returns a ranked list of players with scores and recommended dollar values.</p>
+    <div class="endpoint"><span class="method post">POST</span><span class="path">/value</span></div>
+
+    <table>
+      <thead><tr><th>Field</th><th>Default</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>relevant_stats<span class="tag required">required</span></td>
+          <td>—</td>
+          <td>Comma-separated stat categories that drive valuation (e.g. <code>HR,AVG,RBI,SB</code>)</td>
+        </tr>
+        <tr>
+          <td>budget<span class="tag required">required</span></td>
+          <td>0</td>
+          <td>Your remaining draft budget in dollars</td>
+        </tr>
+        <tr>
+          <td>players_left_to_draft<span class="tag optional">optional</span></td>
+          <td>1</td>
+          <td>How many players you still need to draft — used to calculate per-player budget</td>
+        </tr>
+        <tr>
+          <td>unavailable_player_ids<span class="tag optional">optional</span></td>
+          <td>[]</td>
+          <td>Array of MLB IDs to exclude (already drafted players)</td>
+        </tr>
+        <tr>
+          <td>player_ids<span class="tag optional">optional</span></td>
+          <td>all</td>
+          <td>Array of MLB IDs to evaluate. Omit to value all available players.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <pre><code>curl -X POST "https://do-u-know-ball.com/value" \
+  -H "X-API-Key: your_api_key_here" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "budget": 150,
+    "players_left_to_draft": 3,
+    "relevant_stats": "HR,AVG,RBI,SB",
+    "unavailable_player_ids": [665742, 592450],
+    "player_ids": [670712, 663728, 669302]
+  }'</code></pre>
+
+    <pre><code>{
+  "budget": 150,
+  "relevant_stats": ["HR", "AVG", "RBI", "SB"],
+  "player_count": 3,
+  "results": [
+    { "mlbId": 670712, "fullName": "Elly De La Cruz", "score": 0.8741, "value": 43 },
+    { "mlbId": 669302, "fullName": "Hunter Greene",   "score": 0.6210, "value": 31 },
+    { "mlbId": 663728, "fullName": "Tyler Stephenson","score": 0.4033, "value": 20 }
+  ]
+}</code></pre>
   </section>
 
 </div>

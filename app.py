@@ -311,6 +311,8 @@ def value_players():
 
     if not relevant_stats:
         return jsonify({"error": "No relevant_stats provided"}), 400
+    if budget <= 0:
+        return jsonify({"error": "Budget must be greater than 0"}), 400
 
     all_players = list(players_collection.find({}))
     available_players = [p for p in all_players if p.get("mlbId") not in unavailable_ids]
