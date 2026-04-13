@@ -370,6 +370,7 @@ def value_players():
     budget = data.get('budget', 0)
     players_left = data.get('players_left_to_draft', 1)
     avg_player_budget = budget / players_left if players_left > 0 else 0
+    unavailable_ids = data.get('unavailable_player_ids', [])
     raw_stats = data.get('relevant_stats', "")
     relevant_stats = [s.strip() for s in raw_stats.split(',') if s.strip()]
 
@@ -377,12 +378,13 @@ def value_players():
         return jsonify({"error": "No relevant_stats provided"}), 400
 
     all_players = list(players_collection.find({}))
+    available_players = [p for p in all_players if p.get("mlbId") not in unavailable_ids]
     results = []
 
     # Get total player count for "worst rank" fallback
-    total_in_db = len(all_players)
+    total_in_db = len(available_players)
 
-    for p in all_players:
+    for p in available_players:
         depth_map = p.get('depthRanks', {})
         
         # --- 1. CALCULATE BASE SCORE ---
