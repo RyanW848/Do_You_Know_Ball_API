@@ -31,6 +31,20 @@ def require_api_key():
     # key = api_keys_collection.find_one({"api_key": api_key})
     # if not key:
     #     return jsonify({"error": "Invalid API key"}), 401
+    
+@app.errorhandler(Exception)
+def handle_exception(e):
+    print(f"!!! SERVER ERROR: {str(e)}")
+    
+    code = 500
+    if hasattr(e, 'code'):
+        code = e.code
+
+    return jsonify({
+        "error": "Internal Server Error",
+        "message": str(e),
+        "status": code
+    }), code
 
 # Home page
 @app.route("/")
@@ -78,62 +92,54 @@ def get_player_id():
         
         return []
 
-    try:
-        # --- Attempt 1: Exact searchName Match ---
-        matches = list(players_collection.find(query, {"_id": 0}))
 
-        # --- Attempt 2: Initial Fallback (if no matches found) ---
-        if not matches:
-            matches = check_initial_match(name_query, players_collection, dob_query)
+    # --- Attempt 1: Exact searchName Match ---
+    matches = list(players_collection.find(query, {"_id": 0}))
 
-        if not matches:
-            return jsonify({"error": f"No player found for '{name_query}'"}), 404
-        
-        # --- Disambiguation / Results logic remains the same ---
-        if len(matches) > 1 and not dob_query:
-            return jsonify({
-                "error": "Multiple players found with that name.",
-                "message": "Please provide a 'dob' parameter (YYYY-MM-DD) to disambiguate.",
-                "options": [
-                    {"fullName": p["fullName"], "birthDate": p.get("birthDate")} 
-                    for p in matches
-                ]
-            }), 300
+    # --- Attempt 2: Initial Fallback (if no matches found) ---
+    if not matches:
+        matches = check_initial_match(name_query, players_collection, dob_query)
 
-        player = matches[0]
+    if not matches:
+        return jsonify({"error": f"No player found for '{name_query}'"}), 404
+    
+    # --- Disambiguation / Results logic remains the same ---
+    if len(matches) > 1 and not dob_query:
         return jsonify({
-            "fullName": player["fullName"],
-            "mlbId": player["mlbId"],
-        })
+            "error": "Multiple players found with that name.",
+            "message": "Please provide a 'dob' parameter (YYYY-MM-DD) to disambiguate.",
+            "options": [
+                {"fullName": p["fullName"], "birthDate": p.get("birthDate")} 
+                for p in matches
+            ]
+        }), 300
 
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    player = matches[0]
+    return jsonify({
+        "fullName": player["fullName"],
+        "mlbId": player["mlbId"],
+    })
 
 # Returns all player names and their IDs
 @app.route("/players")
 def all_players():
-    try:
-        cursor = players_collection.find({}, {"_id": 0, "fullName": 1, "mlbId": 1, "headshotUrl": 1, "positions": 1})
+    cursor = players_collection.find({}, {"_id": 0, "fullName": 1, "mlbId": 1, "headshotUrl": 1, "positions": 1})
 
-        player_list = []
-        for p in cursor:
-            player_list.append({
-                "name": p.get("fullName"),
-                "id": p.get("mlbId"),
-                "headshotUrl": p.get("headshotUrl"),
-                "positions": p.get("positions")
-            })
-            
-        player_list.sort(key=lambda x: x["name"])
-
-        return jsonify({
-            "count": len(player_list),
-            "players": player_list
+    player_list = []
+    for p in cursor:
+        player_list.append({
+            "name": p.get("fullName"),
+            "id": p.get("mlbId"),
+            "headshotUrl": p.get("headshotUrl"),
+            "positions": p.get("positions")
         })
+        
+    player_list.sort(key=lambda x: x["name"])
 
-    except Exception as e:
-        print(f"Error fetching all players: {e}")
-        return jsonify({"error": "Internal server error"}), 500
+    return jsonify({
+        "count": len(player_list),
+        "players": player_list
+    })
 
 # This endpoint takes a comma-separated list of player IDs and an optional year, and returns their stats
 @app.route("/player-stats")
@@ -149,100 +155,91 @@ def player_stats():
     all_players_data = []
     team_cache = {}
 
-    try:
-        for player_id in player_ids:
-            # 1. Bio for Position
-            person = get_player_bio(player_id)
-            if not person:
-                continue # Skip if ID is invalid
-                
-            position = person.get("primaryPosition", {}).get("name", "Unknown")
-            full_name = person.get("fullName")
+    for player_id in player_ids:
+        # 1. Bio for Position
+        person = get_player_bio(player_id)
+        if not person:
+            continue # Skip if ID is invalid
+            
+        position = person.get("primaryPosition", {}).get("name", "Unknown")
+        full_name = person.get("fullName")
 
-            # 2. Stats (Hitting & Pitching)
-            stats_json = get_player_stats(player_id, year)
-            if not stats_json:
+        # 2. Stats (Hitting & Pitching)
+        stats_json = get_player_stats(player_id, year)
+        if not stats_json:
+            continue
+
+        merged_stats = {}
+        player_team_info = {}
+
+        for group_data in stats_json.get("stats", []):
+            splits = group_data.get("splits", [])
+            if not splits:
                 continue
+            
+            s = splits[0]
+            current_stats = s.get("stat", {})
+            t_id = s["team"]["id"]
 
-            merged_stats = {}
-            player_team_info = {}
+            # 3. Handle Team Info & Abbreviation 
+            if not player_team_info:
+                if t_id not in team_cache:
+                    t_data = get_team_details(t_id)
+                    team_cache[t_id] = {
+                        "id": t_id,
+                        "name": s["team"]["name"],
+                        "abbreviation": t_data.get("abbreviation") if t_data else "N/A"
+                    }
+                player_team_info = team_cache[t_id]
 
-            for group_data in stats_json.get("stats", []):
-                splits = group_data.get("splits", [])
-                if not splits:
-                    continue
-                
-                s = splits[0]
-                current_stats = s.get("stat", {})
-                t_id = s["team"]["id"]
+            # 4. Merging Logic
+            for key, value in current_stats.items():
+                if key == "age": 
+                    merged_stats[key] = value 
+                    continue   
+                if isinstance(value, (int, float)):
+                    merged_stats[key] = merged_stats.get(key, 0) + value
+                else:
+                    merged_stats[key] = value
 
-                # 3. Handle Team Info & Abbreviation 
-                if not player_team_info:
-                    if t_id not in team_cache:
-                        t_data = get_team_details(t_id)
-                        team_cache[t_id] = {
-                            "id": t_id,
-                            "name": s["team"]["name"],
-                            "abbreviation": t_data.get("abbreviation") if t_data else "N/A"
-                        }
-                    player_team_info = team_cache[t_id]
-
-                # 4. Merging Logic
-                for key, value in current_stats.items():
-                    if key == "age": 
-                        merged_stats[key] = value 
-                        continue   
-                    if isinstance(value, (int, float)):
-                        merged_stats[key] = merged_stats.get(key, 0) + value
-                    else:
-                        merged_stats[key] = value
-
-            # Append this player's compiled data to our main list
-            all_players_data.append({
-                "player": {
-                    "id": player_id,
-                    "name": full_name,
-                    "position": position
-                },
-                "team": player_team_info,
-                "year": year,
-                "stats": merged_stats
-            })
-
-        return jsonify({
-            "count": len(all_players_data),
-            "results": all_players_data
+        # Append this player's compiled data to our main list
+        all_players_data.append({
+            "player": {
+                "id": player_id,
+                "name": full_name,
+                "position": position
+            },
+            "team": player_team_info,
+            "year": year,
+            "stats": merged_stats
         })
 
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    return jsonify({
+        "count": len(all_players_data),
+        "results": all_players_data
+    })
     
 # Returns a list of all 30 AL/NL teams with their IDs
 @app.route("/teams")
 def get_mlb_teams():
-    try:
-        data = get_all_teams()
-        if not data or "teams" not in data:
-            return jsonify({"error": "Failed to fetch teams"}), 502
+    data = get_all_teams()
+    if not data or "teams" not in data:
+        return jsonify({"error": "Failed to fetch teams"}), 502
 
-        teams_list = []
-        for team in data.get("teams", []):
-            teams_list.append({
-                "id": team.get("id"),
-                "name": team.get("name"),
-                "abbreviation": team.get("abbreviation"),
-            })
-
-        teams_list.sort(key=lambda x: x["name"])
-
-        return jsonify({
-            "count": len(teams_list),
-            "teams": teams_list
+    teams_list = []
+    for team in data.get("teams", []):
+        teams_list.append({
+            "id": team.get("id"),
+            "name": team.get("name"),
+            "abbreviation": team.get("abbreviation"),
         })
 
-    except Exception as e:
-        print(f"Error fetching teams: {e}")
-        return jsonify({"error": "Internal server error"}), 500
+    teams_list.sort(key=lambda x: x["name"])
+
+    return jsonify({
+        "count": len(teams_list),
+        "teams": teams_list
+    })
 
 # Also gets injuries
 @app.route("/depth-chart")
