@@ -1,12 +1,12 @@
 import os
 from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
-import requests
+from datetime import datetime
 from dotenv import load_dotenv
 from core.auth import auth_bp
 from core.api_keys import api_keys_bp, api_keys_collection
 from core.db import players_collection
-from datetime import datetime
+from services.mlb_service import get_player_bio, get_player_stats, get_team_details, get_all_teams, get_team_roster, get_transactions
 
 load_dotenv()
 
@@ -137,7 +137,7 @@ def all_players():
 
 # This endpoint takes a comma-separated list of player IDs and an optional year, and returns their stats
 @app.route("/player-stats")
-def get_player_stats():
+def player_stats():
     ids_param = request.args.get("ids")
     year = request.args.get("year", "2025")
 
@@ -152,19 +152,17 @@ def get_player_stats():
     try:
         for player_id in player_ids:
             # 1. Bio for Position
-            bio_url = f"https://statsapi.mlb.com/api/v1/people/{player_id}"
-            bio_res = requests.get(bio_url).json()
-            if not bio_res.get("people"):
+            person = get_player_bio(player_id)
+            if not person:
                 continue # Skip if ID is invalid
                 
-            person = bio_res["people"][0]
             position = person.get("primaryPosition", {}).get("name", "Unknown")
             full_name = person.get("fullName")
 
             # 2. Stats (Hitting & Pitching)
-            stats_url = f"https://statsapi.mlb.com/api/v1/people/{player_id}/stats"
-            params = {"stats": "season", "season": year, "group": "hitting,pitching"}
-            stats_json = requests.get(stats_url, params=params).json()
+            stats_json = get_player_stats(player_id, year)
+            if not stats_json:
+                continue
 
             merged_stats = {}
             player_team_info = {}
@@ -181,21 +179,19 @@ def get_player_stats():
                 # 3. Handle Team Info & Abbreviation 
                 if not player_team_info:
                     if t_id not in team_cache:
-                        t_url = f"https://statsapi.mlb.com/api/v1/teams/{t_id}"
-                        t_res = requests.get(t_url).json()
+                        t_data = get_team_details(t_id)
                         team_cache[t_id] = {
                             "id": t_id,
                             "name": s["team"]["name"],
-                            "abbreviation": t_res["teams"][0].get("abbreviation")
+                            "abbreviation": t_data.get("abbreviation") if t_data else "N/A"
                         }
                     player_team_info = team_cache[t_id]
 
                 # 4. Merging Logic
                 for key, value in current_stats.items():
                     if key == "age": 
-                        merged_stats[key] = value # Don't sum age
-                        continue
-                        
+                        merged_stats[key] = value 
+                        continue   
                     if isinstance(value, (int, float)):
                         merged_stats[key] = merged_stats.get(key, 0) + value
                     else:
@@ -225,9 +221,9 @@ def get_player_stats():
 @app.route("/teams")
 def get_mlb_teams():
     try:
-        url = "https://statsapi.mlb.com/api/v1/teams?sportId=1"
-        response = requests.get(url)
-        data = response.json()
+        data = get_all_teams()
+        if not data or "teams" not in data:
+            return jsonify({"error": "Failed to fetch teams"}), 502
 
         teams_list = []
         for team in data.get("teams", []):
@@ -256,81 +252,61 @@ def get_depth_chart():
     if not team_id:
         return jsonify({"error": "Missing teamId parameter"}), 400
 
-    try:
-        url = f"https://statsapi.mlb.com/api/v1/teams/{team_id}/roster"
-        params = {
-            "rosterType": "depthChart",
-            "season": "2026"
-        }
+    data = get_team_roster(team_id)
+
+    if "roster" not in data:
+        return jsonify({"error": f"No roster data found for team {team_id}"}), 404
+
+    organized_depth_chart = {}
+
+    for entry in data["roster"]:
+        pos_name = entry["position"]["name"]
         
-        response = requests.get(url, params=params)
-        data = response.json()
+        player_entry = {
+            "id": entry["person"]["id"],
+            "name": entry["person"]["fullName"],
+            "status": entry["status"]["description"]
+        }
 
-        if "roster" not in data:
-            return jsonify({"error": f"No roster data found for team {team_id}"}), 404
+        if pos_name not in organized_depth_chart:
+            organized_depth_chart[pos_name] = []
+        
+        organized_depth_chart[pos_name].append(player_entry)
 
-        organized_depth_chart = {}
+    return jsonify({
+        "teamId": team_id,
+        "positions": organized_depth_chart
+    })
 
-        for entry in data["roster"]:
-            pos_name = entry["position"]["name"]
-            
-            player_entry = {
-                "id": entry["person"]["id"],
-                "name": entry["person"]["fullName"],
-                "status": entry["status"]["description"]
-            }
-
-            if pos_name not in organized_depth_chart:
-                organized_depth_chart[pos_name] = []
-            
-            organized_depth_chart[pos_name].append(player_entry)
-
-        return jsonify({
-            "teamId": team_id,
-            "positions": organized_depth_chart
-        })
-
-    except Exception as e:
-        return jsonify({"error": "Internal server error", "message": str(e)}), 500
    
 @app.route("/transactions")
 def get_daily_transactions():
-    try:
-        today_iso = datetime.now().strftime("%Y-%m-05")
-        
-        mlb_url = "https://statsapi.mlb.com/api/v1/transactions"
-        params = {
-            "date": today_iso,
-            "sportId": 1
-        }
-        
-        response = requests.get(mlb_url, params=params)
-        if response.status_code != 200:
-            return jsonify({"error": "Failed to fetch data from MLB"}), 502
-            
-        data = response.json()
-        raw_transactions = data.get("transactions", [])
+    today_iso = datetime.now().strftime("%Y-%m-05")
+    
+    data = get_transactions(today_iso)
 
-        results = []
-        for tx in raw_transactions:
-            results.append({
-                "playerId": tx.get("person", {}).get("id"),
-                "playerName": tx.get("person", {}).get("fullName"),
-                "fromTeam": tx.get("fromTeam", {}).get("name"),
-                "fromTeamId": tx.get("fromTeam", {}).get("id"),
-                "toTeam": tx.get("toTeam", {}).get("name"),
-                "toTeamId": tx.get("toTeam", {}).get("id"),
-                "description": tx.get("description")
-            })
+    if not data:
+        return jsonify({"error": "Failed to fetch data from MLB"}), 502
+        
+    raw_transactions = data.get("transactions", [])
 
-        return jsonify({
-            "date": today_iso,
-            "count": len(results),
-            "transactions": results
+    results = []
+    for tx in raw_transactions:
+        results.append({
+            "playerId": tx.get("person", {}).get("id"),
+            "playerName": tx.get("person", {}).get("fullName"),
+            "fromTeam": tx.get("fromTeam", {}).get("name"),
+            "fromTeamId": tx.get("fromTeam", {}).get("id"),
+            "toTeam": tx.get("toTeam", {}).get("name"),
+            "toTeamId": tx.get("toTeam", {}).get("id"),
+            "description": tx.get("description")
         })
 
-    except Exception as e:
-        return jsonify({"error": "Internal server error", "details": str(e)}), 500
+    return jsonify({
+        "date": today_iso,
+        "count": len(results),
+        "transactions": results
+    })
     
 
 @app.route('/value', methods=['POST'])
@@ -387,7 +363,6 @@ def value_players():
     else:
         players_to_calculate = available_players
 
-    # Get total player count for "worst rank" fallback
     total_in_db = len(available_players)
 
     for p in players_to_calculate:
