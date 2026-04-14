@@ -270,7 +270,7 @@ def get_depth_chart():
    
 @app.route("/transactions")
 def get_daily_transactions():
-    today_iso = datetime.now().strftime("%Y-%m-05")
+    today_iso = datetime.now().strftime("%Y-%m-%d")
     
     data = get_transactions(today_iso)
 
