@@ -26,7 +26,7 @@ def login():
         "exp": datetime.datetime.utcnow() + datetime.timedelta(days=7)
     }, os.environ.get("JWT_SECRET"), algorithm="HS256")
 
-    return jsonify({"token": token}), 200
+    return jsonify({"message": "Login successful", "username": username, "token": token}), 200
 
 @auth_bp.route("/register", methods=["POST"])
 def register():

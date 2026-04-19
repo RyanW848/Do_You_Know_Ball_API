@@ -3,6 +3,7 @@ from core.db import db
 import jwt
 import os
 import secrets
+from datetime import datetime
 
 api_keys_bp = Blueprint("api_keys", __name__)
 api_keys_collection = db["api_keys"]
@@ -30,6 +31,9 @@ def generate_api_key():
     api_keys_collection.insert_one({
         "username": username,
         "api_key": api_key,
+        "daily_requests": 0,
+        "balance": 0.0,
+        "last_reset": datetime.now().strftime("%Y-%m-%d")
     })
 
     return jsonify({"api_key": api_key}), 201
