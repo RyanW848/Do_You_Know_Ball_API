@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Do You Know Ball API — License</title>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="/static/dukb_pic.png">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -160,8 +161,41 @@
     <h2>Using Your API Key</h2>
     <p>Pass your API key in the <code style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem">X-API-Key</code> header on every request.</p>
     <pre><code>X-API-Key: your_api_key_here</code></pre>
-    <pre><code>curl https://do-u-know-ball.com/endpoint \
-  -H "X-API-Key: your_api_key_here"</code></pre>
+  </section>
+
+  <hr/>
+
+  <section>
+    <h2>Billing &amp; Quotas</h2>
+    <p>The "Do You Know Ball" API uses a metered billing system to ensure high availability for all scouts and analysts.</p>
+    
+    <div style="margin: 1rem 0; padding: 1rem; background: #fff; border: 1px solid #fde0c8; border-radius: 4px;">
+      <div style="margin-bottom: 0.5rem;">
+        <strong style="color: #f97316; font-size: 0.85rem; font-family: 'IBM Plex Mono';">01. FREE TIER</strong>
+        <p style="font-size: 0.88rem; margin-top: 0.2rem;">Your first <strong>100 requests</strong> every day (resetting at 00:00 UTC) are completely free.</p>
+      </div>
+      <div>
+        <strong style="color: #f97316; font-size: 0.85rem; font-family: 'IBM Plex Mono';">02. METERED OVERAGE</strong>
+        <p style="font-size: 0.88rem; margin-top: 0.2rem;">Requests beyond the free daily quota are billed at a flat rate of <strong>$0.01 per request</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr/>
+
+  <section>
+    <h2>Monitoring Usage</h2>
+    <p>Every response includes headers to help you track your usage in real-time.</p>
+    
+    <pre><code>X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 42
+X-Billing-Balance: $0.05</code></pre>
+
+    <div style="margin-top: 1rem;">
+      <p style="font-size: 0.85rem; color: #a3681e; font-style: italic;">
+        Note: When <code style="font-family:'IBM Plex Mono'">X-RateLimit-Remaining</code> reaches 0, your <code style="font-family:'IBM Plex Mono'">X-Billing-Balance</code> will begin to increment automatically.
+      </p>
+    </div>
   </section>
 
 </div>

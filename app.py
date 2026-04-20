@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify, request, render_template, g, make_response
+from flask import Flask, jsonify, request, render_template, g
 from flask_cors import CORS
 from datetime import datetime
 from dotenv import load_dotenv
@@ -22,7 +22,7 @@ app.register_blueprint(api_keys_bp)
 def require_api_key():
     if request.method == "OPTIONS":
         return None
-    if request.path in ["/register", "/login", "/api-keys/generate", "/", "/license"]:
+    if request.path in ["/register", "/login", "/api-keys/generate", "/", "/license"] or request.path.startswith("/static"):
         return None
     
     api_key = request.headers.get("X-API-Key")
