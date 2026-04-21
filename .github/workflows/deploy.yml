@@ -14,6 +14,7 @@ jobs:
           username: 'root' # e.g., 'ubuntu' or 'root'
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
+            set -e
             cd /opt/Do_You_Know_Ball_API/
             git pull
             pip install -r requirements.txt
