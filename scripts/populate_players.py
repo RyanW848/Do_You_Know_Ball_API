@@ -2,6 +2,7 @@ from pymongo import MongoClient, UpdateOne, ASCENDING
 import os
 from dotenv import load_dotenv
 from datetime import datetime
+from services.helpers import normalize_text
 from services.mlb_service import get_all_teams, get_team_roster, get_players_with_stats
 
 load_dotenv()
@@ -242,9 +243,7 @@ def sync_mlb_players():
                                 "$set": {
                                     "mlbId": player_id,
                                     "fullName": meta.get("fullName"),
-                                    "searchName": meta.get("fullName", "")
-                                    .lower()
-                                    .strip(),
+                                    "searchName": normalize_text(meta.get("fullName")),
                                     "currentTeamId": meta.get("teamId"),
                                     "currentAge": person.get("currentAge"),
                                     "positions": pos_string,

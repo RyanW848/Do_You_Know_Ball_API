@@ -42,9 +42,9 @@
           <td>Player name to search (e.g. <code>Juan Soto</code>)</td>
         </tr>
         <tr>
-          <td>dob<span class="tag optional">optional</span></td>
+          <td>age<span class="tag optional">optional</span></td>
           <td>—</td>
-          <td>Date of birth in <code>YYYY-MM-DD</code> format, used to resolve duplicate names</td>
+          <td>Age used to resolve duplicate names</td>
         </tr>
       </tbody>
     </table>
@@ -55,16 +55,6 @@
     <pre><code>{
   "fullName": "Juan Soto",
   "mlbId": 665742
-}</code></pre>
-
-    <p>If multiple players share the same name, a <code>300</code> response is returned:</p>
-    <pre><code>{
-  "error": "Multiple players found with that name.",
-  "message": "Please provide a 'dob' parameter (YYYY-MM-DD) to disambiguate.",
-  "options": [
-    { "fullName": "Jose Rodriguez", "birthDate": "1988-06-03" },
-    { "fullName": "Jose Rodriguez", "birthDate": "2000-04-14" }
-  ]
 }</code></pre>
   </section>
 
@@ -95,19 +85,19 @@
 
   <hr/>
 
-  <!-- /player-stats -->
+  <!-- /stats -->
   <section>
     <h2>Get Player Stats</h2>
     <p>Returns hitting and/or pitching stats for one or more players by MLB ID. Optionally filter by season year.</p>
-    <div class="endpoint"><span class="method get">GET</span><span class="path">/player-stats</span></div>
+    <div class="endpoint"><span class="method get">GET</span><span class="path">/stats</span></div>
 
     <table>
       <thead><tr><th>Parameter</th><th>Default</th><th>Description</th></tr></thead>
       <tbody>
         <tr>
-          <td>ids<span class="tag required">required</span></td>
+          <td>players<span class="tag required">required</span></td>
           <td>—</td>
-          <td>Comma-separated list of MLB player IDs (e.g. <code>665742,592450</code>)</td>
+          <td>Comma-separated list of MLB player IDs (e.g. <code>665742,592450</code>) or names</td>
         </tr>
         <tr>
           <td>year<span class="tag optional">optional</span></td>
@@ -117,10 +107,10 @@
       </tbody>
     </table>
 
-    <pre><code>curl "https://do-u-know-ball.com/player-stats?ids=665742,592450" \
+    <pre><code>curl "https://do-u-know-ball.com/stats?ids=665742,592450" \
   -H "X-API-Key: your_api_key_here"
 
-curl "https://do-u-know-ball.com/player-stats?ids=665742&year=2024" \
+curl "https://do-u-know-ball.com/stats?ids=665742&year=2024" \
   -H "X-API-Key: your_api_key_here"</code></pre>
 
     <pre><code>{
@@ -236,29 +226,29 @@ curl "https://do-u-know-ball.com/player-stats?ids=665742&year=2024" \
       <thead><tr><th>Field</th><th>Default</th><th>Description</th></tr></thead>
       <tbody>
         <tr>
-          <td>relevant_stats<span class="tag required">required</span></td>
-          <td>—</td>
+          <td>relevant_stats<span class="tag optional">optional</span></td>
+          <td>HR, R, RBI, SB, BA, SLG, OBP, OPS, W, K, SV, ERA, WHIP</td>
           <td>Comma-separated stat categories that drive valuation (e.g. <code>HR,AVG,RBI,SB</code>)</td>
         </tr>
         <tr>
-          <td>budget<span class="tag required">required</span></td>
-          <td>0</td>
+          <td>budget<span class="tag optional">optional</span></td>
+          <td>260</td>
           <td>Your remaining draft budget in dollars</td>
         </tr>
         <tr>
           <td>players_left_to_draft<span class="tag optional">optional</span></td>
-          <td>1</td>
+          <td>23</td>
           <td>How many players you still need to draft — used to calculate per-player budget</td>
         </tr>
         <tr>
-          <td>unavailable_player_ids<span class="tag optional">optional</span></td>
+          <td>unavailable_players<span class="tag optional">optional</span></td>
           <td>[]</td>
-          <td>Array of MLB IDs to exclude (already drafted players)</td>
+          <td>Array of MLB IDs or names to exclude (already drafted players)</td>
         </tr>
         <tr>
-          <td>player_ids<span class="tag optional">optional</span></td>
+          <td>players<span class="tag optional">optional</span></td>
           <td>all</td>
-          <td>Array of MLB IDs to evaluate. Omit to value all available players.</td>
+          <td>Array of MLB IDs or names to evaluate. Omit to value all available players.</td>
         </tr>
       </tbody>
     </table>
@@ -270,8 +260,8 @@ curl "https://do-u-know-ball.com/player-stats?ids=665742&year=2024" \
     "budget": 150,
     "players_left_to_draft": 3,
     "relevant_stats": "HR,AVG,RBI,SB",
-    "unavailable_player_ids": [665742, 592450],
-    "player_ids": [670712, 663728, 669302]
+    "unavailable_players": [665742, 592450],
+    "players": [670712, 663728, 669302]
   }'</code></pre>
 
     <pre><code>{

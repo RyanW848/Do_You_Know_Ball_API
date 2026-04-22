@@ -8,6 +8,7 @@ from core.api_keys import api_keys_bp, api_keys_collection
 from core.db import players_collection
 from services.mlb_service import get_player_bio, get_player_stats, get_team_details, get_all_teams, get_team_roster, get_transactions
 from services.valuation import get_age_multiplier, get_versatility_multiplier, get_injury_multiplier, get_depth_multiplier, get_scaled_score
+from services.helpers import find_player_id, convert_to_player_ids
 
 load_dotenv()
 
@@ -20,6 +21,8 @@ app.register_blueprint(api_keys_bp)
 # Require API key for all routes 
 @app.before_request
 def require_api_key():
+    if os.environ.get("ENVIRONMENT") != "production":
+        return None
     if request.method == "OPTIONS":
         return None
     if request.path in ["/register", "/login", "/api-keys/generate", "/", "/license"] or request.path.startswith("/static"):
@@ -95,58 +98,16 @@ def license_page():
 
 @app.route("/get-player-id")
 def get_player_id():
-    name_query = request.args.get("name")
-    dob_query = request.args.get("dob")
+    name = request.args.get("name")
+    age = request.args.get("age")
 
-    if not name_query:
-        return jsonify({"error": "Missing 'name' parameter"}), 400
+    mlb_id_name, error = find_player_id(name, age)
 
-    # 1. Prepare Initial Query
-    search_name = name_query.lower().strip()
-    query = {"searchName": search_name}
-    if dob_query:
-        query["birthDate"] = dob_query
+    if error:
+        status = error.pop("status")
+        return jsonify(error), status
 
-    # --- Attempt 1: Exact searchName Match ---
-    matches = list(players_collection.find(query, {"_id": 0}))
-
-    # --- Attempt 2: Initial Fallback (Regex for "J. Smith" or "J Smith") ---
-    if not matches:
-        clean_name = name_query.replace(".", "").strip()
-        parts = clean_name.split()
-
-        if len(parts) >= 2:
-            first_part = parts[0]
-            last_name = " ".join(parts[1:])
-
-            # Check if the first part looks like an initial (e.g., 'J' or 'JD')
-            if len(first_part) <= 2:
-                regex_pattern = f"^{first_part[0]}.* {last_name}$"
-                fallback_query = {"fullName": {"$regex": regex_pattern, "$options": "i"}}
-                
-                if dob_query:
-                    fallback_query["birthDate"] = dob_query
-                
-                matches = list(players_collection.find(fallback_query, {"_id": 0}))
-
-    if not matches:
-        return jsonify({"error": f"No player found for '{name_query}'"}), 404
-    
-    if len(matches) > 1 and not dob_query:
-        return jsonify({
-            "error": "Multiple players found with that name.",
-            "message": "Please provide a 'dob' parameter (YYYY-MM-DD) to disambiguate.",
-            "options": [
-                {"fullName": p["fullName"], "birthDate": p.get("birthDate")} 
-                for p in matches
-            ]
-        }), 300
-
-    player = matches[0]
-    return jsonify({
-        "fullName": player["fullName"],
-        "mlbId": player["mlbId"],
-    })
+    return jsonify(mlb_id_name)
 
 # Returns all player names and their IDs
 @app.route("/players")
@@ -170,15 +131,15 @@ def all_players():
     })
 
 # This endpoint takes a comma-separated list of player IDs and an optional year, and returns their stats
-@app.route("/player-stats")
+@app.route("/stats")
 def player_stats():
-    ids_param = request.args.get("ids")
+    players_param = request.args.get("players")
     year = request.args.get("year", "2025")
 
-    if not ids_param:
-        return jsonify({"error": "Missing 'ids' parameter"}), 400
-
-    player_ids = [pid.strip() for pid in ids_param.split(",")]
+    if not players_param:
+        return jsonify({"error": "Missing 'players' parameter"}), 400
+    
+    player_ids = convert_to_player_ids([player.strip() for player in players_param.split(",")])
     
     all_players_data = []
     team_cache = {}
@@ -337,18 +298,15 @@ def get_daily_transactions():
 def value_players():            
     data = request.get_json()
     
-    budget = data.get('budget', 0)
-    players_left = data.get('players_left_to_draft', 1)
-    avg_player_budget = budget / players_left if players_left > 0 else 0
-    unavailable_ids = data.get('unavailable_player_ids', [])
-    target_player_ids = data.get('player_ids', [])
-    raw_stats = data.get('relevant_stats', "")
-    relevant_stats = [s.strip() for s in raw_stats.split(',') if s.strip()]
-
-    if not relevant_stats:
-        return jsonify({"error": "No relevant_stats provided"}), 400
-    if budget <= 0:
-        return jsonify({"error": "Budget must be greater than 0"}), 400
+    budget = data.get('budget', 260)
+    players_left = data.get('players_left_to_draft', 23)
+    avg_player_budget = budget / players_left
+    unavailable = data.get('unavailable_players', ["HR", "R", "RBI", "SB", "BA", "SLG", "OBP", "OPS", "W", "K", "SV", "ERA", "WHIP"])
+    target_players = data.get('players', [])
+    relevant_stats = data.get('relevant_stats', [])
+    
+    unavailable_ids = convert_to_player_ids(unavailable)
+    target_player_ids = convert_to_player_ids(target_players)
 
     all_players = list(players_collection.find({}))
     available_players = [p for p in all_players if p.get("mlbId") not in unavailable_ids]
