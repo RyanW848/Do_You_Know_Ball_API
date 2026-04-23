@@ -19,7 +19,7 @@ def client(monkeypatch):
         def find(self, _):
             return players_data
 
-    monkeypatch.setattr(core.db, "get_players_collection", lambda: MockCollection())
+    monkeypatch.setattr("app.get_players_collection", lambda: MockCollection())
 
     app.app.config["TESTING"] = True
 
