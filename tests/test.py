@@ -1,31 +1,6 @@
-import pytest
-import os
 import json
-from dotenv import load_dotenv
+from services.valuation import compute_valuation
 
-load_dotenv()
-
-@pytest.fixture
-def client(monkeypatch):
-    monkeypatch.setenv("API_KEY", "test_key")
-
-    import core.db
-    import app
-
-    with open("tests/data/players_snapshot.json") as f:
-        players_data = json.load(f)
-
-    class MockCollection:
-        def find(self, _):
-            return players_data
-
-    monkeypatch.setattr("app.get_players_collection", lambda: MockCollection())
-
-    app.app.config["TESTING"] = True
-
-    with app.app.test_client() as client:
-        yield client
-      
 # Test 1 (Before Draft)
 data1 = {
   "relevant_stats": [],
@@ -35,20 +10,18 @@ data1 = {
   "players": []
 }
 
-def test_1(client):
-    response = client.post(
-        "/value",
-        json=data1,
-        headers={
-            "X-API-KEY": os.environ.get("API_KEY")
-        }
-    )
+def test_1():
+    with open("tests/data/players_snapshot.json") as f:
+        players = json.load(f)
 
-    assert response.status_code == 200
+    data = data1
 
-    data = response.get_json()
-    assert "results" in data
-    print(data["results"][:10])
+    result = compute_valuation(players, data)
+
+    assert "results" in result
+    assert len(result["results"]) > 0
+
+    print(result["results"][:10])
     
 # Test 2 (After Drafting 10 Players)
 data2 = {
@@ -59,20 +32,18 @@ data2 = {
   "players": []
 }
 
-def test_2(client):
-    response = client.post(
-        "/value",
-        json=data2,
-        headers={
-            "X-API-KEY": os.environ.get("API_KEY")
-        }
-    )
+def test_2():
+    with open("tests/data/players_snapshot.json") as f:
+        players = json.load(f)
 
-    assert response.status_code == 200
+    data = data2
 
-    data = response.get_json()
-    assert "results" in data
-    print(data["results"][:10])
+    result = compute_valuation(players, data)
+
+    assert "results" in result
+    assert len(result["results"]) > 0
+
+    print(result["results"][:10])
     
 # Test 3 (After Drafting 50 Players)
 data3 = {
@@ -83,20 +54,18 @@ data3 = {
   "players": []
 }
 
-def test_3(client):
-    response = client.post(
-        "/value",
-        json=data3,
-        headers={
-            "X-API-KEY": os.environ.get("API_KEY")
-        }
-    )
+def test_3():
+    with open("tests/data/players_snapshot.json") as f:
+        players = json.load(f)
 
-    assert response.status_code == 200
+    data = data3
 
-    data = response.get_json()
-    assert "results" in data
-    print(data["results"][:10])
+    result = compute_valuation(players, data)
+
+    assert "results" in result
+    assert len(result["results"]) > 0
+
+    print(result["results"][:10])
     
 # Test 4 (After Drafting 100 Players)
 data4 = {
@@ -107,20 +76,18 @@ data4 = {
   "players": []
 }
 
-def test_4(client):
-    response = client.post(
-        "/value",
-        json=data4,
-        headers={
-            "X-API-KEY": os.environ.get("API_KEY")
-        }
-    )
+def test_4():
+    with open("tests/data/players_snapshot.json") as f:
+        players = json.load(f)
 
-    assert response.status_code == 200
+    data = data4
 
-    data = response.get_json()
-    assert "results" in data
-    print(data["results"][:10])
+    result = compute_valuation(players, data)
+
+    assert "results" in result
+    assert len(result["results"]) > 0
+
+    print(result["results"][:10])
     
 # Test 5 (After Drafting 130 Players)
 data5 = {
@@ -131,17 +98,15 @@ data5 = {
   "players": []
 }
 
-def test_5(client):
-    response = client.post(
-        "/value",
-        json=data5,
-        headers={
-            "X-API-KEY": os.environ.get("API_KEY")
-        }
-    )
+def test_5():
+    with open("tests/data/players_snapshot.json") as f:
+        players = json.load(f)
 
-    assert response.status_code == 200
+    data = data5
 
-    data = response.get_json()
-    assert "results" in data
-    print(data["results"][:10])
+    result = compute_valuation(players, data)
+
+    assert "results" in result
+    assert len(result["results"]) > 0
+
+    print(result["results"][:10])
