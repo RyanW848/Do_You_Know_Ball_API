@@ -40,8 +40,8 @@ def compute_valuation(players, data):
     
     avg_player_budget = budget / players_left if players_left > 0 else budget
     budget_for_one = budget - players_left + 1
-    unavailable_ids = convert_to_player_ids(unavailable)
-    target_player_ids = convert_to_player_ids(target_players)
+    unavailable_ids = convert_to_player_ids(unavailable, players)
+    target_player_ids = convert_to_player_ids(target_players, players)
 
     available_players = [p for p in players if p.get("mlbId") not in unavailable_ids]
     results = []
