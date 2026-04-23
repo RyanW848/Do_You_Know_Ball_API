@@ -3,7 +3,7 @@ name: Deploy via SSH
 on: [push]
 
 jobs:
-  --- Test Job ---
+  # --- Test Job ---
   test:
     runs-on: ubuntu-latest
     steps:
@@ -23,8 +23,7 @@ jobs:
 
       - name: Run tests
         env:
-            MONGO_URI: ${{ secrets.MONGO_URI }}
-            SECRET_KEY: ${{ secrets.SECRET_KEY }}
+            API_KEY: ${{ secrets.API_KEY }}
         run: python3 -m pytest tests/test.py
 
   # --- Deploy Job ---
