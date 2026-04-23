@@ -23,6 +23,7 @@ jobs:
 
       - name: Run tests
         env:
+            MONGO_URI: ${{ secrets.MONGO_URI }}
             API_KEY: ${{ secrets.API_KEY }}
         run: python3 -m pytest tests/test.py
 
