@@ -6,8 +6,9 @@ import secrets
 from datetime import datetime
 
 api_keys_bp = Blueprint("api_keys", __name__)
-db = get_db()
-api_keys_collection = db["api_keys"]
+
+def get_api_keys_collection():
+    return get_db()["api_keys"]
 
 def get_username_from_token(request):
     token = request.headers.get("Authorization", "").replace("Bearer ", "")
@@ -29,6 +30,7 @@ def generate_api_key():
 
     api_key = secrets.token_hex(32)
 
+    api_keys_collection = get_api_keys_collection()
     api_keys_collection.insert_one({
         "username": username,
         "api_key": api_key,

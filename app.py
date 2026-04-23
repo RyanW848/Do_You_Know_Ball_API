@@ -4,7 +4,7 @@ from flask_cors import CORS
 from datetime import datetime
 from dotenv import load_dotenv
 from core.auth import auth_bp
-from core.api_keys import api_keys_bp, api_keys_collection
+from core.api_keys import api_keys_bp, get_api_keys_collection
 from core.db import get_players_collection
 from services.mlb_service import get_player_bio, get_player_stats, get_team_details, get_all_teams, get_team_roster, get_transactions
 from services.valuation import get_age_multiplier, get_versatility_multiplier, get_injury_multiplier, get_depth_multiplier, get_scaled_score
@@ -31,6 +31,8 @@ def require_api_key():
     api_key = request.headers.get("X-API-Key")
     if not api_key:
         return jsonify({"error": "API key required"}), 401
+    
+    api_keys_collection = get_api_keys_collection()
 
     key_doc = api_keys_collection.find_one({"api_key": api_key})
     if not key_doc:
