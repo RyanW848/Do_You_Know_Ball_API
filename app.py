@@ -5,7 +5,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 from core.auth import auth_bp
 from core.api_keys import api_keys_bp, api_keys_collection
-from core.db import players_collection
+from core.db import get_players_collection
 from services.mlb_service import get_player_bio, get_player_stats, get_team_details, get_all_teams, get_team_roster, get_transactions
 from services.valuation import get_age_multiplier, get_versatility_multiplier, get_injury_multiplier, get_depth_multiplier, get_scaled_score
 from services.helpers import find_player_id, convert_to_player_ids
@@ -112,6 +112,7 @@ def get_player_id():
 # Returns all player names and their IDs
 @app.route("/players")
 def all_players():
+    players_collection = get_players_collection()
     cursor = players_collection.find({}, {"_id": 0, "fullName": 1, "mlbId": 1, "headshotUrl": 1, "positions": 1})
 
     player_list = []
@@ -309,6 +310,7 @@ def value_players():
     unavailable_ids = convert_to_player_ids(unavailable)
     target_player_ids = convert_to_player_ids(target_players)
 
+    players_collection = get_players_collection()
     all_players = list(players_collection.find({}))
     available_players = [p for p in all_players if p.get("mlbId") not in unavailable_ids]
     results = []

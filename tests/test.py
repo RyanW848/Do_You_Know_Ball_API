@@ -1,7 +1,6 @@
 import pytest
 import os
 import json
-from app import app
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -10,6 +9,9 @@ load_dotenv()
 def client(monkeypatch):
     monkeypatch.setenv("API_KEY", "test_key")
 
+    import core.db
+    import app
+
     with open("tests/data/players_snapshot.json") as f:
         players_data = json.load(f)
 
@@ -17,11 +19,11 @@ def client(monkeypatch):
         def find(self, _):
             return players_data
 
-    monkeypatch.setattr("app.players_collection", MockCollection())
+    monkeypatch.setattr(core.db, "get_players_collection", lambda: MockCollection())
 
-    app.config["TESTING"] = True
+    app.app.config["TESTING"] = True
 
-    with app.test_client() as client:
+    with app.app.test_client() as client:
         yield client
       
 # Test 1 (Before Draft)
