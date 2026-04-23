@@ -1,14 +1,28 @@
 import pytest
 import os
+import json
 from app import app
 from dotenv import load_dotenv
 
 load_dotenv()
 
 @pytest.fixture
-def client():
+def client(monkeypatch):
+    monkeypatch.setenv("API_KEY", "test_key")
+
+    with open("tests/data/players_snapshot.json") as f:
+        players_data = json.load(f)
+
+    class MockCollection:
+        def find(self, _):
+            return players_data
+
+    monkeypatch.setattr("app.players_collection", MockCollection())
+
+    app.config["TESTING"] = True
+
     with app.test_client() as client:
-      yield client
+        yield client
       
 # Test 1 (Before Draft)
 data1 = {
