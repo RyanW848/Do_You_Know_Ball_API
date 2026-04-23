@@ -301,9 +301,9 @@ def value_players():
     budget = data.get('budget', 260)
     players_left = data.get('players_left_to_draft', 23)
     avg_player_budget = budget / players_left
-    unavailable = data.get('unavailable_players', ["HR", "R", "RBI", "SB", "BA", "SLG", "OBP", "OPS", "W", "K", "SV", "ERA", "WHIP"])
+    unavailable = data.get('unavailable_players', [])
     target_players = data.get('players', [])
-    relevant_stats = data.get('relevant_stats', [])
+    relevant_stats = data.get('relevant_stats', ["HR", "R", "RBI", "SB", "BA", "SLG", "OBP", "OPS", "W", "K", "SV", "ERA", "WHIP"])
     
     unavailable_ids = convert_to_player_ids(unavailable)
     target_player_ids = convert_to_player_ids(target_players)
