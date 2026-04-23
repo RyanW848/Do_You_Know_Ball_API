@@ -6,9 +6,6 @@ jobs:
   # --- Test Job ---
   test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: /opt/Do_You_Know_Ball_API/
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -17,10 +14,6 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.12'
-
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
 
       - name: Run tests
         run: python3 -m pytest tests/test.py
