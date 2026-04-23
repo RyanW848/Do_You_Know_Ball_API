@@ -1,4 +1,4 @@
-from core.db import players_collection
+from core.db import get_players_collection
 import unicodedata
 
 def normalize_text(text):
@@ -21,6 +21,7 @@ def find_player_id(name_query, age_query=None):
     projection = {"mlbId": 1, "fullName": 1, "currentAge": 1, "_id": 0}
 
     # Attempt 1: Exact searchName Match
+    players_collection = get_players_collection()
     matches = list(players_collection.find(query, projection))
 
     # Attempt 2: Initial Fallback
