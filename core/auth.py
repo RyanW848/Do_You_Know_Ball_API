@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from core.db import users_collection
+from core.db import get_users_collection
 import bcrypt
 import jwt
 import datetime
@@ -16,6 +16,7 @@ def login():
     if not username or not password:
         return jsonify({"error": "Username and password required"}), 400
 
+    users_collection = get_users_collection()
     user = users_collection.find_one({"username": username})
 
     if not user or not bcrypt.checkpw(password.encode("utf-8"), user["password"]):
@@ -36,6 +37,8 @@ def register():
 
     if not username or not password:
         return jsonify({"error": "Username and password required"}), 400
+    
+    users_collection = get_users_collection()
 
     if users_collection.find_one({"username": username}):
         return jsonify({"error": "Username already exists"}), 409

@@ -1,11 +1,12 @@
 from flask import Blueprint, request, jsonify
-from core.db import db
+from core.db import get_db
 import jwt
 import os
 import secrets
 from datetime import datetime
 
 api_keys_bp = Blueprint("api_keys", __name__)
+db = get_db()
 api_keys_collection = db["api_keys"]
 
 def get_username_from_token(request):
