@@ -98,6 +98,10 @@ def home():
 def license_page():
     return render_template("license.html")
 
+@app.route("/api-keys")
+def api_keys_page():
+    return render_template("api-keys.html")
+
 @app.route("/get-player-id")
 def get_player_id():
     name = request.args.get("name")

@@ -6,7 +6,7 @@ body {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
   line-height: 1.7;
-  padding: 3rem 1.5rem 5rem;
+  padding: 1.5rem 1.5rem 3rem;
 }
 
 .wrap {
@@ -170,3 +170,156 @@ hr {
   border: 1px solid #fde0c8; 
   border-radius: 4px;
 }
+
+.navbar {
+  background: #fff9f5;
+  border-bottom: 2px solid #f97316;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+}
+
+.navbar-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1a1008;
+  text-decoration: none;
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.btn {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: #f97316;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #ea580c;
+}
+
+.btn-outline {
+  border: 1px solid #f97316;
+  color: #f97316;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: #fff1e6;
+}
+
+.auth-form-container {
+  background: #fff;
+  border: 1px solid #fde0c8;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 80%;
+}
+ 
+.auth-form-container h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #f97316;
+}
+ 
+.auth-form-group {
+  margin-bottom: 1.25rem;
+}
+ 
+.auth-form-label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+  color: #4a3520;
+  font-weight: 500;
+}
+ 
+.auth-form-input {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #fde0c8;
+  border-radius: 4px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.9rem;
+  background: #fff9f5;
+}
+ 
+.auth-form-input:focus {
+  outline: none;
+  border-color: #f97316;
+  background: white;
+}
+ 
+.auth-btn {
+  width: 100%;
+  padding: 0.65rem;
+  background: #f97316;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+ 
+.auth-btn:hover {
+  background: #ea580c;
+}
+ 
+.auth-error {
+  color: #b91c1c;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+ 
+.auth-success {
+  color: #16a34a;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+ 
+.auth-link {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+}
+ 
+.auth-link a {
+  color: #f97316;
+  text-decoration: none;
+}
+ 
+.auth-link a:hover {
+  text-decoration: underline;
+}
+
+.auth-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+ 

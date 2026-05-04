@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login — Do You Know Ball API</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="/static/dukb_pic.png">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+{% include 'navbar.html' %}
+
+<div class="wrap auth-wrap">
+  <div class="auth-form-container">
+    <h2>Login</h2>
+    
+    <form id="loginForm">
+      <div class="auth-form-group">
+        <label for="username" class="auth-form-label">Username</label>
+        <input type="text" id="username" name="username" class="auth-form-input" required />
+        <div class="auth-error" id="usernameError"></div>
+      </div>
+
+      <div class="auth-form-group">
+        <label for="password" class="auth-form-label">Password</label>
+        <input type="password" id="password" name="password" class="auth-form-input" required />
+        <div class="auth-error" id="passwordError"></div>
+      </div>
+
+      <button type="submit" class="auth-btn">Login</button>
+      <div class="auth-error" id="formError"></div>
+      <div class="auth-success" id="formSuccess"></div>
+    </form>
+
+    <div class="auth-link">
+      Don't have an account? <a href="/register">Register here</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById("loginForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    document.getElementById("formError").textContent = "";
+    document.getElementById("formSuccess").textContent = "";
+
+    try {
+      const response = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        document.getElementById("formError").textContent = data.error || "Login failed";
+        return;
+      }
+
+      document.getElementById("formSuccess").textContent = "Login successful! Redirecting...";
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1500);
+    } catch (err) {
+      document.getElementById("formError").textContent = "An error occurred. Please try again.";
+    }
+  });
+</script>
+</body>
+</html>
