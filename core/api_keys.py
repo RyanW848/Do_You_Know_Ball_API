@@ -3,7 +3,7 @@ from core.db import get_db
 import jwt
 import os
 import secrets
-from datetime import datetime, timedelta
+from datetime import datetime
 import time
 
 api_keys_bp = Blueprint("api_keys", __name__)
