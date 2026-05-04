@@ -3,7 +3,8 @@ from core.db import get_db
 import jwt
 import os
 import secrets
-from datetime import datetime
+from datetime import datetime, timedelta
+import time
 
 api_keys_bp = Blueprint("api_keys", __name__)
 
@@ -68,16 +69,7 @@ def get_api_key_status():
     
 def calculate_billing_info(key_doc, api_key):
     api_keys_collection = get_api_keys_collection()
-    today = datetime.now().strftime("%Y-%m-%d")
-    
-    # Reset count if it's a new day
-    if key_doc.get("last_reset") != today:
-        api_keys_collection.update_one(
-            {"api_key": api_key},
-            {"$set": {"daily_requests": 0, "last_reset": today}}
-        )
-        key_doc["daily_requests"] = 0
-
+  
     # 100 free, then $0.01 per request
     inc_query = {"daily_requests": 1}
     if key_doc["daily_requests"] >= 100:
@@ -106,3 +98,27 @@ def check_valid(api_key):
         return None, "Invalid API key"
     
     return key_doc, None
+
+def check_rate_limit(key_doc, api_key, max_requests=100, window_seconds=60):
+    api_keys_collection = get_api_keys_collection()
+    
+    now = time.time()
+    cutoff = now - window_seconds
+    
+    # Get requests from the last X seconds
+    request_times = key_doc.get("request_times", [])
+    recent_requests = [t for t in request_times if t > cutoff]
+    
+    # Check if over limit
+    if len(recent_requests) >= max_requests:
+        return False, f"Rate limit exceeded. Max {max_requests} requests per {window_seconds} seconds"
+    
+    # Add current request timestamp
+    recent_requests.append(now)
+    
+    api_keys_collection.update_one(
+        {"api_key": api_key},
+        {"$set": {"request_times": recent_requests}}
+    )
+    
+    return True, None

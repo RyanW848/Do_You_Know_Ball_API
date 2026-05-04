@@ -4,7 +4,7 @@ from flask_cors import CORS
 from datetime import datetime
 from dotenv import load_dotenv
 from core.auth import auth_bp
-from core.api_keys import api_keys_bp, check_valid, calculate_billing_info
+from core.api_keys import api_keys_bp, check_valid, calculate_billing_info, check_rate_limit
 from core.db import get_players_collection
 from services.mlb_service import get_player_bio, get_player_stats, get_team_details, get_all_teams, get_team_roster, get_transactions
 from services.valuation import compute_valuation
@@ -36,6 +36,10 @@ def require_api_key():
     key_doc, error = check_valid(api_key)
     if error:
         return jsonify({"error": error}), 401   
+    
+    valid, error = check_rate_limit(key_doc, api_key)
+    if error:
+        return jsonify({"error": error}), 429
     
     calculate_billing_info(key_doc, api_key)
     return None
