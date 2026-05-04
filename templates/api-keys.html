@@ -1,11 +1,28 @@
 <!DOCTYPE html>
-<html>
-<head><title>API Keys</title></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>API Keys — Do You Know Ball API</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="/static/dukb_pic.png">
+  <link rel="stylesheet" href="/static/style.css"></link>
+</head>
 <body>
-  {% include 'navbar.html' %}
-  <div class="wrap">
+
+{% include 'navbar.html' %}
+
+<div class="wrap">
+  <header>
     <h1>Your API Keys</h1>
-    <p>API key management coming soon</p>
+    <p>Manage your API credentials</p>
+  </header>
+
+  <div class="apikeys-container" id="apikeyContainer">
+    <div class="apikeys-loading">Loading...</div>
   </div>
+</div>
+
+<script src="/static/js/api-keys.js"></script>
 </body>
 </html>

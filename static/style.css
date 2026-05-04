@@ -322,4 +322,137 @@ hr {
   justify-content: center;
   padding: 1rem;
 }
- 
+
+.apikeys-container {
+  background: #fff;
+  border: 1px solid #fde0c8;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.apikeys-container h2 {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #f97316;
+}
+
+.apikeys-section {
+  margin-bottom: 2rem;
+}
+
+.apikeys-label {
+  font-size: 0.85rem;
+  color: #a3681e;
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.apikeys-value {
+  font-size: 0.95rem;
+  color: #1a1008;
+  padding: 0.75rem;
+  background: #fff9f5;
+  border: 1px solid #fde0c8;
+  border-radius: 4px;
+  word-break: break-all;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.apikeys-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  border-bottom: 1px solid #fef0e6;
+}
+
+.apikeys-stat:last-child {
+  border-bottom: none;
+}
+
+.apikeys-stat-label {
+  color: #4a3520;
+  font-size: 0.9rem;
+}
+
+.apikeys-stat-value {
+  color: #1a1008;
+  font-weight: 500;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.apikeys-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #f97316;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.apikeys-btn:hover {
+  background: #ea580c;
+}
+
+.apikeys-btn:disabled {
+  background: #d4d4d8;
+  cursor: not-allowed;
+}
+
+.apikeys-error {
+  color: #b91c1c;
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background: #fee2e2;
+  border-radius: 4px;
+}
+
+.apikeys-success {
+  color: #16a34a;
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background: #dcfce7;
+  border-radius: 4px;
+}
+
+.apikeys-copy-btn {
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: #f97316;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.apikeys-copy-btn:hover {
+  background: #ea580c;
+}
+
+.apikeys-warning {
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #92400e;
+}
+
+.apikeys-loading {
+  text-align: center;
+  padding: 2rem;
+  color: #a3681e;
+  font-family: 'IBM Plex Mono', monospace;
+}
