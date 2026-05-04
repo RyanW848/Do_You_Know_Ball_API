@@ -32,8 +32,8 @@ def login():
  
     response = make_response(jsonify({"message": "Login successful", "username": username, "token": token}), 200)
     
-    response.set_cookie("token", token, max_age=7*24*60*60, httponly=True, path="/")
-    response.set_cookie("username", username, max_age=7*24*60*60, httponly=False, path="/")
+    response.set_cookie("token", token, max_age=7*24*60*60, httponly=False, path="/", samesite="Lax")
+    response.set_cookie("username", username, max_age=7*24*60*60, httponly=False, path="/", samesite="Lax")
     
     return response
  
