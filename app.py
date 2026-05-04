@@ -4,7 +4,7 @@ from flask_cors import CORS
 from datetime import datetime
 from dotenv import load_dotenv
 from core.auth import auth_bp
-from core.api_keys import api_keys_bp, get_api_keys_collection
+from core.api_keys import api_keys_bp, check_valid, calculate_billing_info
 from core.db import get_players_collection
 from services.mlb_service import get_player_bio, get_player_stats, get_team_details, get_all_teams, get_team_roster, get_transactions
 from services.valuation import compute_valuation
@@ -25,46 +25,20 @@ def require_api_key():
         return None
     if request.method == "OPTIONS":
         return None
-    if request.path in ["/register", "/login", "/api-keys/generate", "/api-keys", "/", "/license"] or request.path.startswith("/static"):
+    
+    exempt_paths = ["/register", "/login", "/", "/license"]
+    exempt_prefixes = ["/static", "/api-keys"]
+    if request.path in exempt_paths or any(request.path.startswith(prefix) for prefix in exempt_prefixes):
         return None
     
     api_key = request.headers.get("X-API-Key")
-    if not api_key:
-        return jsonify({"error": "API key required"}), 401
     
-    api_keys_collection = get_api_keys_collection()
-
-    key_doc = api_keys_collection.find_one({"api_key": api_key})
-    if not key_doc:
-        return jsonify({"error": "Invalid API key"}), 401
+    key_doc, error = check_valid(api_key)
+    if error:
+        return jsonify({"error": error}), 401   
     
-    # --- BILLING CALCULATION ---
-    today = datetime.now().strftime("%Y-%m-%d")
-    
-    # Reset count if it's a new day
-    if key_doc.get("last_reset") != today:
-        api_keys_collection.update_one(
-            {"api_key": api_key},
-            {"$set": {"daily_requests": 0, "last_reset": today}}
-        )
-        key_doc["daily_requests"] = 0
-
-    # 100 free, then $0.01 per request
-    inc_query = {"daily_requests": 1}
-    if key_doc["daily_requests"] >= 100:
-        inc_query["balance"] = 0.01
-
-    # Update DB
-    updated_doc = api_keys_collection.find_one_and_update(
-        {"api_key": api_key},
-        {"$inc": inc_query},
-        return_document=True
-    )
-
-    g.billing_info = {
-        "remaining": max(0, 100 - updated_doc["daily_requests"]),
-        "balance": updated_doc["balance"]
-    }
+    calculate_billing_info(key_doc, api_key)
+    return None
     
 @app.after_request
 def add_billing_headers(response):

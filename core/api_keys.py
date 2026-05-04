@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, g
 from core.db import get_db
 import jwt
 import os
@@ -65,3 +65,44 @@ def get_api_key_status():
         "requests_left": 100 - key_data.get("daily_requests", 0),
         "balance": key_data.get("balance", 0.0)
     }), 200
+    
+def calculate_billing_info(key_doc, api_key):
+    api_keys_collection = get_api_keys_collection()
+    today = datetime.now().strftime("%Y-%m-%d")
+    
+    # Reset count if it's a new day
+    if key_doc.get("last_reset") != today:
+        api_keys_collection.update_one(
+            {"api_key": api_key},
+            {"$set": {"daily_requests": 0, "last_reset": today}}
+        )
+        key_doc["daily_requests"] = 0
+
+    # 100 free, then $0.01 per request
+    inc_query = {"daily_requests": 1}
+    if key_doc["daily_requests"] >= 100:
+        inc_query["balance"] = 0.01
+
+    # Update DB
+    updated_doc = api_keys_collection.find_one_and_update(
+        {"api_key": api_key},
+        {"$inc": inc_query},
+        return_document=True
+    )
+
+    g.billing_info = {
+        "remaining": max(0, 100 - updated_doc["daily_requests"]),
+        "balance": updated_doc["balance"]
+    }
+    
+def check_valid(api_key):
+    if not api_key:
+        return None, "API key required"
+    
+    api_keys_collection = get_api_keys_collection()
+    key_doc = api_keys_collection.find_one({"api_key": api_key})
+    
+    if not key_doc:
+        return None, "Invalid API key"
+    
+    return key_doc, None
