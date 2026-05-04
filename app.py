@@ -25,7 +25,7 @@ def require_api_key():
         return None
     if request.method == "OPTIONS":
         return None
-    if request.path in ["/register", "/login", "/api-keys/generate", "/", "/license"] or request.path.startswith("/static"):
+    if request.path in ["/register", "/login", "/api-keys/generate", "/api-keys", "/", "/license"] or request.path.startswith("/static"):
         return None
     
     api_key = request.headers.get("X-API-Key")
