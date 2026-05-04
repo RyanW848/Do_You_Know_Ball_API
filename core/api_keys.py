@@ -63,7 +63,7 @@ def get_api_key_status():
         "has_key": True,
         "username": key_data.get("username"),
         "daily_requests": key_data.get("daily_requests", 0),
-        "requests_left": 100 - key_data.get("daily_requests", 0),
+        "requests_left": max(0, 100 - key_data.get("daily_requests", 0)),
         "balance": key_data.get("balance", 0.0)
     }), 200
     
