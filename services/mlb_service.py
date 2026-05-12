@@ -39,8 +39,6 @@ def get_team_roster(team_id, roster_type="depthChart"):
 def get_transactions(date_str):
   return mlb_get("transactions", params={"date": date_str, "sportId": 1})
 
-# services/mlb_service.py
-
 def get_players_with_stats(player_ids_str, groups="hitting,pitching,fielding", stat_type="yearByYear"):
     params = {
         "personIds": player_ids_str,

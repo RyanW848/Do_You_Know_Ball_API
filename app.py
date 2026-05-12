@@ -136,12 +136,16 @@ def player_stats():
 
     for player_id in player_ids:
         # 1. Bio for Position
-        person = get_player_bio(player_id)
-        if not person:
-            continue # Skip if ID is invalid
+        players_collection = get_players_collection()
+        player_doc = players_collection.find_one({"mlbId": player_id})
+        
+        if not player_doc:
+            continue # Skip if not in our database
             
-        position = person.get("primaryPosition", {}).get("name", "Unknown")
-        full_name = person.get("fullName")
+        full_name = player_doc.get("fullName")
+        position = player_doc.get("positions", "Unknown")
+        injury_status = player_doc.get("injuryStatus", "A")
+        t_id = player_doc.get("currentTeamId")
 
         # 2. Stats (Hitting & Pitching)
         stats_json = get_player_stats(player_id, year)
@@ -158,7 +162,6 @@ def player_stats():
             
             s = splits[0]
             current_stats = s.get("stat", {})
-            t_id = s["team"]["id"]
 
             # 3. Handle Team Info & Abbreviation 
             if not player_team_info:
@@ -166,7 +169,7 @@ def player_stats():
                     t_data = get_team_details(t_id)
                     team_cache[t_id] = {
                         "id": t_id,
-                        "name": s["team"]["name"],
+                        "name": t_data.get("name") if t_data else "Unknown",
                         "abbreviation": t_data.get("abbreviation") if t_data else "N/A"
                     }
                 player_team_info = team_cache[t_id]
@@ -186,7 +189,8 @@ def player_stats():
             "player": {
                 "id": player_id,
                 "name": full_name,
-                "position": position
+                "position": position,
+                "injuryStatus": injury_status
             },
             "team": player_team_info,
             "year": year,

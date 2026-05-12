@@ -41,7 +41,7 @@ def get_stats_for_years(stats_groups, target_years):
 
             if group_name == "fielding" and season == "2025":
                 games_at_pos = s.get("gamesPlayed", 0)
-                if games_at_pos >= 5:
+                if games_at_pos >= 10:
                     raw_pos = split.get("position", {}).get("abbreviation")
                     if raw_pos in of_pos:
                         positions_2025.add("OF")

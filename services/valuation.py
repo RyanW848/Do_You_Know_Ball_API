@@ -9,7 +9,7 @@ def get_age_multiplier(age):
             return 1
 
 def get_versatility_multiplier(pos_count):
-    return 0.05 * pos_count + 0.95
+    return 0.03 * pos_count + 0.97
 
 def get_injury_multiplier(inj):
     injury_map = {
@@ -83,7 +83,7 @@ def compute_valuation(players, data):
         age_multiplier = get_age_multiplier(age) 
         
         # Versatility: Use 1 as default if not in depth chart
-        pos_count = len(depth_map) if depth_map else 1
+        pos_count = len(p.get("positions", [])) if p.get("positions") else 0
         versatility_multiplier = get_versatility_multiplier(pos_count)
 
         # Injury Multiplier
