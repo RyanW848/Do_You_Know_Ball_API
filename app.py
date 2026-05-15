@@ -5,7 +5,7 @@ from flask_cors import CORS
 from datetime import datetime
 from dotenv import load_dotenv
 from core.auth import auth_bp
-from core.api_keys import api_keys_bp, check_valid, calculate_billing_info, check_rate_limit
+from core.api_keys import api_keys_bp, check_valid, calculate_billing_info, check_rate_limit, get_api_keys_collection
 from core.db import get_players_collection
 from services.mlb_service import get_team_details, get_all_teams, get_team_roster, get_transactions
 from services.valuation import compute_valuation
@@ -85,6 +85,20 @@ def license_page():
 @app.route("/api-keys")
 def api_keys_page():
     return render_template("api-keys.html")
+
+@app.route("/api/user-api-key", methods=["GET"])
+def get_user_api_key():
+    username = request.cookies.get("username")
+    if not username:
+        return jsonify({"error": "Unauthorized"}), 401
+    
+    api_keys_collection = get_api_keys_collection()
+    key_doc = api_keys_collection.find_one({"username": username})
+    
+    if not key_doc:
+        return jsonify({"error": "No API key found"}), 404
+    
+    return jsonify({"api_key": key_doc["api_key"]}), 200
 
 @app.route("/get-player-id")
 def get_player_id():

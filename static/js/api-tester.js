@@ -36,7 +36,25 @@ async function callEndpoint(endpoint) {
     return;
   }
 
-  const apiKey = getCookie("token");
+  let apiKey;
+  try {
+    const keyResponse = await fetch("/api/user-api-key", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include"
+    });
+    
+    if (!keyResponse.ok) {
+      showError(responseId, "Failed to retrieve API key. Have you generated one?");
+      return;
+    }
+    
+    const keyData = await keyResponse.json();
+    apiKey = keyData.api_key;
+  } catch (err) {
+    showError(responseId, "Error fetching API key: " + err.message);
+    return;
+  }
 
   // Build URL and body based on endpoint
   switch (endpoint) {
