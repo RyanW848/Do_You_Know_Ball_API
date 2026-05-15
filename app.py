@@ -14,8 +14,8 @@ from services.helpers import find_player_id, convert_to_player_ids
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True, origins="*")
-CORS(app, origins="*")
+# CORS(app, supports_credentials=True, origins="*")
+# CORS(app, origins="*")
 app.json.sort_keys = False
 app.register_blueprint(auth_bp)
 app.register_blueprint(api_keys_bp)
