@@ -32,7 +32,7 @@ def require_api_key():
     if bypass_token and bypass_token == os.environ.get("BYPASS_TOKEN"):
         return None
     
-    exempt_paths = ["/register", "/login", "/", "/license"]
+    exempt_paths = ["/register", "/login", "/", "/license, /api/user-api-key"]
     exempt_prefixes = ["/static", "/api-keys"]
     if request.path in exempt_paths or any(request.path.startswith(prefix) for prefix in exempt_prefixes):
         return None
