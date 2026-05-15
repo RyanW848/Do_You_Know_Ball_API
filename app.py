@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from core.auth import auth_bp
 from core.api_keys import api_keys_bp, check_valid, calculate_billing_info, check_rate_limit
 from core.db import get_players_collection
-from services.mlb_service import get_player_stats, get_team_details, get_all_teams, get_team_roster, get_transactions
+from services.mlb_service import get_team_details, get_all_teams, get_team_roster, get_transactions
 from services.valuation import compute_valuation
 from services.helpers import find_player_id, convert_to_player_ids
 
