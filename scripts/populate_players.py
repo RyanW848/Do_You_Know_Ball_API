@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from datetime import datetime
 from services.helpers import normalize_text
 from services.mlb_service import get_all_teams, get_team_roster, get_players_with_stats
+import json
 
 load_dotenv()
 
@@ -11,8 +12,10 @@ MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
 DB_NAME = "doyouknowball"
 COLLECTION_NAME = "players"
 
+
 def get_stats_for_years(stats_groups, target_years):
     results = {}
+    raw_2025_merged = {}
     positions_2025 = set()
     valid_pos = {"P", "C", "1B", "2B", "3B", "SS"}
     of_pos = {"LF", "CF", "RF", "OF"}
@@ -38,6 +41,13 @@ def get_stats_for_years(stats_groups, target_years):
         for split in group.get("splits", []):
             season = split.get("season")
             s = split.get("stat", {})
+
+            if season == "2025":
+                for key, val in s.items():
+                    if isinstance(val, (int, float)) and key != "age":
+                        raw_2025_merged[key] = raw_2025_merged.get(key, 0) + val
+                    else:
+                        raw_2025_merged[key] = val
 
             if group_name == "fielding" and season == "2025":
                 games_at_pos = s.get("gamesPlayed", 0)
@@ -79,7 +89,7 @@ def get_stats_for_years(stats_groups, target_years):
                         "IP": to_f(s.get("inningsPitched", 0.0)),
                     }
 
-    return results, ", ".join(sorted(list(positions_2025)))
+    return results, ", ".join(sorted(list(positions_2025))), raw_2025_merged
 
 
 def calculate_weighted_ranks(db):
@@ -104,6 +114,8 @@ def calculate_weighted_ranks(db):
             any(pos in pos_list for pos in ["C", "1B", "2B", "3B", "SS", "OF", "UT"])
             or not pos_list
         )
+
+        # Critical Fix for Your API:Your model seems to be "fooled" by players with high OPS+ or wRC+ in limited samples (like Jones and Clement). To fix this, you should add a Plate Appearance (PA) Penalty or a Volume Weight.The Fix: Multiply your score by a factor of (Total PAs / 150) for any player with under 150 PAs. This will naturally push bench specialists like Jahmai Jones down and superstars like Juan Soto up.Would you like to see how the standard deviation of scores in your list compares to actual market values to see if your "Value 16-18" range is too narrow?
 
         if is_hitter:
             for metric in hitter_metrics:
@@ -157,6 +169,54 @@ def calculate_weighted_ranks(db):
     if bulk_updates:
         db[COLLECTION_NAME].bulk_write(bulk_updates, ordered=False)
 
+def bake_json_file(db):
+    print("Baking physical JSON cache file...")
+    players_col = db[COLLECTION_NAME]
+    
+    # 1. Fetch exactly what we need
+    cursor = players_col.find({}, {
+        "mlbId": 1, "fullName": 1, "positions": 1, 
+        "injuryStatus": 1, "currentTeamId": 1, "raw_2025": 1
+    })
+
+    # 2. Get teams once (to avoid hitting MLB API in a loop)
+    # Using your existing get_all_teams service
+    team_map = {}
+    try:
+        teams_data = get_all_teams().get("teams", [])
+        for t in teams_data:
+            team_map[t['id']] = {
+                "id": t['id'],
+                "name": t.get("name"),
+                "abbreviation": t.get("abbreviation")
+            }
+    except:
+        pass
+
+    results = []
+    for doc in cursor:
+        t_id = doc.get("currentTeamId")
+        results.append({
+            "player": {
+                "id": doc.get("mlbId"),
+                "name": doc.get("fullName"),
+                "position": doc.get("positions"),
+                "injuryStatus": doc.get("injuryStatus", "A")
+            },
+            "team": team_map.get(t_id, {"id": t_id, "name": "Unknown", "abbreviation": "N/A"}),
+            "year": "2025",
+            "stats": doc.get("raw_2025", {})
+        })
+
+    # 3. Write to a file (ensure the path matches where your Flask app can see it)
+    cache_path = os.path.join(os.path.dirname(__file__), "..", "data", "stats_cache.json")
+    # Ensure the directory exists
+    os.makedirs(os.path.dirname(cache_path), exist_ok=True)
+    
+    with open(cache_path, "w") as f:
+        json.dump({"count": len(results), "results": results}, f)
+    
+    print(f"File cache updated at {cache_path}")
 
 def sync_mlb_players():
     try:
@@ -222,7 +282,7 @@ def sync_mlb_players():
                     )
 
                     stats_groups = person.get("stats", [])
-                    yearly_stats, pos_string = get_stats_for_years(
+                    yearly_stats, pos_string, raw_stats_2025 = get_stats_for_years(
                         stats_groups, ["2023", "2024", "2025"]
                     )
 
@@ -250,6 +310,7 @@ def sync_mlb_players():
                                     "depthRanks": live["depthRanks"],
                                     "injuryStatus": live["injuryStatus"],
                                     "statsHistory": yearly_stats,
+                                    "raw_2025": raw_stats_2025,
                                     "lastUpdated": datetime.now().strftime(
                                         "%Y-%m-%d %H:%M:%S"
                                     ),
@@ -267,6 +328,7 @@ def sync_mlb_players():
             print("Sync complete. Now calculating weighted ranks...")
 
         calculate_weighted_ranks(db)
+        bake_json_file(db)
         client.close()
     except Exception as e:
         print(f"Critical Failure: {e}")

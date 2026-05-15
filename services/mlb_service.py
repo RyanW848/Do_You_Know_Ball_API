@@ -18,9 +18,20 @@ def get_player_bio(player_id):
     data = mlb_get(f"people/{player_id}")
     return data["people"][0] if data and data.get("people") else None
 
-def get_player_stats(player_id, year, groups="hitting,pitching"):
-    params = {"stats": "season", "season": year, "group": groups}
-    return mlb_get(f"people/{player_id}/stats", params=params)
+def get_player_stats(player_ids, year, groups="hitting,pitching"):
+    if isinstance(player_ids, (int, str)):
+        player_ids = [player_ids]
+
+    person_ids_str = ",".join(map(str, player_ids))
+
+    formatted_groups = ",".join([f"[{g.strip()}]" for g in groups.split(",")])
+
+    params = {
+        "personIds": person_ids_str,
+        "hydrate": f"stats(group={formatted_groups},type=[season],season={year})"
+    }
+
+    return mlb_get("people", params=params)
 
 def get_team_details(team_id):
     data = mlb_get(f"teams/{team_id}")
