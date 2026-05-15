@@ -98,12 +98,19 @@ def api_keys_page():
 
 @app.route("/api/user-api-key", methods=["GET"])
 def get_user_api_key():
+    print(f"DEBUG: request.cookies = {request.cookies}")
+    print(f"DEBUG: request.headers = {dict(request.headers)}")
+    
     username = request.cookies.get("username")
+    print(f"DEBUG: username from cookie = {username}")
+    
     if not username:
         return jsonify({"error": "Unauthorized"}), 401
     
     api_keys_collection = get_api_keys_collection()
     key_doc = api_keys_collection.find_one({"username": username})
+    
+    print(f"DEBUG: key_doc = {key_doc}")
     
     if not key_doc:
         return jsonify({"error": "No API key found"}), 404
