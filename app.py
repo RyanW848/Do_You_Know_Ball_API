@@ -14,7 +14,7 @@ from services.helpers import find_player_id, convert_to_player_ids
 load_dotenv()
 
 app = Flask(__name__)
-# CORS(app, supports_credentials=True, origins=["http://localhost:3000", "https://www.citrus-kit.com"])
+CORS(app, supports_credentials=True, origins="*")
 CORS(app, origins="*")
 app.json.sort_keys = False
 app.register_blueprint(auth_bp)
@@ -56,6 +56,16 @@ def add_billing_headers(response):
         response.headers["X-RateLimit-Limit"] = "100"
         response.headers["X-RateLimit-Remaining"] = str(g.billing_info["remaining"])
         response.headers["X-Billing-Balance"] = f"${g.billing_info['balance']:.2f}"
+    return response
+
+@app.after_request
+def after_request(response):
+    origin = request.headers.get('Origin')
+    if origin:
+        response.headers['Access-Control-Allow-Origin'] = origin
+    response.headers['Access-Control-Allow-Credentials'] = 'true'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, X-API-Key, Authorization'
     return response
     
 @app.errorhandler(Exception)
