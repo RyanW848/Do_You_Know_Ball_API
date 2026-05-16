@@ -124,7 +124,7 @@ async function callEndpoint(endpoint) {
         budget: budget ? parseInt(budget) : undefined,
         players_left_to_draft: playersLeft ? parseInt(playersLeft) : undefined,
         unavailable_players: unavailable ? unavailable.split(",").map(p => p.trim()) : undefined,
-        player_ids: specificPlayers ? specificPlayers.split(",").map(p => p.trim()) : undefined
+        players: specificPlayers ? specificPlayers.split(",").map(p => p.trim()) : undefined
       };
       // Remove undefined values
       Object.keys(body).forEach(key => body[key] === undefined && delete body[key]);
