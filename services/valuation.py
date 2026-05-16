@@ -2,17 +2,17 @@ from services.helpers import convert_to_player_ids
 
 # Assisted by Claude 
 def get_age_multiplier(age):
-    """Penalize older players, boost prime age (25-30)"""
-    if age > 35:
-        return 0.9
-    elif 25 <= age <= 30:
-        return 1.05
+    """Penalize older players, boost prime age"""
+    if age > 36:
+        return 0.95
+    elif 25 <= age <= 31:
+        return 1.03
     else:
         return 1
 
 def get_versatility_multiplier(pos_count):
-    """Each additional position adds 3% value"""
-    return 0.03 * pos_count + 0.97
+    """Each additional position adds 2% value"""
+    return 0.02 * pos_count + 0.98
 
 def get_injury_multiplier(inj):
     """Map injury codes to multipliers"""
@@ -25,13 +25,13 @@ def get_injury_multiplier(inj):
 def get_depth_multiplier(depth_map):
     """
     Reward players higher on depth charts.
-    1st on chart: 1.3x, 2nd: 1.17x, 3rd: 1.053x, etc.
+    1st on chart: 1.2x, 2nd: 1.09x, 3rd: 13x, etc.
     Takes best position if player plays multiple.
     """
     if not depth_map:
         return 0.5
     multiplier = max(
-        1.3 * (0.9 ** (x_rank - 1)) 
+        1.2 * (0.91 ** (x_rank - 1)) 
         for x_rank in depth_map.values()
     )
     return multiplier

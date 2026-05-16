@@ -93,13 +93,57 @@ def get_stats_for_years(stats_groups, target_years):
     return results, ", ".join(sorted(list(positions_2025))), raw_2025_merged
 
 
+def get_volume_multiplier_hitter(pa):
+    """
+    Discount bench players with low PA.
+    ~600 PA (full-time): 1.0x
+    ~400 PA (regular): 0.95x
+    ~200 PA (part-time): 0.85x
+    ~100 PA (bench): 0.70x
+    
+    Uses sigmoid to smoothly transition.
+    """
+    import math
+    try:
+        # Sigmoid centered at 400 PA, steepness 0.005
+        # 400 PA -> 0.5 -> 0.75x multiplier
+        # 600 PA -> 0.73 -> 0.865x multiplier
+        # 200 PA -> 0.27 -> 0.635x multiplier
+        sigmoid = 1.0 / (1.0 + math.exp(-0.005 * (pa - 400)))
+        multiplier = 0.6 + sigmoid * 0.4  # Range [0.6, 1.0]
+        return multiplier
+    except:
+        return 0.8
+
+
+def get_volume_multiplier_pitcher(ip):
+    """
+    For pitchers, relief guys with low IP are OK (by design).
+    But heavily discount spot appearance guys.
+    
+    ~200 IP (full-time): 1.0x
+    ~100 IP (regular): 0.95x
+    ~50 IP (part-time): 0.85x
+    ~20 IP (very limited): 0.65x
+    """
+    import math
+    try:
+        # Sigmoid centered at 100 IP
+        sigmoid = 1.0 / (1.0 + math.exp(-0.015 * (ip - 100)))
+        multiplier = 0.6 + sigmoid * 0.4  # Range [0.6, 1.0]
+        return multiplier
+    except:
+        return 0.8
+
+
 def calculate_z_scores(db):
     """
     Calculate z-scores for all relevant stats and store them.
     Z-score = (value - mean) / stdev
     
-    Key: Only divide counting stats by PA/IP. Rates (BA, ERA, WHIP, etc.) stay as-is.
-    This prevents penalizing players with fewer opportunities.
+    Key improvements:
+    - Only divide counting stats by PA/IP. Rates stay as-is.
+    - Apply volume penalty: players with low PA/IP are discounted slightly.
     """
     players = list(db[COLLECTION_NAME].find({}))
     if not players:
@@ -107,8 +151,8 @@ def calculate_z_scores(db):
 
     hitter_metrics = ["HR", "R", "RBI", "SB", "BA", "SLG", "OBP", "OPS"]
     pitcher_metrics = ["W", "K", "SV", "ERA", "WHIP"]
-    counting_stats = {"HR", "R", "RBI", "SB", "W", "K", "SV"}  # Divide by PA/IP
-    rate_stats = {"BA", "SLG", "OBP", "OPS", "ERA", "WHIP"}      # Use as-is
+    counting_stats = {"HR", "R", "RBI", "SB", "W", "K", "SV"}
+    rate_stats = {"BA", "SLG", "OBP", "OPS", "ERA", "WHIP"}
     lower_is_better = {"ERA", "WHIP"}
     weights = {"2023": 1, "2024": 2, "2025": 7}
 
@@ -126,8 +170,11 @@ def calculate_z_scores(db):
             or not pos_list
         )
 
-        # Collect hitter metrics
+        # Collect hitter metrics (with volume penalty)
         if is_hitter:
+            total_pa = sum(history.get(year, {}).get("hitting", {}).get("PA", 0) for year in weights.keys())
+            vol_mult = get_volume_multiplier_hitter(total_pa)
+            
             for metric in hitter_metrics:
                 total_val, total_weight = 0, 0
                 for year, weight in weights.items():
@@ -135,13 +182,11 @@ def calculate_z_scores(db):
                     pa = data.get("PA", 0)
                     
                     if metric in rate_stats:
-                        # Rate stats: use directly, ignore PA
                         val = data.get(metric, 0)
                         if val > 0 or (metric in rate_stats and pa > 0):
                             total_val += val * weight
                             total_weight += weight
                     else:
-                        # Counting stats: normalize by PA
                         if pa > 0:
                             val = data.get(metric, 0)
                             stat_to_add = val / pa
@@ -150,10 +195,15 @@ def calculate_z_scores(db):
                 
                 if total_weight > 0:
                     weighted_avg = total_val / total_weight
+                    # Apply volume penalty
+                    weighted_avg *= vol_mult
                     metric_values[metric].append(weighted_avg)
 
-        # Collect pitcher metrics
+        # Collect pitcher metrics (with volume penalty)
         if is_pitcher:
+            total_ip = sum(history.get(year, {}).get("pitching", {}).get("IP", 0) for year in weights.keys())
+            vol_mult = get_volume_multiplier_pitcher(total_ip)
+            
             for metric in pitcher_metrics:
                 total_val, total_weight = 0, 0
                 for year, weight in weights.items():
@@ -161,13 +211,11 @@ def calculate_z_scores(db):
                     ip = data.get("IP", 0)
                     
                     if metric in rate_stats:
-                        # Rate stats (ERA, WHIP): use directly, ignore IP
                         val = data.get(metric, 0)
                         if val > 0 or (metric in rate_stats and ip > 0):
                             total_val += val * weight
                             total_weight += weight
                     else:
-                        # Counting stats: normalize by IP
                         if ip > 0:
                             val = data.get(metric, 0)
                             stat_to_add = val / ip
@@ -176,6 +224,8 @@ def calculate_z_scores(db):
                 
                 if total_weight > 0:
                     weighted_avg = total_val / total_weight
+                    # Apply volume penalty
+                    weighted_avg *= vol_mult
                     metric_values[metric].append(weighted_avg)
 
     # Step 2: Calculate mean and stdev for each metric
@@ -201,8 +251,11 @@ def calculate_z_scores(db):
 
         z_scores = {}
 
-        # Calculate z-scores for hitter metrics
+        # Calculate z-scores for hitter metrics (with volume penalty)
         if is_hitter:
+            total_pa = sum(history.get(year, {}).get("hitting", {}).get("PA", 0) for year in weights.keys())
+            vol_mult = get_volume_multiplier_hitter(total_pa)
+            
             for metric in hitter_metrics:
                 total_val, total_weight = 0, 0
                 for year, weight in weights.items():
@@ -223,12 +276,16 @@ def calculate_z_scores(db):
                 
                 if total_weight > 0:
                     weighted_avg = total_val / total_weight
+                    weighted_avg *= vol_mult
                     stats = metric_stats[metric]
                     z = (weighted_avg - stats["mean"]) / stats["stdev"] if stats["stdev"] > 0 else 0
                     z_scores[metric] = z
 
-        # Calculate z-scores for pitcher metrics
+        # Calculate z-scores for pitcher metrics (with volume penalty)
         if is_pitcher:
+            total_ip = sum(history.get(year, {}).get("pitching", {}).get("IP", 0) for year in weights.keys())
+            vol_mult = get_volume_multiplier_pitcher(total_ip)
+            
             for metric in pitcher_metrics:
                 total_val, total_weight = 0, 0
                 for year, weight in weights.items():
@@ -249,8 +306,8 @@ def calculate_z_scores(db):
                 
                 if total_weight > 0:
                     weighted_avg = total_val / total_weight
+                    weighted_avg *= vol_mult
                     stats = metric_stats[metric]
-                    # Invert z-score for "lower is better" stats
                     z = (weighted_avg - stats["mean"]) / stats["stdev"] if stats["stdev"] > 0 else 0
                     if metric in lower_is_better:
                         z = -z
@@ -272,13 +329,11 @@ def bake_json_file(db):
     print("Baking physical JSON cache file...")
     players_col = db[COLLECTION_NAME]
     
-    # 1. Fetch exactly what we need
     cursor = players_col.find({}, {
         "mlbId": 1, "fullName": 1, "positions": 1, 
         "injuryStatus": 1, "currentTeamId": 1, "raw_2025": 1
     })
 
-    # 2. Get teams once
     team_map = {}
     try:
         teams_data = get_all_teams().get("teams", [])
@@ -330,7 +385,6 @@ def sync_mlb_players():
         for team in teams:
             t_id = team.get("id")
             print(f"Processing team {team.get('name')} (ID: {t_id})")
-            # --- FETCH DEPTH CHART ---
             try:
                 d_res = get_team_roster(t_id).get("roster", [])
                 pos_counters = {}
@@ -349,7 +403,6 @@ def sync_mlb_players():
             except Exception as e:
                 print(f"Error: {e}")
 
-            # --- FETCH 40 MAN ---
             try:
                 roster_data = get_team_roster(t_id, "40Man").get("roster", [])
                 for p in roster_data:
