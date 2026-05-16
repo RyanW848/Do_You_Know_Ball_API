@@ -41,7 +41,6 @@ jobs:
           script: |
             set -e
             cd /opt/Do_You_Know_Ball_API/
-            git checkout -- data/stats_cache.json
             git pull
             pip install -r requirements.txt
             nohup python3 -m scripts.populate_players > sync.log 2>&1 &
