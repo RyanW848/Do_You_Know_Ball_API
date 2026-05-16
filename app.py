@@ -300,17 +300,6 @@ def get_daily_transactions():
             "description": tx.get("description")
         })
 
-    fake_tx = {
-        "playerId": 660271,
-        "playerName": "Shohei Ohtani",
-        "fromTeam": "Los Angeles Dodgers",
-        "fromTeamId": 119,
-        "toTeam": "New York Yankees",
-        "toTeamId": 147,
-        "description": "New York Yankees traded cash considerations to Los Angeles Dodgers for DH Shohei Ohtani."
-    }
-    results.append(fake_tx)
-
     return jsonify({
         "date": today_iso,
         "count": len(results),
