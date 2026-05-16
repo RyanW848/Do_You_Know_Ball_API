@@ -99,7 +99,7 @@ def check_valid(api_key):
     
     return key_doc, None
 
-def check_rate_limit(key_doc, api_key, max_requests=100, window_seconds=60):
+def check_rate_limit(key_doc, api_key, max_requests=1000, window_seconds=60):
     api_keys_collection = get_api_keys_collection()
     
     now = time.time()
