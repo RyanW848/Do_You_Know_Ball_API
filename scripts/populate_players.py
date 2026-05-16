@@ -2,6 +2,7 @@ from pymongo import MongoClient, UpdateOne, ASCENDING
 import os
 from dotenv import load_dotenv
 from datetime import datetime
+from statistics import mean, stdev
 from services.helpers import normalize_text
 from services.mlb_service import get_all_teams, get_team_roster, get_players_with_stats
 import json
@@ -92,22 +93,32 @@ def get_stats_for_years(stats_groups, target_years):
     return results, ", ".join(sorted(list(positions_2025))), raw_2025_merged
 
 
-def calculate_weighted_ranks(db):
+def calculate_z_scores(db):
+    """
+    Calculate z-scores for all relevant stats and store them.
+    Z-score = (value - mean) / stdev
+    
+    Key: Only divide counting stats by PA/IP. Rates (BA, ERA, WHIP, etc.) stay as-is.
+    This prevents penalizing players with fewer opportunities.
+    """
     players = list(db[COLLECTION_NAME].find({}))
     if not players:
         return
 
     hitter_metrics = ["HR", "R", "RBI", "SB", "BA", "SLG", "OBP", "OPS"]
     pitcher_metrics = ["W", "K", "SV", "ERA", "WHIP"]
-    counting_stats = {"HR", "R", "RBI", "SB", "W", "K", "SV"}
+    counting_stats = {"HR", "R", "RBI", "SB", "W", "K", "SV"}  # Divide by PA/IP
+    rate_stats = {"BA", "SLG", "OBP", "OPS", "ERA", "WHIP"}      # Use as-is
     lower_is_better = {"ERA", "WHIP"}
     weights = {"2023": 1, "2024": 2, "2025": 7}
 
-    player_stats_to_rank = []
+    # Step 1: Collect all weighted values per metric
+    metric_values = {}
+    for metric in hitter_metrics + pitcher_metrics:
+        metric_values[metric] = []
 
     for p in players:
         history = p.get("statsHistory", {})
-        processed = {"id": p["_id"], "metrics": {}}
         pos_list = p.get("positions", "")
         is_pitcher = "P" in pos_list
         is_hitter = (
@@ -115,59 +126,147 @@ def calculate_weighted_ranks(db):
             or not pos_list
         )
 
-        # Critical Fix for Your API:Your model seems to be "fooled" by players with high OPS+ or wRC+ in limited samples (like Jones and Clement). To fix this, you should add a Plate Appearance (PA) Penalty or a Volume Weight.The Fix: Multiply your score by a factor of (Total PAs / 150) for any player with under 150 PAs. This will naturally push bench specialists like Jahmai Jones down and superstars like Juan Soto up.Would you like to see how the standard deviation of scores in your list compares to actual market values to see if your "Value 16-18" range is too narrow?
-
+        # Collect hitter metrics
         if is_hitter:
             for metric in hitter_metrics:
                 total_val, total_weight = 0, 0
                 for year, weight in weights.items():
                     data = history.get(year, {}).get("hitting", {})
                     pa = data.get("PA", 0)
-                    if pa > 0:
+                    
+                    if metric in rate_stats:
+                        # Rate stats: use directly, ignore PA
                         val = data.get(metric, 0)
-                        stat_to_add = (val / pa) if metric in counting_stats else val
-                        total_val += stat_to_add * weight
-                        total_weight += weight
-                processed["metrics"][metric] = (
-                    total_val / total_weight if total_weight > 0 else -1
-                )
+                        if val > 0 or (metric in rate_stats and pa > 0):
+                            total_val += val * weight
+                            total_weight += weight
+                    else:
+                        # Counting stats: normalize by PA
+                        if pa > 0:
+                            val = data.get(metric, 0)
+                            stat_to_add = val / pa
+                            total_val += stat_to_add * weight
+                            total_weight += weight
+                
+                if total_weight > 0:
+                    weighted_avg = total_val / total_weight
+                    metric_values[metric].append(weighted_avg)
 
+        # Collect pitcher metrics
         if is_pitcher:
             for metric in pitcher_metrics:
                 total_val, total_weight = 0, 0
                 for year, weight in weights.items():
                     data = history.get(year, {}).get("pitching", {})
                     ip = data.get("IP", 0)
-                    if ip > 0:
+                    
+                    if metric in rate_stats:
+                        # Rate stats (ERA, WHIP): use directly, ignore IP
                         val = data.get(metric, 0)
-                        stat_to_add = (val / ip) if metric in counting_stats else val
-                        total_val += stat_to_add * weight
-                        total_weight += weight
-                processed["metrics"][metric] = (
-                    total_val / total_weight if total_weight > 0 else -1
-                )
+                        if val > 0 or (metric in rate_stats and ip > 0):
+                            total_val += val * weight
+                            total_weight += weight
+                    else:
+                        # Counting stats: normalize by IP
+                        if ip > 0:
+                            val = data.get(metric, 0)
+                            stat_to_add = val / ip
+                            total_val += stat_to_add * weight
+                            total_weight += weight
+                
+                if total_weight > 0:
+                    weighted_avg = total_val / total_weight
+                    metric_values[metric].append(weighted_avg)
 
-        player_stats_to_rank.append(processed)
+    # Step 2: Calculate mean and stdev for each metric
+    metric_stats = {}
+    for metric, values in metric_values.items():
+        if len(values) > 1:
+            m = mean(values)
+            s = stdev(values)
+            metric_stats[metric] = {"mean": m, "stdev": s}
+        else:
+            metric_stats[metric] = {"mean": 0, "stdev": 1}
 
-    all_metrics = hitter_metrics + pitcher_metrics
+    # Step 3: Calculate z-scores for each player
     bulk_updates = []
-    for metric in all_metrics:
-        valid_players = [
-            p
-            for p in player_stats_to_rank
-            if metric in p["metrics"] and p["metrics"][metric] >= 0
-        ]
-        should_reverse = metric not in lower_is_better
-        valid_players.sort(key=lambda x: x["metrics"][metric], reverse=should_reverse)
-        for i, p_data in enumerate(valid_players):
-            bulk_updates.append(
-                UpdateOne(
-                    {"_id": p_data["id"]}, {"$set": {f"statRanks.{metric}": i + 1}}
-                )
+    for p in players:
+        history = p.get("statsHistory", {})
+        pos_list = p.get("positions", "")
+        is_pitcher = "P" in pos_list
+        is_hitter = (
+            any(pos in pos_list for pos in ["C", "1B", "2B", "3B", "SS", "OF", "UT"])
+            or not pos_list
+        )
+
+        z_scores = {}
+
+        # Calculate z-scores for hitter metrics
+        if is_hitter:
+            for metric in hitter_metrics:
+                total_val, total_weight = 0, 0
+                for year, weight in weights.items():
+                    data = history.get(year, {}).get("hitting", {})
+                    pa = data.get("PA", 0)
+                    
+                    if metric in rate_stats:
+                        val = data.get(metric, 0)
+                        if val > 0 or (metric in rate_stats and pa > 0):
+                            total_val += val * weight
+                            total_weight += weight
+                    else:
+                        if pa > 0:
+                            val = data.get(metric, 0)
+                            stat_to_add = val / pa
+                            total_val += stat_to_add * weight
+                            total_weight += weight
+                
+                if total_weight > 0:
+                    weighted_avg = total_val / total_weight
+                    stats = metric_stats[metric]
+                    z = (weighted_avg - stats["mean"]) / stats["stdev"] if stats["stdev"] > 0 else 0
+                    z_scores[metric] = z
+
+        # Calculate z-scores for pitcher metrics
+        if is_pitcher:
+            for metric in pitcher_metrics:
+                total_val, total_weight = 0, 0
+                for year, weight in weights.items():
+                    data = history.get(year, {}).get("pitching", {})
+                    ip = data.get("IP", 0)
+                    
+                    if metric in rate_stats:
+                        val = data.get(metric, 0)
+                        if val > 0 or (metric in rate_stats and ip > 0):
+                            total_val += val * weight
+                            total_weight += weight
+                    else:
+                        if ip > 0:
+                            val = data.get(metric, 0)
+                            stat_to_add = val / ip
+                            total_val += stat_to_add * weight
+                            total_weight += weight
+                
+                if total_weight > 0:
+                    weighted_avg = total_val / total_weight
+                    stats = metric_stats[metric]
+                    # Invert z-score for "lower is better" stats
+                    z = (weighted_avg - stats["mean"]) / stats["stdev"] if stats["stdev"] > 0 else 0
+                    if metric in lower_is_better:
+                        z = -z
+                    z_scores[metric] = z
+
+        bulk_updates.append(
+            UpdateOne(
+                {"_id": p["_id"]},
+                {"$set": {"statZScores": z_scores}}
             )
+        )
 
     if bulk_updates:
         db[COLLECTION_NAME].bulk_write(bulk_updates, ordered=False)
+        print(f"Z-scores calculated and stored for {len(bulk_updates)} players")
+
 
 def bake_json_file(db):
     print("Baking physical JSON cache file...")
@@ -179,8 +278,7 @@ def bake_json_file(db):
         "injuryStatus": 1, "currentTeamId": 1, "raw_2025": 1
     })
 
-    # 2. Get teams once (to avoid hitting MLB API in a loop)
-    # Using your existing get_all_teams service
+    # 2. Get teams once
     team_map = {}
     try:
         teams_data = get_all_teams().get("teams", [])
@@ -208,9 +306,7 @@ def bake_json_file(db):
             "stats": doc.get("raw_2025", {})
         })
 
-    # 3. Write to a file (ensure the path matches where your Flask app can see it)
     cache_path = os.path.join(os.path.dirname(__file__), "..", "data", "stats_cache.json")
-    # Ensure the directory exists
     os.makedirs(os.path.dirname(cache_path), exist_ok=True)
     
     with open(cache_path, "w") as f:
@@ -229,7 +325,7 @@ def sync_mlb_players():
         teams = get_all_teams().get("teams", [])
 
         all_players_metadata = {}
-        depth_data = {}  # Stores live rank and injuries
+        depth_data = {}
 
         for team in teams:
             t_id = team.get("id")
@@ -325,9 +421,9 @@ def sync_mlb_players():
         if all_operations:
             players_col.bulk_write(all_operations)
             players_col.create_index([("searchName", ASCENDING)])
-            print("Sync complete. Now calculating weighted ranks...")
+            print("Sync complete. Now calculating z-scores...")
 
-        calculate_weighted_ranks(db)
+        calculate_z_scores(db)
         bake_json_file(db)
         client.close()
     except Exception as e:
