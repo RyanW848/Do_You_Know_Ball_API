@@ -21,6 +21,9 @@ async function callEndpoint(endpoint) {
     case "transactions":
       responseId = "transactionsResponse";
       break;
+    case "fakeTransactions":
+      responseId = "transactionsResponse";
+      break;
     case "value":
       responseId = "valueResponse";
       break;
@@ -103,7 +106,10 @@ async function callEndpoint(endpoint) {
       url = "/transactions";
       method = "GET";
       break;
-
+    case "fakeTransactions":
+      url = "/transactions?fake=true";
+      method = "GET";
+      break;
     case "value":
       const stats = document.getElementById("valueStats").value;
       const budget = document.getElementById("valueBudget").value;

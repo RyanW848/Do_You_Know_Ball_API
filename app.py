@@ -1,5 +1,6 @@
 import os
 import json
+import random
 from flask import Flask, jsonify, request, render_template, g
 from flask_cors import CORS
 from datetime import datetime
@@ -276,9 +277,13 @@ def get_depth_chart():
         "positions": organized_depth_chart
     })
 
+FAKE_TX_STATE = {
+    "is_primed": False
+}
    
 @app.route("/transactions")
 def get_daily_transactions():
+    global FAKE_TX_STATE
     today_iso = datetime.now().strftime("%Y-%m-%d")
     
     data = get_transactions(today_iso)
@@ -299,6 +304,31 @@ def get_daily_transactions():
             "toTeamId": tx.get("toTeam", {}).get("id"),
             "description": tx.get("description")
         })
+        
+    # --- DYNAMIC STATE-BASED NOTIFICATION INJECTION ---
+    fake_param = request.args.get("fake")
+
+    if fake_param == "true":
+        FAKE_TX_STATE["is_primed"] = True
+        return jsonify({
+            "status": "Success",
+            "message": "Fake transaction primed. The next request will receive the notification payload."
+        }), 200
+
+    if FAKE_TX_STATE["is_primed"]:
+        fake_tx = {
+            "playerId": 660271,  # Shohei Ohtani
+            "playerName": "Shohei Ohtani",
+            "fromTeam": "Los Angeles Dodgers",
+            "fromTeamId": 119,
+            "toTeam": "New York Yankees",
+            "toTeamId": 147,
+            "description": f"Fake Notification {random.randint(1, 1000)}: New York Yankees traded cash considerations to Los Angeles Dodgers for Shohei Ohtani."
+        }
+        results.append(fake_tx)
+        
+        FAKE_TX_STATE["is_primed"] = False
+    # -------------------------------------------------
 
     return jsonify({
         "date": today_iso,
