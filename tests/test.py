@@ -1,5 +1,7 @@
 import json
 from services.valuation import compute_valuation
+from services.api_getters import get_teams, get_all_players
+from services.helpers import find_player_id
 
 # Test 1 (Before Draft)
 data1 = {
@@ -110,3 +112,29 @@ def test_5():
     assert len(result["results"]) > 0
 
     print(result["results"][:10])
+    
+def test_6():
+    with open("tests/data/teams.json") as f:
+        predata = json.load(f)
+    
+    results = get_teams(predata)
+    
+    assert results == {"count":30,"teams":[{"id":109,"name":"Arizona Diamondbacks","abbreviation":"AZ"},{"id":133,"name":"Athletics","abbreviation":"ATH"},{"id":144,"name":"Atlanta Braves","abbreviation":"ATL"},{"id":110,"name":"Baltimore Orioles","abbreviation":"BAL"},{"id":111,"name":"Boston Red Sox","abbreviation":"BOS"},{"id":112,"name":"Chicago Cubs","abbreviation":"CHC"},{"id":145,"name":"Chicago White Sox","abbreviation":"CWS"},{"id":113,"name":"Cincinnati Reds","abbreviation":"CIN"},{"id":114,"name":"Cleveland Guardians","abbreviation":"CLE"},{"id":115,"name":"Colorado Rockies","abbreviation":"COL"},{"id":116,"name":"Detroit Tigers","abbreviation":"DET"},{"id":117,"name":"Houston Astros","abbreviation":"HOU"},{"id":118,"name":"Kansas City Royals","abbreviation":"KC"},{"id":108,"name":"Los Angeles Angels","abbreviation":"LAA"},{"id":119,"name":"Los Angeles Dodgers","abbreviation":"LAD"},{"id":146,"name":"Miami Marlins","abbreviation":"MIA"},{"id":158,"name":"Milwaukee Brewers","abbreviation":"MIL"},{"id":142,"name":"Minnesota Twins","abbreviation":"MIN"},{"id":121,"name":"New York Mets","abbreviation":"NYM"},{"id":147,"name":"New York Yankees","abbreviation":"NYY"},{"id":143,"name":"Philadelphia Phillies","abbreviation":"PHI"},{"id":134,"name":"Pittsburgh Pirates","abbreviation":"PIT"},{"id":135,"name":"San Diego Padres","abbreviation":"SD"},{"id":137,"name":"San Francisco Giants","abbreviation":"SF"},{"id":136,"name":"Seattle Mariners","abbreviation":"SEA"},{"id":138,"name":"St. Louis Cardinals","abbreviation":"STL"},{"id":139,"name":"Tampa Bay Rays","abbreviation":"TB"},{"id":140,"name":"Texas Rangers","abbreviation":"TEX"},{"id":141,"name":"Toronto Blue Jays","abbreviation":"TOR"},{"id":120,"name":"Washington Nationals","abbreviation":"WSH"}]}
+    
+def test_7():
+    with open("tests/data/players_snapshot.json") as f:
+        players = json.load(f)
+        
+    results = find_player_id("Shohei Ohtani", players=players)
+    
+    assert results == ({'mlbId': 660271, 'fullName': 'Shohei Ohtani', 'currentAge': 31}, None)
+    
+def test_8():
+    with open("tests/data/player_cursor.json") as f:
+        cursor = json.load(f)
+        
+    results = get_all_players(cursor)
+    
+    assert results.get("count") == 1302
+    assert results.get("players")[0]["name"] == "A.J. Ewing"
+    

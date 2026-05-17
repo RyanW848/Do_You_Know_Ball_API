@@ -8,9 +8,10 @@ from dotenv import load_dotenv
 from core.auth import auth_bp
 from core.api_keys import api_keys_bp, check_valid, calculate_billing_info, check_rate_limit, get_api_keys_collection
 from core.db import get_players_collection
-from services.mlb_service import get_team_details, get_all_teams, get_team_roster, get_transactions
+from services.mlb_service import get_team_details, get_team_roster, get_transactions
 from services.valuation import compute_valuation
 from services.helpers import find_player_id, convert_to_player_ids
+from services.api_getters import get_teams, get_all_players
 
 load_dotenv()
 
@@ -131,21 +132,9 @@ def all_players():
     players_collection = get_players_collection()
     cursor = players_collection.find({}, {"_id": 0, "fullName": 1, "mlbId": 1, "headshotUrl": 1, "positions": 1})
 
-    player_list = []
-    for p in cursor:
-        player_list.append({
-            "name": p.get("fullName"),
-            "id": p.get("mlbId"),
-            "headshotUrl": p.get("headshotUrl"),
-            "positions": p.get("positions")
-        })
-        
-    player_list.sort(key=lambda x: x["name"])
+    results = get_all_players(cursor) 
 
-    return jsonify({
-        "count": len(player_list),
-        "players": player_list
-    })
+    return jsonify(results)
 
 
 # This endpoint takes a comma-separated list of player IDs and an optional year, and returns their stats
@@ -224,24 +213,8 @@ def player_stats():
 # Returns a list of all 30 AL/NL teams with their IDs
 @app.route("/teams")
 def get_mlb_teams():
-    data = get_all_teams()
-    if not data or "teams" not in data:
-        return jsonify({"error": "Failed to fetch teams"}), 502
-
-    teams_list = []
-    for team in data.get("teams", []):
-        teams_list.append({
-            "id": team.get("id"),
-            "name": team.get("name"),
-            "abbreviation": team.get("abbreviation"),
-        })
-
-    teams_list.sort(key=lambda x: x["name"])
-
-    return jsonify({
-        "count": len(teams_list),
-        "teams": teams_list
-    })
+    results = get_teams()
+    return jsonify(results)
 
 # Also gets injuries
 @app.route("/depth-chart")
