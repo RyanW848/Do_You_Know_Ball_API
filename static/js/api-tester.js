@@ -44,14 +44,17 @@ async function callEndpoint(endpoint) {
     const keyResponse = await fetch("/api/user-api-key", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
-      credentials: "include"
+      credentials: "include",
     });
-    
+
     if (!keyResponse.ok) {
-      showError(responseId, "Failed to retrieve API key. Have you generated one?");
+      showError(
+        responseId,
+        "Failed to retrieve API key. Have you generated one?",
+      );
       return;
     }
-    
+
     const keyData = await keyResponse.json();
     apiKey = keyData.api_key;
   } catch (err) {
@@ -82,8 +85,12 @@ async function callEndpoint(endpoint) {
 
     case "stats":
       const players = document.getElementById("statsPlayers").value;
+      const year = document.getElementById("statsYear").value;
       url = "/stats";
-      if (players) url += `?players=${encodeURIComponent(players)}`;
+      const params = [];
+      if (players) params.push(`players=${encodeURIComponent(players)}`);
+      if (year) params.push(`year=${encodeURIComponent(year)}`);
+      if (params.length) url += "?" + params.join("&");
       method = "GET";
       break;
 
@@ -123,11 +130,17 @@ async function callEndpoint(endpoint) {
         relevant_stats: stats || undefined,
         budget: budget ? parseInt(budget) : undefined,
         players_left_to_draft: playersLeft ? parseInt(playersLeft) : undefined,
-        unavailable_players: unavailable ? unavailable.split(",").map(p => p.trim()) : undefined,
-        players: specificPlayers ? specificPlayers.split(",").map(p => p.trim()) : undefined
+        unavailable_players: unavailable
+          ? unavailable.split(",").map((p) => p.trim())
+          : undefined,
+        players: specificPlayers
+          ? specificPlayers.split(",").map((p) => p.trim())
+          : undefined,
       };
       // Remove undefined values
-      Object.keys(body).forEach(key => body[key] === undefined && delete body[key]);
+      Object.keys(body).forEach(
+        (key) => body[key] === undefined && delete body[key],
+      );
       break;
   }
 
@@ -136,8 +149,8 @@ async function callEndpoint(endpoint) {
       method,
       headers: {
         "X-API-Key": apiKey,
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     };
 
     if (method === "POST") {
@@ -162,7 +175,8 @@ function showResponse(responseId, status, data) {
     return;
   }
 
-  const statusClass = status >= 200 && status < 300 ? "api-success" : "api-error";
+  const statusClass =
+    status >= 200 && status < 300 ? "api-success" : "api-error";
 
   responseCode.innerHTML = `<span class="${statusClass}">Status: ${status}</span>\n\n${JSON.stringify(data, null, 2)}`;
   responseDiv.style.display = "block";

@@ -96,7 +96,7 @@
   <!-- /stats -->
   <section>
     <h2>Get Player Stats</h2>
-    <p>Returns hitting and/or pitching stats in 2025 for one or more players by MLB ID.</p>
+    <p>Returns hitting and/or pitching stats for one or more players by MLB ID.</p>
     <div class="endpoint"><span class="method get">GET</span><span class="path">/stats</span></div>
 
     <table>
@@ -107,6 +107,11 @@
           <td>all</td>
           <td>Comma-separated list of MLB player IDs (e.g. <code>665742,592450</code>)</td>
         </tr>
+        <tr>
+          <td>year<span class="tag optional">optional</span></td>
+          <td>2025</td>
+          <td>Season year to retrieve stats for</td>
+        </tr>
       </tbody>
     </table>
 
@@ -116,6 +121,10 @@
         <div class="api-form-group">
           <label class="api-form-label">Player IDs (comma-separated, optional)</label>
           <input type="text" class="api-form-input" id="statsPlayers" placeholder="665742,592450" />
+        </div>
+        <div class="api-form-group">
+          <label class="api-form-label">Year (optional)</label>
+          <input type="text" class="api-form-input" id="statsYear" placeholder="2025" />
         </div>
       </div>
       <div class="api-btn-group">

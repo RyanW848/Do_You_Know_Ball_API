@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from core.auth import auth_bp
 from core.api_keys import api_keys_bp, check_valid, calculate_billing_info, check_rate_limit, get_api_keys_collection
 from core.db import get_players_collection
-from services.mlb_service import get_team_details, get_team_roster, get_transactions
+from services.mlb_service import get_team_details, get_team_roster, get_transactions, get_player_stats
 from services.valuation import compute_valuation
 from services.helpers import find_player_id, convert_to_player_ids
 from services.api_getters import get_teams, get_all_players
@@ -144,71 +144,148 @@ def player_stats():
     year = request.args.get("year", "2025")
     players_collection = get_players_collection()
     
-    cache_path = os.path.join(app.root_path, "data", "stats_cache.json")
+    if year == "2025":
+        cache_path = os.path.join(app.root_path, "data", "stats_cache.json")
 
-    # If asking for ALL players (no param), just serve the file
-    if not players_param:
-        if os.path.exists(cache_path):
-            with open(cache_path, 'r') as f:
-                return jsonify(json.load(f))
-        return jsonify({"error": "Cache not ready"}), 503
-    else:
-        names_or_ids = [p.strip() for p in players_param.split(",") if p.strip()]
-        player_ids = convert_to_player_ids(names_or_ids)
-
-    if not player_ids:
-        return jsonify({"count": 0, "results": []})
-    
-    all_players_data = []
-    team_cache = {}
-
-    for player_id in player_ids:
-        # 2. Fetch Bio and Pre-calculated Stats from MongoDB
-        player_doc = players_collection.find_one({"mlbId": player_id})
-        
-        if not player_doc:
-            continue
-            
-        full_name = player_doc.get("fullName")
-        position = player_doc.get("positions", "Unknown")
-        injury_status = player_doc.get("injuryStatus", "A")
-        t_id = player_doc.get("currentTeamId")
-        
-        # Pull the stats we saved during the sync script
-        # Using .get() for safety in case a player has no stats for that year
-        merged_stats = player_doc.get("raw_2025", {})
-
-        # 3. Handle Team Info & Abbreviation (The logic you wanted kept)
-        player_team_info = {}
-        if t_id:
-            if t_id not in team_cache:
-                t_data = get_team_details(t_id)
-                team_cache[t_id] = {
-                    "id": t_id,
-                    "name": t_data.get("name") if t_data else "Unknown",
-                    "abbreviation": t_data.get("abbreviation") if t_data else "N/A"
-                }
-            player_team_info = team_cache[t_id]
+        # If asking for ALL players (no param), just serve the file
+        if not players_param:
+            if os.path.exists(cache_path):
+                with open(cache_path, 'r') as f:
+                    return jsonify(json.load(f))
+            return jsonify({"error": "Cache not ready"}), 503
         else:
-            player_team_info = {"id": None, "name": "Free Agent", "abbreviation": "FA"}
+            names_or_ids = [p.strip() for p in players_param.split(",") if p.strip()]
+            player_ids = convert_to_player_ids(names_or_ids)
 
-        # 4. Append to results in the exact same format as before
-        all_players_data.append({
-            "player": {
-                "id": player_id,
-                "name": full_name,
-                "position": position,
-                "injuryStatus": injury_status
-            },
-            "team": player_team_info,
-            "year": year,
-            "stats": merged_stats
+        if not player_ids:
+            return jsonify({"count": 0, "results": []})
+        
+        all_players_data = []
+        team_cache = {}
+
+        for player_id in player_ids:
+            # 2. Fetch Bio and Pre-calculated Stats from MongoDB
+            player_doc = players_collection.find_one({"mlbId": player_id})
+            
+            if not player_doc:
+                continue
+                
+            full_name = player_doc.get("fullName")
+            position = player_doc.get("positions", "Unknown")
+            injury_status = player_doc.get("injuryStatus", "A")
+            t_id = player_doc.get("currentTeamId")
+            
+            # Pull the stats we saved during the sync script
+            # Using .get() for safety in case a player has no stats for that year
+            merged_stats = player_doc.get("raw_2025", {})
+
+            # 3. Handle Team Info & Abbreviation (The logic you wanted kept)
+            player_team_info = {}
+            if t_id:
+                if t_id not in team_cache:
+                    t_data = get_team_details(t_id)
+                    team_cache[t_id] = {
+                        "id": t_id,
+                        "name": t_data.get("name") if t_data else "Unknown",
+                        "abbreviation": t_data.get("abbreviation") if t_data else "N/A"
+                    }
+                player_team_info = team_cache[t_id]
+            else:
+                player_team_info = {"id": None, "name": "Free Agent", "abbreviation": "FA"}
+
+            # 4. Append to results in the exact same format as before
+            all_players_data.append({
+                "player": {
+                    "id": player_id,
+                    "name": full_name,
+                    "position": position,
+                    "injuryStatus": injury_status
+                },
+                "team": player_team_info,
+                "year": year,
+                "stats": merged_stats
+            })
+
+        return jsonify({
+            "count": len(all_players_data),
+            "results": all_players_data
         })
+    else: 
+        if not players_param:
+            player_ids = [p["mlbId"] for p in players_collection.find({}, {"mlbId": 1})]
+        else:
+            player_ids = convert_to_player_ids([player.strip() for player in players_param.split(",")])
+    
+        all_players_data = []
+        team_cache = {}
 
-    return jsonify({
-        "count": len(all_players_data),
-        "results": all_players_data
-    })
+        for player_id in player_ids:
+            # 1. Bio for Position
+            players_collection = get_players_collection()
+            player_doc = players_collection.find_one({"mlbId": player_id})
+            
+            if not player_doc:
+                continue # Skip if not in our database
+                
+            full_name = player_doc.get("fullName")
+            position = player_doc.get("positions", "Unknown")
+            injury_status = player_doc.get("injuryStatus", "A")
+            t_id = player_doc.get("currentTeamId")
+
+            # 2. Stats (Hitting & Pitching)
+            stats_json = get_player_stats(player_id, year)
+            if not stats_json:
+                continue
+
+            merged_stats = {}
+            player_team_info = {}
+
+            for group_data in stats_json.get("stats", []):
+                splits = group_data.get("splits", [])
+                if not splits:
+                    continue
+                
+                s = splits[0]
+                current_stats = s.get("stat", {})
+
+                # 3. Handle Team Info & Abbreviation 
+                if not player_team_info:
+                    if t_id not in team_cache:
+                        t_data = get_team_details(t_id)
+                        team_cache[t_id] = {
+                            "id": t_id,
+                            "name": t_data.get("name") if t_data else "Unknown",
+                            "abbreviation": t_data.get("abbreviation") if t_data else "N/A"
+                        }
+                    player_team_info = team_cache[t_id]
+
+                # 4. Merging Logic
+                for key, value in current_stats.items():
+                    if key == "age": 
+                        merged_stats[key] = value 
+                        continue   
+                    if isinstance(value, (int, float)):
+                        merged_stats[key] = merged_stats.get(key, 0) + value
+                    else:
+                        merged_stats[key] = value
+
+            # Append this player's compiled data to our main list
+            all_players_data.append({
+                "player": {
+                    "id": player_id,
+                    "name": full_name,
+                    "position": position,
+                    "injuryStatus": injury_status
+                },
+                "team": player_team_info,
+                "year": year,
+                "stats": merged_stats
+            })
+
+        return jsonify({
+            "count": len(all_players_data),
+            "results": all_players_data
+        })
     
 # Returns a list of all 30 AL/NL teams with their IDs
 @app.route("/teams")
