@@ -1,0 +1,6512 @@
+[
+    {
+        "mlbId": 650644,
+        "fullName": "Aaron Civale",
+        "positions": "P"
+    },
+    {
+        "mlbId": 804556,
+        "fullName": "Braden Nett",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669620,
+        "fullName": "Brady Basso",
+        "positions": "P"
+    },
+    {
+        "mlbId": 667670,
+        "fullName": "Brent Rooker",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 695391,
+        "fullName": "Brett Harris",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 621139,
+        "fullName": "Brooks Kriske",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666126,
+        "fullName": "Carlos Cortes",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 800018,
+        "fullName": "Chen Zhong-Ao Zhuang",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687515,
+        "fullName": "Colby Thomas",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 687231,
+        "fullName": "Darell Hernaiz",
+        "positions": "2B, 3B, SS"
+    },
+    {
+        "mlbId": 672016,
+        "fullName": "Denzel Clarke",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 665660,
+        "fullName": "Elvis Alvarado",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680684,
+        "fullName": "Gunnar Hoglund",
+        "positions": "P"
+    },
+    {
+        "mlbId": 692013,
+        "fullName": "Henry Baez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 703607,
+        "fullName": "Henry Bolte",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 663687,
+        "fullName": "Hogan Harris",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669372,
+        "fullName": "J.T. Ginn",
+        "positions": "P"
+    },
+    {
+        "mlbId": 678022,
+        "fullName": "Jack Perkins",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682052,
+        "fullName": "Jacob Lopez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 805779,
+        "fullName": "Jacob Wilson",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 643446,
+        "fullName": "Jeff McNeil",
+        "positions": "2B, OF, UT"
+    },
+    {
+        "mlbId": 605488,
+        "fullName": "Jeffrey Springs",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669270,
+        "fullName": "Joel Kuhnel",
+        "positions": "P"
+    },
+    {
+        "mlbId": 683155,
+        "fullName": "Joey Estes",
+        "positions": "P"
+    },
+    {
+        "mlbId": 641680,
+        "fullName": "Jonah Heim",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 660761,
+        "fullName": "Jos\u00e9 Suarez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686993,
+        "fullName": "Justin Sterner",
+        "positions": "P"
+    },
+    {
+        "mlbId": 671732,
+        "fullName": "Lawrence Butler",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 665622,
+        "fullName": "Luis Medina",
+        "positions": "P"
+    },
+    {
+        "mlbId": 806960,
+        "fullName": "Luis Morales",
+        "positions": "P"
+    },
+    {
+        "mlbId": 622663,
+        "fullName": "Luis Severino",
+        "positions": "P"
+    },
+    {
+        "mlbId": 643410,
+        "fullName": "Mark Leiter Jr.",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686930,
+        "fullName": "Mason Barnett",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691777,
+        "fullName": "Max Muncy",
+        "positions": "2B, 3B"
+    },
+    {
+        "mlbId": 547184,
+        "fullName": "Michael Kelly",
+        "positions": "P"
+    },
+    {
+        "mlbId": 683021,
+        "fullName": "Michael Stefanic",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 701762,
+        "fullName": "Nick Kurtz",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 605130,
+        "fullName": "Scott Barlow",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669127,
+        "fullName": "Shea Langeliers",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 691016,
+        "fullName": "Tyler Soderstrom",
+        "positions": "1B, OF"
+    },
+    {
+        "mlbId": 680869,
+        "fullName": "Zack Gelof",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 699008,
+        "fullName": "Antwone Kelly",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695257,
+        "fullName": "Billy Cook",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 684049,
+        "fullName": "Brandan Bidois",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664040,
+        "fullName": "Brandon Lowe",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 677952,
+        "fullName": "Braxton Ashcraft",
+        "positions": "P"
+    },
+    {
+        "mlbId": 668804,
+        "fullName": "Bryan Reynolds",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 696149,
+        "fullName": "Bubba Chandler",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676742,
+        "fullName": "Cam Sanders",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669387,
+        "fullName": "Carmen Mlodzinski",
+        "positions": "P"
+    },
+    {
+        "mlbId": 606965,
+        "fullName": "Chris Devenski",
+        "positions": "P"
+    },
+    {
+        "mlbId": 642701,
+        "fullName": "Dennis Santana",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682848,
+        "fullName": "Endy Rodr\u00edguez",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 699013,
+        "fullName": "Esmerlyn Valdez",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 681895,
+        "fullName": "Evan Sisk",
+        "positions": "P"
+    },
+    {
+        "mlbId": 642397,
+        "fullName": "Gregory Soto",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680779,
+        "fullName": "Henry Davis",
+        "positions": "C"
+    },
+    {
+        "mlbId": 682995,
+        "fullName": "Hunter Barco",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676755,
+        "fullName": "Isaac Mattson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687394,
+        "fullName": "Jack Brannigan",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 663968,
+        "fullName": "Jake Mangum",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 683003,
+        "fullName": "Jared Jones",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669707,
+        "fullName": "Jared Triolo",
+        "positions": "1B, 2B, 3B, SS"
+    },
+    {
+        "mlbId": 691373,
+        "fullName": "Jhostynxon Garcia",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 663698,
+        "fullName": "Joey Bart",
+        "positions": "C"
+    },
+    {
+        "mlbId": 664353,
+        "fullName": "Jos\u00e9 Urquidy",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664875,
+        "fullName": "Justin Lawrence",
+        "positions": "P"
+    },
+    {
+        "mlbId": 804606,
+        "fullName": "Konnor Griffin",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 542303,
+        "fullName": "Marcell Ozuna",
+        "positions": "UT"
+    },
+    {
+        "mlbId": 682254,
+        "fullName": "Mason Montgomery",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656605,
+        "fullName": "Mitch Keller",
+        "positions": "P"
+    },
+    {
+        "mlbId": 693304,
+        "fullName": "Nick Gonzales",
+        "positions": "2B, SS"
+    },
+    {
+        "mlbId": 694377,
+        "fullName": "Nick Yorke",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 665833,
+        "fullName": "Oneil Cruz",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 694973,
+        "fullName": "Paul Skenes",
+        "positions": "P"
+    },
+    {
+        "mlbId": 804668,
+        "fullName": "Rafael Flores Jr.",
+        "positions": "C"
+    },
+    {
+        "mlbId": 656811,
+        "fullName": "Ryan O'Hearn",
+        "positions": "1B, OF, UT"
+    },
+    {
+        "mlbId": 687462,
+        "fullName": "Spencer Horwitz",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 802419,
+        "fullName": "Thomas Harrington",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682997,
+        "fullName": "Tyler Callihan",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 696062,
+        "fullName": "Wilber Dotel",
+        "positions": "P"
+    },
+    {
+        "mlbId": 670990,
+        "fullName": "Yohan Ram\u00edrez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 670970,
+        "fullName": "Adrian Morejon",
+        "positions": "P"
+    },
+    {
+        "mlbId": 689690,
+        "fullName": "Alek Jacob",
+        "positions": "P"
+    },
+    {
+        "mlbId": 699134,
+        "fullName": "Bradgley Rodriguez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663773,
+        "fullName": "Bryan Hoeing",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669369,
+        "fullName": "Bryce Johnson",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 688158,
+        "fullName": "David Morgan",
+        "positions": "P"
+    },
+    {
+        "mlbId": 665487,
+        "fullName": "Fernando Tatis Jr.",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 666023,
+        "fullName": "Freddy Fermin",
+        "positions": "C"
+    },
+    {
+        "mlbId": 678184,
+        "fullName": "Garrett Hawkins",
+        "positions": "P"
+    },
+    {
+        "mlbId": 657757,
+        "fullName": "Gavin Sheets",
+        "positions": "1B, OF, UT"
+    },
+    {
+        "mlbId": 608566,
+        "fullName": "Germ\u00e1n M\u00e1rquez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656288,
+        "fullName": "Griffin Canning",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676664,
+        "fullName": "JP Sears",
+        "positions": "P"
+    },
+    {
+        "mlbId": 701538,
+        "fullName": "Jackson Merrill",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 630105,
+        "fullName": "Jake Cronenworth",
+        "positions": "1B, 2B, SS"
+    },
+    {
+        "mlbId": 592094,
+        "fullName": "Jason Adam",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669093,
+        "fullName": "Jeremiah Estrada",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666745,
+        "fullName": "Jhony Brito",
+        "positions": "P"
+    },
+    {
+        "mlbId": 605397,
+        "fullName": "Joe Musgrove",
+        "positions": "P"
+    },
+    {
+        "mlbId": 606996,
+        "fullName": "Kyle Hart",
+        "positions": "P"
+    },
+    {
+        "mlbId": 608337,
+        "fullName": "Lucas Giolito",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669134,
+        "fullName": "Luis Campusano",
+        "positions": "C"
+    },
+    {
+        "mlbId": 592518,
+        "fullName": "Manny Machado",
+        "positions": "3B, UT"
+    },
+    {
+        "mlbId": 669200,
+        "fullName": "Mason McCoy",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 695243,
+        "fullName": "Mason Miller",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663362,
+        "fullName": "Matt Waldron",
+        "positions": "P"
+    },
+    {
+        "mlbId": 650633,
+        "fullName": "Michael King",
+        "positions": "P"
+    },
+    {
+        "mlbId": 609280,
+        "fullName": "Miguel Andujar",
+        "positions": "3B, OF, UT"
+    },
+    {
+        "mlbId": 700280,
+        "fullName": "Miguel Mendez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 592206,
+        "fullName": "Nick Castellanos",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 601713,
+        "fullName": "Nick Pivetta",
+        "positions": "P"
+    },
+    {
+        "mlbId": 657656,
+        "fullName": "Ram\u00f3n Laureano",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 681190,
+        "fullName": "Randy V\u00e1squez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 660710,
+        "fullName": "Rodolfo Dur\u00e1n",
+        "positions": "C"
+    },
+    {
+        "mlbId": 676760,
+        "fullName": "Ron Marinaccio",
+        "positions": "P"
+    },
+    {
+        "mlbId": 823550,
+        "fullName": "Sung-Mun Song",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 686654,
+        "fullName": "Ty Adcock",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664034,
+        "fullName": "Ty France",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 621111,
+        "fullName": "Walker Buehler",
+        "positions": "P"
+    },
+    {
+        "mlbId": 593974,
+        "fullName": "Wandy Peralta",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695238,
+        "fullName": "Will Wagner",
+        "positions": "1B, 3B"
+    },
+    {
+        "mlbId": 593428,
+        "fullName": "Xander Bogaerts",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 673513,
+        "fullName": "Yuki Matsui",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695380,
+        "fullName": "Alex Hoppe",
+        "positions": "P"
+    },
+    {
+        "mlbId": 662253,
+        "fullName": "Andr\u00e9s Mu\u00f1oz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680977,
+        "fullName": "Brendan Donovan",
+        "positions": "2B, OF"
+    },
+    {
+        "mlbId": 693433,
+        "fullName": "Bryan Woo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682243,
+        "fullName": "Bryce Miller",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663728,
+        "fullName": "Cal Raleigh",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 672841,
+        "fullName": "Carlos Vargas",
+        "positions": "P"
+    },
+    {
+        "mlbId": 677961,
+        "fullName": "Cole Wilcox",
+        "positions": "P"
+    },
+    {
+        "mlbId": 702284,
+        "fullName": "Cole Young",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 806068,
+        "fullName": "Colt Emerson",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 656582,
+        "fullName": "Connor Joe",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 681867,
+        "fullName": "Cooper Criswell",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682445,
+        "fullName": "Domingo Gonzalez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686527,
+        "fullName": "Dominic Canzone",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 660825,
+        "fullName": "Eduard Bazardo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676106,
+        "fullName": "Emerson Hancock",
+        "positions": "P"
+    },
+    {
+        "mlbId": 642100,
+        "fullName": "Gabe Speier",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669923,
+        "fullName": "George Kirby",
+        "positions": "P"
+    },
+    {
+        "mlbId": 641487,
+        "fullName": "J.P. Crawford",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 640902,
+        "fullName": "Jhonny Pereda",
+        "positions": "C"
+    },
+    {
+        "mlbId": 678606,
+        "fullName": "Jos\u00e9 A. Ferrer",
+        "positions": "P"
+    },
+    {
+        "mlbId": 647304,
+        "fullName": "Josh Naylor",
+        "positions": "1B, UT"
+    },
+    {
+        "mlbId": 681006,
+        "fullName": "Josh Simpson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 677594,
+        "fullName": "Julio Rodr\u00edguez",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 660844,
+        "fullName": "Leo Rivas",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 688138,
+        "fullName": "Logan Evans",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669302,
+        "fullName": "Logan Gilbert",
+        "positions": "P"
+    },
+    {
+        "mlbId": 622491,
+        "fullName": "Luis Castillo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 670042,
+        "fullName": "Luke Raley",
+        "positions": "1B, OF"
+    },
+    {
+        "mlbId": 666374,
+        "fullName": "Matt Brash",
+        "positions": "P"
+    },
+    {
+        "mlbId": 670156,
+        "fullName": "Miles Mastrobuoni",
+        "positions": "2B, 3B, OF"
+    },
+    {
+        "mlbId": 641598,
+        "fullName": "Mitch Garver",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 689546,
+        "fullName": "Nick Davila",
+        "positions": "P"
+    },
+    {
+        "mlbId": 621550,
+        "fullName": "Patrick Wisdom",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 668227,
+        "fullName": "Randy Arozarena",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 608701,
+        "fullName": "Rob Refsnyder",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 673662,
+        "fullName": "Robinson Ortiz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669208,
+        "fullName": "Ryan Bliss",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 700187,
+        "fullName": "Troy Taylor",
+        "positions": "P"
+    },
+    {
+        "mlbId": 645302,
+        "fullName": "Victor Robles",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 669717,
+        "fullName": "Will Wilson",
+        "positions": "2B, 3B"
+    },
+    {
+        "mlbId": 691172,
+        "fullName": "Yosver Zulueta",
+        "positions": "P"
+    },
+    {
+        "mlbId": 605288,
+        "fullName": "Adrian Houser",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694918,
+        "fullName": "Blade Tidwell",
+        "positions": "P"
+    },
+    {
+        "mlbId": 805811,
+        "fullName": "Bryce Eldridge",
+        "positions": "DH"
+    },
+    {
+        "mlbId": 668873,
+        "fullName": "Caleb Kilian",
+        "positions": "P"
+    },
+    {
+        "mlbId": 693313,
+        "fullName": "Carson Seymour",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687931,
+        "fullName": "Carson Whisenhunt",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669477,
+        "fullName": "Casey Schmitt",
+        "positions": "1B, 2B, 3B"
+    },
+    {
+        "mlbId": 683766,
+        "fullName": "Christian Koss",
+        "positions": "2B, 3B"
+    },
+    {
+        "mlbId": 691740,
+        "fullName": "Daniel Susac",
+        "positions": "C"
+    },
+    {
+        "mlbId": 687551,
+        "fullName": "Drew Gilbert",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 681916,
+        "fullName": "Dylan Smith",
+        "positions": "P"
+    },
+    {
+        "mlbId": 606992,
+        "fullName": "Eric Haase",
+        "positions": "C"
+    },
+    {
+        "mlbId": 669062,
+        "fullName": "Erik Miller",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687529,
+        "fullName": "Grant McCray",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 666619,
+        "fullName": "Gregory Santos",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664056,
+        "fullName": "Harrison Bader",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 806185,
+        "fullName": "Hayden Birdsong",
+        "positions": "P"
+    },
+    {
+        "mlbId": 671218,
+        "fullName": "Heliot Ramos",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 664141,
+        "fullName": "JT Brubaker",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666931,
+        "fullName": "Jared Oliva",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 671345,
+        "fullName": "Jason Foley",
+        "positions": "P"
+    },
+    {
+        "mlbId": 683679,
+        "fullName": "Jesus Rodriguez",
+        "positions": "C"
+    },
+    {
+        "mlbId": 666711,
+        "fullName": "Joel Peguero",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676130,
+        "fullName": "Jos\u00e9 Butt\u00f3",
+        "positions": "P"
+    },
+    {
+        "mlbId": 808982,
+        "fullName": "Jung Hoo Lee",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 676775,
+        "fullName": "Keaton Winn",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694738,
+        "fullName": "Landen Roupp",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682515,
+        "fullName": "Logan Porter",
+        "positions": "C"
+    },
+    {
+        "mlbId": 657277,
+        "fullName": "Logan Webb",
+        "positions": "P"
+    },
+    {
+        "mlbId": 650333,
+        "fullName": "Luis Arraez",
+        "positions": "1B, 2B, UT"
+    },
+    {
+        "mlbId": 656305,
+        "fullName": "Matt Chapman",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 657424,
+        "fullName": "Matt Gage",
+        "positions": "P"
+    },
+    {
+        "mlbId": 646240,
+        "fullName": "Rafael Devers",
+        "positions": "1B, UT"
+    },
+    {
+        "mlbId": 678495,
+        "fullName": "Randy Rodr\u00edguez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 665665,
+        "fullName": "Reiver Sanmartin",
+        "positions": "P"
+    },
+    {
+        "mlbId": 592662,
+        "fullName": "Robbie Ray",
+        "positions": "P"
+    },
+    {
+        "mlbId": 592858,
+        "fullName": "Rowan Wick",
+        "positions": "P"
+    },
+    {
+        "mlbId": 621366,
+        "fullName": "Ryan Borucki",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676254,
+        "fullName": "Ryan Walker",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656529,
+        "fullName": "Sam Hentges",
+        "positions": "P"
+    },
+    {
+        "mlbId": 702352,
+        "fullName": "Spencer Bivens",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686790,
+        "fullName": "Trevor McDonald",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663941,
+        "fullName": "Tristan Beck",
+        "positions": "P"
+    },
+    {
+        "mlbId": 641816,
+        "fullName": "Tyler Mahle",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686823,
+        "fullName": "Will Brennan",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 642715,
+        "fullName": "Willy Adames",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 676475,
+        "fullName": "Alec Burleson",
+        "positions": "1B, OF, UT"
+    },
+    {
+        "mlbId": 669467,
+        "fullName": "Andre Pallante",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663494,
+        "fullName": "Bryan Torres",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 802408,
+        "fullName": "Brycen Mautz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 693409,
+        "fullName": "C\u00e9sar Prieto",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 688297,
+        "fullName": "Chris Roycroft",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687309,
+        "fullName": "Cooper Hjerpe",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669160,
+        "fullName": "Dustin May",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666277,
+        "fullName": "George Soriano",
+        "positions": "P"
+    },
+    {
+        "mlbId": 700669,
+        "fullName": "Gordon Graceffo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 690928,
+        "fullName": "Hunter Dobbins",
+        "positions": "P"
+    },
+    {
+        "mlbId": 671056,
+        "fullName": "Iv\u00e1n Herrera",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 802139,
+        "fullName": "JJ Wetherholt",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 694363,
+        "fullName": "Jared Shuster",
+        "positions": "P"
+    },
+    {
+        "mlbId": 699625,
+        "fullName": "Jimmy Crooks",
+        "positions": "C"
+    },
+    {
+        "mlbId": 668941,
+        "fullName": "JoJo Romero",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691023,
+        "fullName": "Jordan Walker",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 665877,
+        "fullName": "Jos\u00e9 Ferm\u00edn",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 695491,
+        "fullName": "Joshua B\u00e1ez",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 677865,
+        "fullName": "Justin Bruihl",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681517,
+        "fullName": "Kyle Leahy",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663457,
+        "fullName": "Lars Nootbaar",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 699024,
+        "fullName": "Leo Bernal",
+        "positions": "C"
+    },
+    {
+        "mlbId": 691026,
+        "fullName": "Masyn Winn",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 690155,
+        "fullName": "Matt Pushard",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694335,
+        "fullName": "Matt Svanson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669461,
+        "fullName": "Matthew Liberatore",
+        "positions": "P"
+    },
+    {
+        "mlbId": 700241,
+        "fullName": "Michael McGreevy",
+        "positions": "P"
+    },
+    {
+        "mlbId": 701675,
+        "fullName": "Nathan Church",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 669357,
+        "fullName": "Nolan Gorman",
+        "positions": "2B, 3B, UT"
+    },
+    {
+        "mlbId": 686780,
+        "fullName": "Pedro Pag\u00e9s",
+        "positions": "C"
+    },
+    {
+        "mlbId": 602104,
+        "fullName": "Ram\u00f3n Ur\u00edas",
+        "positions": "2B, 3B"
+    },
+    {
+        "mlbId": 690916,
+        "fullName": "Richard Fitts",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676617,
+        "fullName": "Riley O'Brien",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681676,
+        "fullName": "Ryan Fernandez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 592773,
+        "fullName": "Ryne Stanek",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694358,
+        "fullName": "Tekoah Roby",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695336,
+        "fullName": "Thomas Saggese",
+        "positions": "2B, 3B, SS"
+    },
+    {
+        "mlbId": 693311,
+        "fullName": "Tink Hence",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687363,
+        "fullName": "Victor Scott II",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 650968,
+        "fullName": "Yohel Pozo",
+        "positions": "C"
+    },
+    {
+        "mlbId": 702047,
+        "fullName": "Alex Cook",
+        "positions": "P"
+    },
+    {
+        "mlbId": 810938,
+        "fullName": "Ben Williamson",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 641329,
+        "fullName": "Bryan Baker",
+        "positions": "P"
+    },
+    {
+        "mlbId": 592155,
+        "fullName": "Cam Booser",
+        "positions": "P"
+    },
+    {
+        "mlbId": 700246,
+        "fullName": "Carson Williams",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 668984,
+        "fullName": "Casey Legumina",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656775,
+        "fullName": "Cedric Mullins",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 802415,
+        "fullName": "Chandler Simpson",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 686678,
+        "fullName": "Chase Solesky",
+        "positions": "P"
+    },
+    {
+        "mlbId": 642121,
+        "fullName": "Cole Sulser",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681371,
+        "fullName": "Dom Keegan",
+        "positions": "C"
+    },
+    {
+        "mlbId": 656876,
+        "fullName": "Drew Rasmussen",
+        "positions": "P"
+    },
+    {
+        "mlbId": 670955,
+        "fullName": "Edwin Uceta",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664076,
+        "fullName": "Garrett Cleavinger",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666158,
+        "fullName": "Gavin Lux",
+        "positions": "2B, OF, UT"
+    },
+    {
+        "mlbId": 643377,
+        "fullName": "Griffin Jax",
+        "positions": "P"
+    },
+    {
+        "mlbId": 685801,
+        "fullName": "Hunter Bigge",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676439,
+        "fullName": "Hunter Feduccia",
+        "positions": "C"
+    },
+    {
+        "mlbId": 693855,
+        "fullName": "Ian Seymour",
+        "positions": "P"
+    },
+    {
+        "mlbId": 689200,
+        "fullName": "Jacob Melton",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 699130,
+        "fullName": "Jadher Areinamo",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 641584,
+        "fullName": "Jake Fraley",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 669947,
+        "fullName": "Jesse Scholtens",
+        "positions": "P"
+    },
+    {
+        "mlbId": 671212,
+        "fullName": "Joe Boyle",
+        "positions": "P"
+    },
+    {
+        "mlbId": 697812,
+        "fullName": "Joe Rock",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666018,
+        "fullName": "Jonathan Aranda",
+        "positions": "1B, UT"
+    },
+    {
+        "mlbId": 676356,
+        "fullName": "Jonny DeLuca",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 691406,
+        "fullName": "Junior Caminero",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 687330,
+        "fullName": "Kevin Kelly",
+        "positions": "P"
+    },
+    {
+        "mlbId": 655889,
+        "fullName": "Manuel Rodr\u00edguez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669438,
+        "fullName": "Mason Englert",
+        "positions": "P"
+    },
+    {
+        "mlbId": 675627,
+        "fullName": "Michael Grove",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663743,
+        "fullName": "Nick Fortes",
+        "positions": "C"
+    },
+    {
+        "mlbId": 607259,
+        "fullName": "Nick Martinez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680700,
+        "fullName": "Richie Palacios",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 686752,
+        "fullName": "Ryan Pepiot",
+        "positions": "P"
+    },
+    {
+        "mlbId": 668723,
+        "fullName": "Ryan Vilade",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 663556,
+        "fullName": "Shane McClanahan",
+        "positions": "P"
+    },
+    {
+        "mlbId": 571927,
+        "fullName": "Steven Matz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 621051,
+        "fullName": "Steven Wilson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 670764,
+        "fullName": "Taylor Walls",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 694680,
+        "fullName": "Trevor Martin",
+        "positions": "P"
+    },
+    {
+        "mlbId": 683748,
+        "fullName": "Victor Mesa Jr.",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 650490,
+        "fullName": "Yandy D\u00edaz",
+        "positions": "1B, UT"
+    },
+    {
+        "mlbId": 696030,
+        "fullName": "Alejandro Osuna",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 457705,
+        "fullName": "Andrew McCutchen",
+        "positions": "UT"
+    },
+    {
+        "mlbId": 607043,
+        "fullName": "Brandon Nimmo",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 615698,
+        "fullName": "Cal Quantrill",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691945,
+        "fullName": "Carter Baumler",
+        "positions": "P"
+    },
+    {
+        "mlbId": 455119,
+        "fullName": "Chris Martin",
+        "positions": "P"
+    },
+    {
+        "mlbId": 674003,
+        "fullName": "Cody Bradford",
+        "positions": "P"
+    },
+    {
+        "mlbId": 683227,
+        "fullName": "Cody Freeman",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 668390,
+        "fullName": "Cole Winn",
+        "positions": "P"
+    },
+    {
+        "mlbId": 608369,
+        "fullName": "Corey Seager",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 643376,
+        "fullName": "Danny Jansen",
+        "positions": "C"
+    },
+    {
+        "mlbId": 699314,
+        "fullName": "David Davalillo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 693713,
+        "fullName": "Emiliano Teodo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694497,
+        "fullName": "Evan Carter",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 677649,
+        "fullName": "Ezequiel Duran",
+        "positions": "1B, 2B, 3B, SS"
+    },
+    {
+        "mlbId": 686560,
+        "fullName": "Gavin Collyer",
+        "positions": "P"
+    },
+    {
+        "mlbId": 683004,
+        "fullName": "Jack Leiter",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656641,
+        "fullName": "Jacob Latz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 594798,
+        "fullName": "Jacob deGrom",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669394,
+        "fullName": "Jake Burger",
+        "positions": "1B, UT"
+    },
+    {
+        "mlbId": 596001,
+        "fullName": "Jakob Junis",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656222,
+        "fullName": "Jalen Beeks",
+        "positions": "P"
+    },
+    {
+        "mlbId": 592626,
+        "fullName": "Joc Pederson",
+        "positions": "UT"
+    },
+    {
+        "mlbId": 656756,
+        "fullName": "Jordan Montgomery",
+        "positions": "P"
+    },
+    {
+        "mlbId": 692030,
+        "fullName": "Jose Corniell",
+        "positions": "P"
+    },
+    {
+        "mlbId": 673962,
+        "fullName": "Josh Jung",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 669701,
+        "fullName": "Josh Smith",
+        "positions": "1B, 3B, SS, UT"
+    },
+    {
+        "mlbId": 679822,
+        "fullName": "Justin Foscue",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 677958,
+        "fullName": "Kumar Rocker",
+        "positions": "P"
+    },
+    {
+        "mlbId": 543309,
+        "fullName": "Kyle Higashioka",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 699214,
+        "fullName": "Leandro Lopez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681168,
+        "fullName": "Luis Curvelo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669022,
+        "fullName": "MacKenzie Gore",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680737,
+        "fullName": "Michael Helman",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 671305,
+        "fullName": "Michel Ota\u00f1ez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 543135,
+        "fullName": "Nathan Eovaldi",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682608,
+        "fullName": "Peyton Gray",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676395,
+        "fullName": "Robert Garcia",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664059,
+        "fullName": "Sam Haggerty",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 641302,
+        "fullName": "Tyler Alexander",
+        "positions": "P"
+    },
+    {
+        "mlbId": 692437,
+        "fullName": "Winston Santos",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694671,
+        "fullName": "Wyatt Langford",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 671936,
+        "fullName": "Adam Macko",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680718,
+        "fullName": "Addison Barger",
+        "positions": "3B, OF"
+    },
+    {
+        "mlbId": 672386,
+        "fullName": "Alejandro Kirk",
+        "positions": "C"
+    },
+    {
+        "mlbId": 665926,
+        "fullName": "Andr\u00e9s Gim\u00e9nez",
+        "positions": "2B, SS"
+    },
+    {
+        "mlbId": 623993,
+        "fullName": "Anthony Santander",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 670102,
+        "fullName": "Bowden Francis",
+        "positions": "P"
+    },
+    {
+        "mlbId": 678218,
+        "fullName": "Brandon Valenzuela",
+        "positions": "C"
+    },
+    {
+        "mlbId": 680755,
+        "fullName": "Braydon Fisher",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663893,
+        "fullName": "Brendon Little",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695445,
+        "fullName": "Chase Lee",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664074,
+        "fullName": "Cody Ponce",
+        "positions": "P"
+    },
+    {
+        "mlbId": 662139,
+        "fullName": "Daulton Varsho",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 676914,
+        "fullName": "Davis Schneider",
+        "positions": "2B, OF"
+    },
+    {
+        "mlbId": 656302,
+        "fullName": "Dylan Cease",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676391,
+        "fullName": "Ernie Clement",
+        "positions": "1B, 2B, 3B, SS"
+    },
+    {
+        "mlbId": 543807,
+        "fullName": "George Springer",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 814005,
+        "fullName": "Jake Bloss",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656546,
+        "fullName": "Jeff Hoffman",
+        "positions": "P"
+    },
+    {
+        "mlbId": 660821,
+        "fullName": "Jes\u00fas S\u00e1nchez",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 573009,
+        "fullName": "Joe Mantiply",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682729,
+        "fullName": "Jonatan Clase",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 621244,
+        "fullName": "Jos\u00e9 Berr\u00edos",
+        "positions": "P"
+    },
+    {
+        "mlbId": 672960,
+        "fullName": "Kazuma Okamoto",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 592332,
+        "fullName": "Kevin Gausman",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681751,
+        "fullName": "Lazaro Estrada",
+        "positions": "P"
+    },
+    {
+        "mlbId": 672820,
+        "fullName": "Lenyn Sosa",
+        "positions": "1B, 2B, UT"
+    },
+    {
+        "mlbId": 686973,
+        "fullName": "Louis Varland",
+        "positions": "P"
+    },
+    {
+        "mlbId": 689254,
+        "fullName": "Mason Fluharty",
+        "positions": "P"
+    },
+    {
+        "mlbId": 453286,
+        "fullName": "Max Scherzer",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664702,
+        "fullName": "Myles Straw",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 664770,
+        "fullName": "Nathan Lukes",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 571578,
+        "fullName": "Patrick Corbin",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694357,
+        "fullName": "Ricky Tiedemann",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669456,
+        "fullName": "Shane Bieber",
+        "positions": "P"
+    },
+    {
+        "mlbId": 693686,
+        "fullName": "Spencer Miles",
+        "positions": "P"
+    },
+    {
+        "mlbId": 667297,
+        "fullName": "Tommy Nance",
+        "positions": "P"
+    },
+    {
+        "mlbId": 702056,
+        "fullName": "Trey Yesavage",
+        "positions": "P"
+    },
+    {
+        "mlbId": 623168,
+        "fullName": "Tyler Heineman",
+        "positions": "C"
+    },
+    {
+        "mlbId": 643511,
+        "fullName": "Tyler Rogers",
+        "positions": "P"
+    },
+    {
+        "mlbId": 665489,
+        "fullName": "Vladimir Guerrero Jr.",
+        "positions": "1B, UT"
+    },
+    {
+        "mlbId": 680862,
+        "fullName": "Willie MacIver",
+        "positions": "C"
+    },
+    {
+        "mlbId": 684320,
+        "fullName": "Yariel Rodr\u00edguez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 554340,
+        "fullName": "Yimi Garc\u00eda",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682818,
+        "fullName": "Yohendrick Pi\u00f1ango",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 702176,
+        "fullName": "Alan Roden",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 702193,
+        "fullName": "Andrew Morris",
+        "positions": "P"
+    },
+    {
+        "mlbId": 607455,
+        "fullName": "Anthony Banda",
+        "positions": "P"
+    },
+    {
+        "mlbId": 668885,
+        "fullName": "Austin Martin",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 641927,
+        "fullName": "Bailey Ober",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686797,
+        "fullName": "Brooks Lee",
+        "positions": "2B, 3B, SS"
+    },
+    {
+        "mlbId": 621439,
+        "fullName": "Byron Buxton",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 689520,
+        "fullName": "Cody Laweryson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663485,
+        "fullName": "Cole Sands",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687570,
+        "fullName": "Connor Prielipp",
+        "positions": "P"
+    },
+    {
+        "mlbId": 701581,
+        "fullName": "David Festa",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691181,
+        "fullName": "Emmanuel Rodriguez",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 679358,
+        "fullName": "Eric Orze",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694224,
+        "fullName": "Gabriel Gonzalez",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 670183,
+        "fullName": "Garrett Acton",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694230,
+        "fullName": "Hendry Mendez",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 681546,
+        "fullName": "James Outman",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 657746,
+        "fullName": "Joe Ryan",
+        "positions": "P"
+    },
+    {
+        "mlbId": 804619,
+        "fullName": "John Klein",
+        "positions": "P"
+    },
+    {
+        "mlbId": 605137,
+        "fullName": "Josh Bell",
+        "positions": "1B, UT"
+    },
+    {
+        "mlbId": 623437,
+        "fullName": "Justin Topa",
+        "positions": "P"
+    },
+    {
+        "mlbId": 696070,
+        "fullName": "Kendry Rojas",
+        "positions": "P"
+    },
+    {
+        "mlbId": 665019,
+        "fullName": "Kody Clemens",
+        "positions": "1B, 2B, OF"
+    },
+    {
+        "mlbId": 681892,
+        "fullName": "Kody Funderburk",
+        "positions": "P"
+    },
+    {
+        "mlbId": 472610,
+        "fullName": "Luis Garc\u00eda",
+        "positions": "P"
+    },
+    {
+        "mlbId": 807712,
+        "fullName": "Luke Keaschall",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 694397,
+        "fullName": "Marco Raya",
+        "positions": "P"
+    },
+    {
+        "mlbId": 670242,
+        "fullName": "Matt Wallner",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 690953,
+        "fullName": "Mick Abel",
+        "positions": "P"
+    },
+    {
+        "mlbId": 641154,
+        "fullName": "Pablo L\u00f3pez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 668904,
+        "fullName": "Royce Lewis",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 680777,
+        "fullName": "Ryan Jeffers",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 668952,
+        "fullName": "Ryan Kreidler",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 680573,
+        "fullName": "Simeon Woods Richardson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 671737,
+        "fullName": "Taj Bradley",
+        "positions": "P"
+    },
+    {
+        "mlbId": 573124,
+        "fullName": "Taylor Rogers",
+        "positions": "P"
+    },
+    {
+        "mlbId": 701519,
+        "fullName": "Travis Adams",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663616,
+        "fullName": "Trevor Larnach",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 656484,
+        "fullName": "Tristan Gray",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 605170,
+        "fullName": "Victor Caratini",
+        "positions": "1B, C, UT"
+    },
+    {
+        "mlbId": 672782,
+        "fullName": "Yoendrys G\u00f3mez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 805673,
+        "fullName": "Zebby Matthews",
+        "positions": "P"
+    },
+    {
+        "mlbId": 605400,
+        "fullName": "Aaron Nola",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666969,
+        "fullName": "Adolis Garc\u00eda",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 660604,
+        "fullName": "Alan Rangel",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664761,
+        "fullName": "Alec Bohm",
+        "positions": "1B, 3B"
+    },
+    {
+        "mlbId": 686934,
+        "fullName": "Alex McFarlane",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691725,
+        "fullName": "Andrew Painter",
+        "positions": "P"
+    },
+    {
+        "mlbId": 641745,
+        "fullName": "Brad Keller",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669016,
+        "fullName": "Brandon Marsh",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 547180,
+        "fullName": "Bryce Harper",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 681082,
+        "fullName": "Bryson Stott",
+        "positions": "2B, SS"
+    },
+    {
+        "mlbId": 663767,
+        "fullName": "Chase Shugart",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686551,
+        "fullName": "Christian Cairo",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 650911,
+        "fullName": "Cristopher S\u00e1nchez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 624641,
+        "fullName": "Edmundo Sosa",
+        "positions": "2B, 3B, SS"
+    },
+    {
+        "mlbId": 694025,
+        "fullName": "Felix Reyes",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 687282,
+        "fullName": "Gabriel Rincones Jr.",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 596117,
+        "fullName": "Garrett Stubbs",
+        "positions": "C"
+    },
+    {
+        "mlbId": 680880,
+        "fullName": "Grant Holman",
+        "positions": "P"
+    },
+    {
+        "mlbId": 592663,
+        "fullName": "J.T. Realmuto",
+        "positions": "C"
+    },
+    {
+        "mlbId": 671131,
+        "fullName": "Jackson Rutledge",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691893,
+        "fullName": "Jean Cabrera",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666200,
+        "fullName": "Jes\u00fas Luzardo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 661395,
+        "fullName": "Jhoan Duran",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680742,
+        "fullName": "Jonathan Bowlan",
+        "positions": "P"
+    },
+    {
+        "mlbId": 621237,
+        "fullName": "Jos\u00e9 Alvarado",
+        "positions": "P"
+    },
+    {
+        "mlbId": 702222,
+        "fullName": "Justin Crawford",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 679775,
+        "fullName": "Kyle Backhus",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656941,
+        "fullName": "Kyle Schwarber",
+        "positions": "UT"
+    },
+    {
+        "mlbId": 676661,
+        "fullName": "Max Lazar",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691330,
+        "fullName": "Mois\u00e9s Chace",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676510,
+        "fullName": "Nolan Hoffman",
+        "positions": "P"
+    },
+    {
+        "mlbId": 689147,
+        "fullName": "Orion Kerkering",
+        "positions": "P"
+    },
+    {
+        "mlbId": 805249,
+        "fullName": "Otto Kemp",
+        "positions": "1B, 3B, OF"
+    },
+    {
+        "mlbId": 665561,
+        "fullName": "Rafael March\u00e1n",
+        "positions": "C"
+    },
+    {
+        "mlbId": 686751,
+        "fullName": "Seth Johnson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 672642,
+        "fullName": "Steward Berroa",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 621383,
+        "fullName": "Tanner Banks",
+        "positions": "P"
+    },
+    {
+        "mlbId": 641835,
+        "fullName": "Tim Mayza",
+        "positions": "P"
+    },
+    {
+        "mlbId": 607208,
+        "fullName": "Trea Turner",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 647315,
+        "fullName": "Zach Pop",
+        "positions": "P"
+    },
+    {
+        "mlbId": 554430,
+        "fullName": "Zack Wheeler",
+        "positions": "P"
+    },
+    {
+        "mlbId": 700363,
+        "fullName": "AJ Smith-Shawver",
+        "positions": "P"
+    },
+    {
+        "mlbId": 607481,
+        "fullName": "Aaron Bummer",
+        "positions": "P"
+    },
+    {
+        "mlbId": 683627,
+        "fullName": "Anthony Molina",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663586,
+        "fullName": "Austin Riley",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 693821,
+        "fullName": "Bryce Elder",
+        "positions": "P"
+    },
+    {
+        "mlbId": 519242,
+        "fullName": "Chris Sale",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664849,
+        "fullName": "Danny Young",
+        "positions": "P"
+    },
+    {
+        "mlbId": 678226,
+        "fullName": "Daysbel Hern\u00e1ndez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 800311,
+        "fullName": "Didier Fuentes",
+        "positions": "P"
+    },
+    {
+        "mlbId": 642086,
+        "fullName": "Dominic Smith",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 686948,
+        "fullName": "Drake Baldwin",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 689266,
+        "fullName": "Dylan Dodd",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669276,
+        "fullName": "Dylan Lee",
+        "positions": "P"
+    },
+    {
+        "mlbId": 642201,
+        "fullName": "Eli White",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 656550,
+        "fullName": "Grant Holmes",
+        "positions": "P"
+    },
+    {
+        "mlbId": 673490,
+        "fullName": "Ha-Seong Kim",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 802686,
+        "fullName": "Hayden Harris",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676702,
+        "fullName": "Hunter Stratton",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694462,
+        "fullName": "Hurston Waldrep",
+        "positions": "P"
+    },
+    {
+        "mlbId": 702275,
+        "fullName": "JR Ritchie",
+        "positions": "P"
+    },
+    {
+        "mlbId": 702910,
+        "fullName": "Jhancarlos Lara",
+        "positions": "P"
+    },
+    {
+        "mlbId": 805347,
+        "fullName": "Jim Jarvis",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 641729,
+        "fullName": "Joe Jim\u00e9nez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666214,
+        "fullName": "Joey Wentz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 622761,
+        "fullName": "Jorge Mateo",
+        "positions": "OF, SS"
+    },
+    {
+        "mlbId": 640492,
+        "fullName": "Jos\u00e9 Az\u00f3car",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 571657,
+        "fullName": "Kyle Farmer",
+        "positions": "1B, 2B, 3B, SS, UT"
+    },
+    {
+        "mlbId": 527048,
+        "fullName": "Mart\u00edn P\u00e9rez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 621566,
+        "fullName": "Matt Olson",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 643289,
+        "fullName": "Mauricio Dub\u00f3n",
+        "positions": "2B, 3B, OF, SS"
+    },
+    {
+        "mlbId": 671739,
+        "fullName": "Michael Harris II",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 573262,
+        "fullName": "Mike Yastrzemski",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 805373,
+        "fullName": "Nacho Alvarez Jr.",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 645277,
+        "fullName": "Ozzie Albies",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 628452,
+        "fullName": "Raisel Iglesias",
+        "positions": "P"
+    },
+    {
+        "mlbId": 625643,
+        "fullName": "Reynaldo L\u00f3pez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663158,
+        "fullName": "Robert Suarez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691548,
+        "fullName": "Rolddy Mu\u00f1oz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 660670,
+        "fullName": "Ronald Acu\u00f1a Jr.",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 506702,
+        "fullName": "Sandy Le\u00f3n",
+        "positions": "C"
+    },
+    {
+        "mlbId": 669221,
+        "fullName": "Sean Murphy",
+        "positions": "C"
+    },
+    {
+        "mlbId": 680885,
+        "fullName": "Spencer Schwellenbach",
+        "positions": "P"
+    },
+    {
+        "mlbId": 675911,
+        "fullName": "Spencer Strider",
+        "positions": "P"
+    },
+    {
+        "mlbId": 641755,
+        "fullName": "Tyler Kinley",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682989,
+        "fullName": "Victor Mederos",
+        "positions": "P"
+    },
+    {
+        "mlbId": 643217,
+        "fullName": "Andrew Benintendi",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 641743,
+        "fullName": "Anthony Kay",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669720,
+        "fullName": "Austin Hays",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 685126,
+        "fullName": "Brandon Eisert",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681460,
+        "fullName": "Brooks Baldwin",
+        "positions": "2B, 3B, OF, SS"
+    },
+    {
+        "mlbId": 663542,
+        "fullName": "Bryan Hudson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 805367,
+        "fullName": "Chase Meidroth",
+        "positions": "2B, SS"
+    },
+    {
+        "mlbId": 669684,
+        "fullName": "Chris Murphy",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695657,
+        "fullName": "Colson Montgomery",
+        "positions": "3B, SS"
+    },
+    {
+        "mlbId": 689818,
+        "fullName": "David Sandlin",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663436,
+        "fullName": "Davis Martin",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656537,
+        "fullName": "Derek Hill",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 691011,
+        "fullName": "Drew Romo",
+        "positions": "C"
+    },
+    {
+        "mlbId": 689672,
+        "fullName": "Drew Thorpe",
+        "positions": "P"
+    },
+    {
+        "mlbId": 701474,
+        "fullName": "Duncan Davitt",
+        "positions": "P"
+    },
+    {
+        "mlbId": 700337,
+        "fullName": "Edgar Quero",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 607200,
+        "fullName": "Erick Fedde",
+        "positions": "P"
+    },
+    {
+        "mlbId": 677592,
+        "fullName": "Everson Pereira",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 691799,
+        "fullName": "Grant Taylor",
+        "positions": "P"
+    },
+    {
+        "mlbId": 672284,
+        "fullName": "Jarred Kelenic",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 686563,
+        "fullName": "Jonathan Cannon",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663855,
+        "fullName": "Jordan Hicks",
+        "positions": "P"
+    },
+    {
+        "mlbId": 673929,
+        "fullName": "Jordan Leasure",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681066,
+        "fullName": "Ky Bush",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691019,
+        "fullName": "Kyle Teel",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 682668,
+        "fullName": "Luisangel Acu\u00f1a",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 678246,
+        "fullName": "Miguel Vargas",
+        "positions": "1B, 3B"
+    },
+    {
+        "mlbId": 678024,
+        "fullName": "Mike Vasil",
+        "positions": "P"
+    },
+    {
+        "mlbId": 808959,
+        "fullName": "Munetaka Murakami",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 702273,
+        "fullName": "Noah Schultz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 672860,
+        "fullName": "Prelander Berroa",
+        "positions": "P"
+    },
+    {
+        "mlbId": 545341,
+        "fullName": "Randal Grichuk",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 803011,
+        "fullName": "Sam Antonacci",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 680732,
+        "fullName": "Sean Burke",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656794,
+        "fullName": "Sean Newcomb",
+        "positions": "P"
+    },
+    {
+        "mlbId": 622554,
+        "fullName": "Seranthony Dom\u00ednguez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681343,
+        "fullName": "Shane Smith",
+        "positions": "P"
+    },
+    {
+        "mlbId": 701780,
+        "fullName": "Tanner McDougal",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695020,
+        "fullName": "Tanner Murray",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 670950,
+        "fullName": "Trevor Richards",
+        "positions": "P"
+    },
+    {
+        "mlbId": 671976,
+        "fullName": "Tristan Peters",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 699823,
+        "fullName": "Tyler Davis",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656457,
+        "fullName": "Tyler Gilbert",
+        "positions": "P"
+    },
+    {
+        "mlbId": 805326,
+        "fullName": "Tyler Schweitzer",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682790,
+        "fullName": "Wikelman Gonz\u00e1lez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 800049,
+        "fullName": "Adam Mazur",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682663,
+        "fullName": "Agust\u00edn Ram\u00edrez",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 677053,
+        "fullName": "Andrew Nardi",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669622,
+        "fullName": "Anthony Bender",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687134,
+        "fullName": "Bradley Blalock",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666129,
+        "fullName": "Braxton Garrett",
+        "positions": "P"
+    },
+    {
+        "mlbId": 806188,
+        "fullName": "Cade Gibson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676534,
+        "fullName": "Calvin Faucher",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666624,
+        "fullName": "Christopher Morel",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 681393,
+        "fullName": "Connor Norby",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 690978,
+        "fullName": "Dax Fulton",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691277,
+        "fullName": "Deyvison De Los Santos",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 665923,
+        "fullName": "Esteury Ruiz",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 691587,
+        "fullName": "Eury P\u00e9rez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 688363,
+        "fullName": "Graham Pauley",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 665052,
+        "fullName": "Griffin Conine",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 681715,
+        "fullName": "Heriberto Hern\u00e1ndez",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 805300,
+        "fullName": "Jakob Marsee",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 676083,
+        "fullName": "Janson Junk",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691858,
+        "fullName": "Jared Serna",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 691594,
+        "fullName": "Javier Sanoja",
+        "positions": "2B, 3B, OF, SS"
+    },
+    {
+        "mlbId": 691788,
+        "fullName": "Joe Mack",
+        "positions": "C"
+    },
+    {
+        "mlbId": 667463,
+        "fullName": "John King",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694795,
+        "fullName": "Josh Ekness",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687985,
+        "fullName": "Josh White",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669065,
+        "fullName": "Kyle Stowers",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 669199,
+        "fullName": "Lake Bachar",
+        "positions": "P"
+    },
+    {
+        "mlbId": 677870,
+        "fullName": "Leo Jim\u00e9nez",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 689414,
+        "fullName": "Liam Hicks",
+        "positions": "1B, C, UT"
+    },
+    {
+        "mlbId": 676974,
+        "fullName": "Max Meyer",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691185,
+        "fullName": "Maximo Acosta",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 656848,
+        "fullName": "Michael Petersen",
+        "positions": "P"
+    },
+    {
+        "mlbId": 672640,
+        "fullName": "Otto Lopez",
+        "positions": "2B, SS"
+    },
+    {
+        "mlbId": 683357,
+        "fullName": "Owen Caissie",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 664126,
+        "fullName": "Pete Fairbanks",
+        "positions": "P"
+    },
+    {
+        "mlbId": 702281,
+        "fullName": "Robby Snelling",
+        "positions": "P"
+    },
+    {
+        "mlbId": 678692,
+        "fullName": "Ronny Henriquez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687473,
+        "fullName": "Ryan Gusto",
+        "positions": "P"
+    },
+    {
+        "mlbId": 645261,
+        "fullName": "Sandy Alcantara",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663969,
+        "fullName": "Tyler Phillips",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687531,
+        "fullName": "William Kempner",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669364,
+        "fullName": "Xavier Edwards",
+        "positions": "2B, SS"
+    },
+    {
+        "mlbId": 592450,
+        "fullName": "Aaron Judge",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 642708,
+        "fullName": "Amed Rosario",
+        "positions": "2B, 3B"
+    },
+    {
+        "mlbId": 683409,
+        "fullName": "Angel Chivilli",
+        "positions": "P"
+    },
+    {
+        "mlbId": 683011,
+        "fullName": "Anthony Volpe",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 669224,
+        "fullName": "Austin Wells",
+        "positions": "C"
+    },
+    {
+        "mlbId": 700250,
+        "fullName": "Ben Rice",
+        "positions": "1B, C, UT"
+    },
+    {
+        "mlbId": 694341,
+        "fullName": "Brendan Beck",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687396,
+        "fullName": "Brent Headrick",
+        "positions": "P"
+    },
+    {
+        "mlbId": 693645,
+        "fullName": "Cam Schlittler",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666808,
+        "fullName": "Camilo Doval",
+        "positions": "P"
+    },
+    {
+        "mlbId": 607074,
+        "fullName": "Carlos Rod\u00f3n",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694633,
+        "fullName": "Chase Hampton",
+        "positions": "P"
+    },
+    {
+        "mlbId": 657376,
+        "fullName": "Clarke Schmidt",
+        "positions": "P"
+    },
+    {
+        "mlbId": 641355,
+        "fullName": "Cody Bellinger",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 670280,
+        "fullName": "David Bednar",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695684,
+        "fullName": "Elmer Rodr\u00edguez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 518585,
+        "fullName": "Fernando Cruz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 543037,
+        "fullName": "Gerrit Cole",
+        "positions": "P"
+    },
+    {
+        "mlbId": 519317,
+        "fullName": "Giancarlo Stanton",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 641555,
+        "fullName": "J.C. Escarra",
+        "positions": "C"
+    },
+    {
+        "mlbId": 656234,
+        "fullName": "Jake Bird",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691176,
+        "fullName": "Jasson Dom\u00ednguez",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 665862,
+        "fullName": "Jazz Chisholm Jr.",
+        "positions": "2B, 3B"
+    },
+    {
+        "mlbId": 676609,
+        "fullName": "Jos\u00e9 Caballero",
+        "positions": "2B, 3B, OF, SS"
+    },
+    {
+        "mlbId": 665645,
+        "fullName": "Kervin Castro",
+        "positions": "P"
+    },
+    {
+        "mlbId": 661563,
+        "fullName": "Luis Gil",
+        "positions": "P"
+    },
+    {
+        "mlbId": 608331,
+        "fullName": "Max Fried",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680474,
+        "fullName": "Max Schuemann",
+        "positions": "2B, 3B, SS"
+    },
+    {
+        "mlbId": 665828,
+        "fullName": "Oswaldo Cabrera",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 621112,
+        "fullName": "Paul Blackburn",
+        "positions": "P"
+    },
+    {
+        "mlbId": 502671,
+        "fullName": "Paul Goldschmidt",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 641857,
+        "fullName": "Ryan McMahon",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 677960,
+        "fullName": "Ryan Weathers",
+        "positions": "P"
+    },
+    {
+        "mlbId": 642232,
+        "fullName": "Ryan Yarbrough",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682987,
+        "fullName": "Spencer Jones",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 657612,
+        "fullName": "Tim Hill",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663757,
+        "fullName": "Trent Grisham",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 701542,
+        "fullName": "Will Warren",
+        "positions": "P"
+    },
+    {
+        "mlbId": 660787,
+        "fullName": "Yerry De los Santos",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676879,
+        "fullName": "Aaron Ashby",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682842,
+        "fullName": "Abner Uribe",
+        "positions": "P"
+    },
+    {
+        "mlbId": 668731,
+        "fullName": "Akil Baddoo",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 683734,
+        "fullName": "Andrew Vaughn",
+        "positions": "1B, UT"
+    },
+    {
+        "mlbId": 672582,
+        "fullName": "Angel Zerpa",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663368,
+        "fullName": "Blake Perkins",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 663604,
+        "fullName": "Brandon Lockridge",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 687075,
+        "fullName": "Brandon Sproat",
+        "positions": "P"
+    },
+    {
+        "mlbId": 605540,
+        "fullName": "Brandon Woodruff",
+        "positions": "P"
+    },
+    {
+        "mlbId": 702153,
+        "fullName": "Brian Fitzpatrick",
+        "positions": "P"
+    },
+    {
+        "mlbId": 668930,
+        "fullName": "Brice Turang",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 692230,
+        "fullName": "Carlos Rodriguez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694477,
+        "fullName": "Chad Patrick",
+        "positions": "P"
+    },
+    {
+        "mlbId": 592885,
+        "fullName": "Christian Yelich",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 689441,
+        "fullName": "Coleman Crow",
+        "positions": "P"
+    },
+    {
+        "mlbId": 806198,
+        "fullName": "Cooper Pratt",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 684974,
+        "fullName": "Craig Yoho",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669084,
+        "fullName": "DL Hall",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666152,
+        "fullName": "David Hamilton",
+        "positions": "2B, SS"
+    },
+    {
+        "mlbId": 668834,
+        "fullName": "Easton McGee",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669003,
+        "fullName": "Garrett Mitchell",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 596142,
+        "fullName": "Gary S\u00e1nchez",
+        "positions": "C"
+    },
+    {
+        "mlbId": 681982,
+        "fullName": "Grant Anderson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694192,
+        "fullName": "Jackson Chourio",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 694819,
+        "fullName": "Jacob Misiorowski",
+        "positions": "P"
+    },
+    {
+        "mlbId": 641343,
+        "fullName": "Jake Bauers",
+        "positions": "1B, OF"
+    },
+    {
+        "mlbId": 663765,
+        "fullName": "Jake Woodford",
+        "positions": "P"
+    },
+    {
+        "mlbId": 657649,
+        "fullName": "Jared Koenig",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691620,
+        "fullName": "Jeferson Quero",
+        "positions": "C"
+    },
+    {
+        "mlbId": 687401,
+        "fullName": "Joey Ortiz",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 690986,
+        "fullName": "Kyle Harrison",
+        "positions": "P"
+    },
+    {
+        "mlbId": 701656,
+        "fullName": "Logan Henderson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 650859,
+        "fullName": "Luis Rengifo",
+        "positions": "2B, 3B"
+    },
+    {
+        "mlbId": 682990,
+        "fullName": "Quinn Priester",
+        "positions": "P"
+    },
+    {
+        "mlbId": 642239,
+        "fullName": "Rob Zastryzny",
+        "positions": "P"
+    },
+    {
+        "mlbId": 688107,
+        "fullName": "Robert Gasser",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686217,
+        "fullName": "Sal Frelick",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 675660,
+        "fullName": "Shane Drohan",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656730,
+        "fullName": "Trevor Megill",
+        "positions": "P"
+    },
+    {
+        "mlbId": 672012,
+        "fullName": "Tyler Black",
+        "positions": "DH"
+    },
+    {
+        "mlbId": 661388,
+        "fullName": "William Contreras",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 624428,
+        "fullName": "Adam Frazier",
+        "positions": "2B, OF"
+    },
+    {
+        "mlbId": 666201,
+        "fullName": "Alek Manoah",
+        "positions": "P"
+    },
+    {
+        "mlbId": 543685,
+        "fullName": "Anthony Rendon",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 690829,
+        "fullName": "Ben Joyce",
+        "positions": "P"
+    },
+    {
+        "mlbId": 608718,
+        "fullName": "Brent Suter",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669326,
+        "fullName": "Bryce Teodosio",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 702674,
+        "fullName": "Caden Dana",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681217,
+        "fullName": "Chase Silseth",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695681,
+        "fullName": "Christian Moore",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 694203,
+        "fullName": "Denzer Guzman",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 519141,
+        "fullName": "Drew Pomeranz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691946,
+        "fullName": "George Klassen",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680570,
+        "fullName": "Grayson Rodriguez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686799,
+        "fullName": "Jack Kochanowicz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666176,
+        "fullName": "Jo Adell",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 624585,
+        "fullName": "Jorge Soler",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 820862,
+        "fullName": "Jos\u00e9 Fermin",
+        "positions": "P"
+    },
+    {
+        "mlbId": 667755,
+        "fullName": "Jos\u00e9 Soriano",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666139,
+        "fullName": "Josh Lowe",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 489446,
+        "fullName": "Kirby Yates",
+        "positions": "P"
+    },
+    {
+        "mlbId": 677347,
+        "fullName": "Kyren Paris",
+        "positions": "2B, OF"
+    },
+    {
+        "mlbId": 681351,
+        "fullName": "Logan O'Hoppe",
+        "positions": "C"
+    },
+    {
+        "mlbId": 683090,
+        "fullName": "Matthew Lugo",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 545361,
+        "fullName": "Mike Trout",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 815083,
+        "fullName": "Mitch Farris",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694384,
+        "fullName": "Nolan Schanuel",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 683079,
+        "fullName": "Omar Martinez",
+        "positions": "C"
+    },
+    {
+        "mlbId": 672724,
+        "fullName": "Oswald Peraza",
+        "positions": "1B, 2B, 3B, SS"
+    },
+    {
+        "mlbId": 672282,
+        "fullName": "Reid Detmers",
+        "positions": "P"
+    },
+    {
+        "mlbId": 596112,
+        "fullName": "Robert Stephenson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 696270,
+        "fullName": "Ryan Johnson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666171,
+        "fullName": "Ryan Zeferjahn",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691951,
+        "fullName": "Sam Aldegheri",
+        "positions": "P"
+    },
+    {
+        "mlbId": 696147,
+        "fullName": "Sam Bachman",
+        "positions": "P"
+    },
+    {
+        "mlbId": 665861,
+        "fullName": "Sebasti\u00e1n Rivero",
+        "positions": "C"
+    },
+    {
+        "mlbId": 642048,
+        "fullName": "Tayler Saucedo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 518595,
+        "fullName": "Travis d'Arnaud",
+        "positions": "C"
+    },
+    {
+        "mlbId": 687093,
+        "fullName": "Vaughn Grissom",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 700712,
+        "fullName": "Walbert Ure\u00f1a",
+        "positions": "P"
+    },
+    {
+        "mlbId": 660162,
+        "fullName": "Yo\u00e1n Moncada",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 579328,
+        "fullName": "Yusei Kikuchi",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687263,
+        "fullName": "Zach Neto",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 640462,
+        "fullName": "A.J. Puk",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680728,
+        "fullName": "Adrian Del Castillo",
+        "positions": "UT"
+    },
+    {
+        "mlbId": 694851,
+        "fullName": "Andrew Hoffmann",
+        "positions": "P"
+    },
+    {
+        "mlbId": 685314,
+        "fullName": "Andrew Saalfrank",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686796,
+        "fullName": "Blake Walston",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694297,
+        "fullName": "Brandon Pfaadt",
+        "positions": "P"
+    },
+    {
+        "mlbId": 805299,
+        "fullName": "Brandyn Garcia",
+        "positions": "P"
+    },
+    {
+        "mlbId": 467793,
+        "fullName": "Carlos Santana",
+        "positions": "1B, UT"
+    },
+    {
+        "mlbId": 669203,
+        "fullName": "Corbin Burnes",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682998,
+        "fullName": "Corbin Carroll",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 691441,
+        "fullName": "Cristian Mena",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686753,
+        "fullName": "Drey Jameson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691009,
+        "fullName": "Dylan Ray",
+        "positions": "P"
+    },
+    {
+        "mlbId": 593958,
+        "fullName": "Eduardo Rodriguez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 672515,
+        "fullName": "Gabriel Moreno",
+        "positions": "C"
+    },
+    {
+        "mlbId": 672695,
+        "fullName": "Geraldo Perdomo",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 545121,
+        "fullName": "Ildemaro Vargas",
+        "positions": "1B, 2B"
+    },
+    {
+        "mlbId": 543510,
+        "fullName": "James McCann",
+        "positions": "C"
+    },
+    {
+        "mlbId": 642528,
+        "fullName": "Jonathan Lo\u00e1isiga",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691783,
+        "fullName": "Jordan Lawlar",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 678489,
+        "fullName": "Jorge Barrosa",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 699912,
+        "fullName": "Jose Fernandez",
+        "positions": "DH"
+    },
+    {
+        "mlbId": 686228,
+        "fullName": "Juan Burgos",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666661,
+        "fullName": "Juan Morillo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 679885,
+        "fullName": "Justin Martinez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669704,
+        "fullName": "Kade Strowd",
+        "positions": "P"
+    },
+    {
+        "mlbId": 606466,
+        "fullName": "Ketel Marte",
+        "positions": "2B, UT"
+    },
+    {
+        "mlbId": 656464,
+        "fullName": "Kevin Ginkel",
+        "positions": "P"
+    },
+    {
+        "mlbId": 684442,
+        "fullName": "Kohl Drake",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666971,
+        "fullName": "Lourdes Gurriel Jr.",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 518876,
+        "fullName": "Merrill Kelly",
+        "positions": "P"
+    },
+    {
+        "mlbId": 647336,
+        "fullName": "Michael Soroka",
+        "positions": "P"
+    },
+    {
+        "mlbId": 683352,
+        "fullName": "Mitch Bratt",
+        "positions": "P"
+    },
+    {
+        "mlbId": 571448,
+        "fullName": "Nolan Arenado",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 623149,
+        "fullName": "Paul Sewald",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656976,
+        "fullName": "Pavin Smith",
+        "positions": "1B, UT"
+    },
+    {
+        "mlbId": 691769,
+        "fullName": "Philip Abner",
+        "positions": "P"
+    },
+    {
+        "mlbId": 657044,
+        "fullName": "Ryan Thompson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 814439,
+        "fullName": "Ryan Waldschmidt",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 669194,
+        "fullName": "Ryne Nelson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664199,
+        "fullName": "Taylor Clarke",
+        "positions": "P"
+    },
+    {
+        "mlbId": 688497,
+        "fullName": "Taylor Rashi",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694374,
+        "fullName": "Tim Tawa",
+        "positions": "1B, 2B, OF"
+    },
+    {
+        "mlbId": 682988,
+        "fullName": "Tyler Locklear",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 700270,
+        "fullName": "Yilber D\u00edaz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 668678,
+        "fullName": "Zac Gallen",
+        "positions": "P"
+    },
+    {
+        "mlbId": 668939,
+        "fullName": "Adley Rutschman",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 552640,
+        "fullName": "Andrew Kittredge",
+        "positions": "P"
+    },
+    {
+        "mlbId": 689296,
+        "fullName": "Anthony Nunez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 677942,
+        "fullName": "Blaze Alexander",
+        "positions": "2B, 3B"
+    },
+    {
+        "mlbId": 687064,
+        "fullName": "Brandon Young",
+        "positions": "P"
+    },
+    {
+        "mlbId": 700249,
+        "fullName": "Cade Povich",
+        "positions": "P"
+    },
+    {
+        "mlbId": 671382,
+        "fullName": "Cameron Foster",
+        "positions": "P"
+    },
+    {
+        "mlbId": 605135,
+        "fullName": "Chris Bassitt",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687952,
+        "fullName": "Christian Encarnacion-Strand",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 691723,
+        "fullName": "Coby Mayo",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 681882,
+        "fullName": "Colin Selby",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681297,
+        "fullName": "Colton Cowser",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 665152,
+        "fullName": "Dean Kremer",
+        "positions": "P"
+    },
+    {
+        "mlbId": 608650,
+        "fullName": "Dietrich Enns",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687637,
+        "fullName": "Dylan Beavers",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 674384,
+        "fullName": "Eduarniel N\u00fa\u00f1ez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 642585,
+        "fullName": "F\u00e9lix Bautista",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664991,
+        "fullName": "Grant Wolfram",
+        "positions": "P"
+    },
+    {
+        "mlbId": 683002,
+        "fullName": "Gunnar Henderson",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 677008,
+        "fullName": "Heston Kjerstad",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 702616,
+        "fullName": "Jackson Holliday",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 669236,
+        "fullName": "Jeremiah Jackson",
+        "positions": "3B, OF"
+    },
+    {
+        "mlbId": 671286,
+        "fullName": "Johnathan Rodr\u00edguez",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 676059,
+        "fullName": "Jordan Westburg",
+        "positions": "2B, 3B, UT"
+    },
+    {
+        "mlbId": 664744,
+        "fullName": "Jose Espada",
+        "positions": "P"
+    },
+    {
+        "mlbId": 677020,
+        "fullName": "Josh Walker",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669211,
+        "fullName": "Keegan Akin",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680694,
+        "fullName": "Kyle Bradish",
+        "positions": "P"
+    },
+    {
+        "mlbId": 665750,
+        "fullName": "Leody Taveras",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 668974,
+        "fullName": "Maverick Handley",
+        "positions": "C"
+    },
+    {
+        "mlbId": 675919,
+        "fullName": "Nick Raquet",
+        "positions": "P"
+    },
+    {
+        "mlbId": 624413,
+        "fullName": "Pete Alonso",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 701655,
+        "fullName": "Reed Trimble",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 670329,
+        "fullName": "Rico Garcia",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664854,
+        "fullName": "Ryan Helsley",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663624,
+        "fullName": "Ryan Mountcastle",
+        "positions": "1B, UT"
+    },
+    {
+        "mlbId": 694212,
+        "fullName": "Samuel Basallo",
+        "positions": "C"
+    },
+    {
+        "mlbId": 669358,
+        "fullName": "Shane Baz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 621493,
+        "fullName": "Taylor Ward",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 669432,
+        "fullName": "Trevor Rogers",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694346,
+        "fullName": "Trey Gibson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 641933,
+        "fullName": "Tyler O'Neill",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 669330,
+        "fullName": "Tyler Wells",
+        "positions": "P"
+    },
+    {
+        "mlbId": 642215,
+        "fullName": "Weston Wilson",
+        "positions": "2B, OF"
+    },
+    {
+        "mlbId": 682274,
+        "fullName": "Yaramil Hiraldo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666974,
+        "fullName": "Yennier Cano",
+        "positions": "P"
+    },
+    {
+        "mlbId": 621107,
+        "fullName": "Zach Eflin",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687941,
+        "fullName": "Alec Gamboa",
+        "positions": "P"
+    },
+    {
+        "mlbId": 655316,
+        "fullName": "Andruw Monasterio",
+        "positions": "1B, 2B, SS"
+    },
+    {
+        "mlbId": 678011,
+        "fullName": "Anthony Seigler",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 547973,
+        "fullName": "Aroldis Chapman",
+        "positions": "P"
+    },
+    {
+        "mlbId": 678394,
+        "fullName": "Brayan Bello",
+        "positions": "P"
+    },
+    {
+        "mlbId": 702332,
+        "fullName": "Caleb Durbin",
+        "positions": "2B, 3B"
+    },
+    {
+        "mlbId": 665966,
+        "fullName": "Carlos Narv\u00e1ez",
+        "positions": "C"
+    },
+    {
+        "mlbId": 678882,
+        "fullName": "Ceddanne Rafaela",
+        "positions": "2B, OF"
+    },
+    {
+        "mlbId": 813349,
+        "fullName": "Connelly Early",
+        "positions": "P"
+    },
+    {
+        "mlbId": 657136,
+        "fullName": "Connor Wong",
+        "positions": "C"
+    },
+    {
+        "mlbId": 543056,
+        "fullName": "Danny Coulombe",
+        "positions": "P"
+    },
+    {
+        "mlbId": 700842,
+        "fullName": "Eduardo Rivera",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676979,
+        "fullName": "Garrett Crochet",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676477,
+        "fullName": "Garrett Whitlock",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669711,
+        "fullName": "Greg Weissert",
+        "positions": "P"
+    },
+    {
+        "mlbId": 643396,
+        "fullName": "Isiah Kiner-Falefa",
+        "positions": "2B, 3B, SS"
+    },
+    {
+        "mlbId": 681252,
+        "fullName": "Jack Anderson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687562,
+        "fullName": "Jake Bennett",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680776,
+        "fullName": "Jarren Duran",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 670912,
+        "fullName": "Johan Oviedo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663558,
+        "fullName": "Jovani Mor\u00e1n",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686580,
+        "fullName": "Justin Slaten",
+        "positions": "P"
+    },
+    {
+        "mlbId": 692225,
+        "fullName": "Kristian Campbell",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 676710,
+        "fullName": "Kutter Crawford",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691785,
+        "fullName": "Marcelo Mayer",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 807799,
+        "fullName": "Masataka Yoshida",
+        "positions": "UT"
+    },
+    {
+        "mlbId": 681508,
+        "fullName": "Mickey Gasper",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 681987,
+        "fullName": "Nate Eaton",
+        "positions": "3B, OF"
+    },
+    {
+        "mlbId": 686765,
+        "fullName": "Nick Sogard",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 663776,
+        "fullName": "Patrick Sandoval",
+        "positions": "P"
+    },
+    {
+        "mlbId": 801139,
+        "fullName": "Payton Tolle",
+        "positions": "P"
+    },
+    {
+        "mlbId": 624133,
+        "fullName": "Ranger Suarez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 701350,
+        "fullName": "Roman Anthony",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 663853,
+        "fullName": "Romy Gonzalez",
+        "positions": "1B, 2B"
+    },
+    {
+        "mlbId": 670245,
+        "fullName": "Ryan Watson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 543243,
+        "fullName": "Sonny Gray",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656557,
+        "fullName": "Tanner Houck",
+        "positions": "P"
+    },
+    {
+        "mlbId": 596115,
+        "fullName": "Trevor Story",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 671213,
+        "fullName": "Triston Casas",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 691907,
+        "fullName": "Tsung-Che Cheng",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 701719,
+        "fullName": "Tyler Samaniego",
+        "positions": "P"
+    },
+    {
+        "mlbId": 700413,
+        "fullName": "Tyler Uberstine",
+        "positions": "P"
+    },
+    {
+        "mlbId": 575929,
+        "fullName": "Willson Contreras",
+        "positions": "1B, UT"
+    },
+    {
+        "mlbId": 677800,
+        "fullName": "Wilyer Abreu",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 677161,
+        "fullName": "Zack Kelly",
+        "positions": "P"
+    },
+    {
+        "mlbId": 608324,
+        "fullName": "Alex Bregman",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 676962,
+        "fullName": "Ben Brown",
+        "positions": "P"
+    },
+    {
+        "mlbId": 690990,
+        "fullName": "Cade Horton",
+        "positions": "P"
+    },
+    {
+        "mlbId": 573204,
+        "fullName": "Caleb Thielbar",
+        "positions": "P"
+    },
+    {
+        "mlbId": 608348,
+        "fullName": "Carson Kelly",
+        "positions": "C"
+    },
+    {
+        "mlbId": 607067,
+        "fullName": "Colin Rea",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694037,
+        "fullName": "Daniel Palencia",
+        "positions": "P"
+    },
+    {
+        "mlbId": 621020,
+        "fullName": "Dansby Swanson",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 680951,
+        "fullName": "Doug Nikhazy",
+        "positions": "P"
+    },
+    {
+        "mlbId": 665795,
+        "fullName": "Edward Cabrera",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681799,
+        "fullName": "Ethan Roberts",
+        "positions": "P"
+    },
+    {
+        "mlbId": 668970,
+        "fullName": "Gavin Hollowell",
+        "positions": "P"
+    },
+    {
+        "mlbId": 571948,
+        "fullName": "Hoby Milner",
+        "positions": "P"
+    },
+    {
+        "mlbId": 640451,
+        "fullName": "Hunter Harvey",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664023,
+        "fullName": "Ian Happ",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 657097,
+        "fullName": "Jacob Webb",
+        "positions": "P"
+    },
+    {
+        "mlbId": 701649,
+        "fullName": "James Triantos",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 592791,
+        "fullName": "Jameson Taillon",
+        "positions": "P"
+    },
+    {
+        "mlbId": 665871,
+        "fullName": "Javier Assad",
+        "positions": "P"
+    },
+    {
+        "mlbId": 696136,
+        "fullName": "Jordan Wicks",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681909,
+        "fullName": "Justin Dean",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 657006,
+        "fullName": "Justin Steele",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682634,
+        "fullName": "Kevin Alc\u00e1ntara",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 678821,
+        "fullName": "Luis Peralta",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681432,
+        "fullName": "Luke Little",
+        "positions": "P"
+    },
+    {
+        "mlbId": 807713,
+        "fullName": "Matt Shaw",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 571510,
+        "fullName": "Matthew Boyd",
+        "positions": "P"
+    },
+    {
+        "mlbId": 683737,
+        "fullName": "Michael Busch",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 624424,
+        "fullName": "Michael Conforto",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 665804,
+        "fullName": "Miguel Amaya",
+        "positions": "C"
+    },
+    {
+        "mlbId": 694208,
+        "fullName": "Mois\u00e9s Ballesteros",
+        "positions": "UT"
+    },
+    {
+        "mlbId": 670032,
+        "fullName": "Nicky Lopez",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 663538,
+        "fullName": "Nico Hoerner",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 699393,
+        "fullName": "Pedro Ram\u00edrez",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 691718,
+        "fullName": "Pete Crow-Armstrong",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 664208,
+        "fullName": "Phil Maton",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687863,
+        "fullName": "Porter Hodge",
+        "positions": "P"
+    },
+    {
+        "mlbId": 702303,
+        "fullName": "Riley Martin",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669020,
+        "fullName": "Ryan Rolison",
+        "positions": "P"
+    },
+    {
+        "mlbId": 673548,
+        "fullName": "Seiya Suzuki",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 571946,
+        "fullName": "Shelby Miller",
+        "positions": "P"
+    },
+    {
+        "mlbId": 684007,
+        "fullName": "Shota Imanaga",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663423,
+        "fullName": "Trent Thornton",
+        "positions": "P"
+    },
+    {
+        "mlbId": 592122,
+        "fullName": "Tyler Austin",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 621053,
+        "fullName": "Tyler Ferguson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 671096,
+        "fullName": "Andrew Abbott",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694362,
+        "fullName": "Blake Dunn",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 663903,
+        "fullName": "Brady Singer",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682227,
+        "fullName": "Brandon Williamson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656271,
+        "fullName": "Brock Burke",
+        "positions": "P"
+    },
+    {
+        "mlbId": 657571,
+        "fullName": "Caleb Ferguson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695505,
+        "fullName": "Chase Burns",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695534,
+        "fullName": "Chase Petty",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663978,
+        "fullName": "Chris Paddack",
+        "positions": "P"
+    },
+    {
+        "mlbId": 683175,
+        "fullName": "Connor Phillips",
+        "positions": "P"
+    },
+    {
+        "mlbId": 667472,
+        "fullName": "Dane Myers",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 695490,
+        "fullName": "Edwin Arroyo",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 682829,
+        "fullName": "Elly De La Cruz",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 641941,
+        "fullName": "Emilio Pag\u00e1n",
+        "positions": "P"
+    },
+    {
+        "mlbId": 553993,
+        "fullName": "Eugenio Su\u00e1rez",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 668933,
+        "fullName": "Graham Ashcraft",
+        "positions": "P"
+    },
+    {
+        "mlbId": 699302,
+        "fullName": "H\u00e9ctor Rodr\u00edguez",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 668881,
+        "fullName": "Hunter Greene",
+        "positions": "P"
+    },
+    {
+        "mlbId": 668709,
+        "fullName": "JJ Bleday",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 683742,
+        "fullName": "Jose Franco",
+        "positions": "P"
+    },
+    {
+        "mlbId": 624431,
+        "fullName": "Jose Trevino",
+        "positions": "C"
+    },
+    {
+        "mlbId": 687924,
+        "fullName": "Julian Aguiar",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663647,
+        "fullName": "Ke'Bryan Hayes",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 693312,
+        "fullName": "Kyle Nicolas",
+        "positions": "P"
+    },
+    {
+        "mlbId": 699114,
+        "fullName": "Leo Balcazar",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 682825,
+        "fullName": "Luis Mey",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680574,
+        "fullName": "Matt McLain",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 663993,
+        "fullName": "Nathaniel Lowe",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 666157,
+        "fullName": "Nick Lodolo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682622,
+        "fullName": "Noelvi Marte",
+        "positions": "3B, OF"
+    },
+    {
+        "mlbId": 572955,
+        "fullName": "Pierce Johnson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 677956,
+        "fullName": "Rece Hinds",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 695076,
+        "fullName": "Rhett Lowder",
+        "positions": "P"
+    },
+    {
+        "mlbId": 701398,
+        "fullName": "Sal Stewart",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 594580,
+        "fullName": "Sam Moll",
+        "positions": "P"
+    },
+    {
+        "mlbId": 668715,
+        "fullName": "Spencer Steer",
+        "positions": "1B, OF, UT"
+    },
+    {
+        "mlbId": 670770,
+        "fullName": "TJ Friedl",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 622088,
+        "fullName": "Tejay Antone",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663574,
+        "fullName": "Tony Santillan",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663886,
+        "fullName": "Tyler Stephenson",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 666181,
+        "fullName": "Will Benson",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 687209,
+        "fullName": "Zach Maxwell",
+        "positions": "P"
+    },
+    {
+        "mlbId": 689958,
+        "fullName": "Andrew Walters",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694197,
+        "fullName": "Angel Genao",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 682657,
+        "fullName": "Angel Mart\u00ednez",
+        "positions": "2B, OF"
+    },
+    {
+        "mlbId": 595978,
+        "fullName": "Austin Hedges",
+        "positions": "C"
+    },
+    {
+        "mlbId": 804926,
+        "fullName": "Austin Peterson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666310,
+        "fullName": "Bo Naylor",
+        "positions": "C"
+    },
+    {
+        "mlbId": 677587,
+        "fullName": "Brayan Rocchio",
+        "positions": "2B, SS"
+    },
+    {
+        "mlbId": 692216,
+        "fullName": "CJ Kayfus",
+        "positions": "1B, OF"
+    },
+    {
+        "mlbId": 671922,
+        "fullName": "Cade Smith",
+        "positions": "P"
+    },
+    {
+        "mlbId": 800050,
+        "fullName": "Chase DeLauter",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 676051,
+        "fullName": "Codi Heuer",
+        "positions": "P"
+    },
+    {
+        "mlbId": 670059,
+        "fullName": "Colin Holderman",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682982,
+        "fullName": "Daniel Espino",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682177,
+        "fullName": "Daniel Schneemann",
+        "positions": "2B, 3B, OF, SS"
+    },
+    {
+        "mlbId": 681807,
+        "fullName": "David Fry",
+        "positions": "UT"
+    },
+    {
+        "mlbId": 681870,
+        "fullName": "Erik Sabrowski",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680916,
+        "fullName": "Franco Aleman",
+        "positions": "P"
+    },
+    {
+        "mlbId": 672356,
+        "fullName": "Gabriel Arias",
+        "positions": "2B, SS"
+    },
+    {
+        "mlbId": 668909,
+        "fullName": "Gavin Williams",
+        "positions": "P"
+    },
+    {
+        "mlbId": 671655,
+        "fullName": "George Valera",
+        "positions": "UT"
+    },
+    {
+        "mlbId": 683769,
+        "fullName": "Hunter Gaddis",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676282,
+        "fullName": "Joey Cantillo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 608070,
+        "fullName": "Jos\u00e9 Ram\u00edrez",
+        "positions": "3B, UT"
+    },
+    {
+        "mlbId": 682877,
+        "fullName": "Juan Brito",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 696135,
+        "fullName": "Kahlil Watson",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 700932,
+        "fullName": "Kyle Manzardo",
+        "positions": "1B, UT"
+    },
+    {
+        "mlbId": 671106,
+        "fullName": "Logan Allen",
+        "positions": "P"
+    },
+    {
+        "mlbId": 670036,
+        "fullName": "Matt Festa",
+        "positions": "P"
+    },
+    {
+        "mlbId": 800048,
+        "fullName": "Parker Messick",
+        "positions": "P"
+    },
+    {
+        "mlbId": 672275,
+        "fullName": "Patrick Bailey",
+        "positions": "C"
+    },
+    {
+        "mlbId": 690984,
+        "fullName": "Petey Halpin",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 688883,
+        "fullName": "Peyton Pallette",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656555,
+        "fullName": "Rhys Hoskins",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 542888,
+        "fullName": "Shawn Armstrong",
+        "positions": "P"
+    },
+    {
+        "mlbId": 677944,
+        "fullName": "Slade Cecconi",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680757,
+        "fullName": "Steven Kwan",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 676440,
+        "fullName": "Tanner Bibee",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682120,
+        "fullName": "Tim Herrin",
+        "positions": "P"
+    },
+    {
+        "mlbId": 683953,
+        "fullName": "Travis Bazzana",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 691414,
+        "fullName": "Yorman G\u00f3mez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691182,
+        "fullName": "Adael Amador",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 622608,
+        "fullName": "Antonio Senzatela",
+        "positions": "P"
+    },
+    {
+        "mlbId": 688760,
+        "fullName": "Blaine Crim",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 680604,
+        "fullName": "Blas Casta\u00f1o",
+        "positions": "P"
+    },
+    {
+        "mlbId": 690924,
+        "fullName": "Braxton Fulford",
+        "positions": "C"
+    },
+    {
+        "mlbId": 657514,
+        "fullName": "Brennan Bernardino",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686668,
+        "fullName": "Brenton Doyle",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 664954,
+        "fullName": "Brett Sullivan",
+        "positions": "C"
+    },
+    {
+        "mlbId": 687223,
+        "fullName": "Carson Palmquist",
+        "positions": "P"
+    },
+    {
+        "mlbId": 801403,
+        "fullName": "Chase Dollander",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666397,
+        "fullName": "Edouard Julien",
+        "positions": "1B, 2B, UT"
+    },
+    {
+        "mlbId": 678662,
+        "fullName": "Ezequiel Tovar",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 687312,
+        "fullName": "Gabriel Hughes",
+        "positions": "P"
+    },
+    {
+        "mlbId": 696100,
+        "fullName": "Hunter Goodman",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 677955,
+        "fullName": "Jaden Hill",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664983,
+        "fullName": "Jake McCarthy",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 676105,
+        "fullName": "Jeff Criswell",
+        "positions": "P"
+    },
+    {
+        "mlbId": 623474,
+        "fullName": "Jimmy Herget",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687597,
+        "fullName": "Jordan Beck",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 500779,
+        "fullName": "Jose Quintana",
+        "positions": "P"
+    },
+    {
+        "mlbId": 675848,
+        "fullName": "Juan Mejia",
+        "positions": "P"
+    },
+    {
+        "mlbId": 592178,
+        "fullName": "Kris Bryant",
+        "positions": "UT"
+    },
+    {
+        "mlbId": 607536,
+        "fullName": "Kyle Freeland",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691720,
+        "fullName": "Kyle Karros",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 685326,
+        "fullName": "McCade Brown",
+        "positions": "P"
+    },
+    {
+        "mlbId": 547179,
+        "fullName": "Michael Lorenzen",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666160,
+        "fullName": "Mickey Moniak",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 701487,
+        "fullName": "Pierson Ohl",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663372,
+        "fullName": "Ryan Feltner",
+        "positions": "P"
+    },
+    {
+        "mlbId": 690022,
+        "fullName": "Ryan Ritter",
+        "positions": "2B, SS"
+    },
+    {
+        "mlbId": 671111,
+        "fullName": "Sammy Peralta",
+        "positions": "P"
+    },
+    {
+        "mlbId": 678020,
+        "fullName": "Seth Halvorsen",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694514,
+        "fullName": "Sterlin Thompson",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 681198,
+        "fullName": "TJ Rumfield",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 685299,
+        "fullName": "Tanner Gordon",
+        "positions": "P"
+    },
+    {
+        "mlbId": 608372,
+        "fullName": "Tomoyuki Sugano",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687859,
+        "fullName": "Troy Johnston",
+        "positions": "1B, OF"
+    },
+    {
+        "mlbId": 671289,
+        "fullName": "Tyler Freeman",
+        "positions": "2B, OF, UT"
+    },
+    {
+        "mlbId": 678368,
+        "fullName": "Valente Bellozo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680767,
+        "fullName": "Victor Vodnik",
+        "positions": "P"
+    },
+    {
+        "mlbId": 700327,
+        "fullName": "Welinton Herrera",
+        "positions": "P"
+    },
+    {
+        "mlbId": 650489,
+        "fullName": "Willi Castro",
+        "positions": "2B, 3B, OF"
+    },
+    {
+        "mlbId": 691728,
+        "fullName": "Zac Veen",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 688642,
+        "fullName": "Zach Agnos",
+        "positions": "P"
+    },
+    {
+        "mlbId": 690544,
+        "fullName": "Bailey Horn",
+        "positions": "P"
+    },
+    {
+        "mlbId": 689225,
+        "fullName": "Beau Brieske",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676428,
+        "fullName": "Brant Hurter",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669724,
+        "fullName": "Brenan Hanifee",
+        "positions": "P"
+    },
+    {
+        "mlbId": 572143,
+        "fullName": "Burch Smith",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663554,
+        "fullName": "Casey Mize",
+        "positions": "P"
+    },
+    {
+        "mlbId": 690993,
+        "fullName": "Colt Keith",
+        "positions": "1B, 2B, 3B, UT"
+    },
+    {
+        "mlbId": 657756,
+        "fullName": "Connor Seabold",
+        "positions": "P"
+    },
+    {
+        "mlbId": 693307,
+        "fullName": "Dillon Dingler",
+        "positions": "C"
+    },
+    {
+        "mlbId": 623454,
+        "fullName": "Drew Anderson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 805427,
+        "fullName": "Drew Sommers",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680664,
+        "fullName": "Eduardo Valencia",
+        "positions": "C"
+    },
+    {
+        "mlbId": 646241,
+        "fullName": "Enmanuel De Jesus",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664285,
+        "fullName": "Framber Valdez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669398,
+        "fullName": "Gage Workman",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 650402,
+        "fullName": "Gleyber Torres",
+        "positions": "2B, UT"
+    },
+    {
+        "mlbId": 701678,
+        "fullName": "Hao-Yu  Lee",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 690291,
+        "fullName": "Jace Jung",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 656427,
+        "fullName": "Jack Flaherty",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695549,
+        "fullName": "Jackson Jobe",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663330,
+        "fullName": "Jahmai Jones",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 805725,
+        "fullName": "Jake Miller",
+        "positions": "P"
+    },
+    {
+        "mlbId": 668670,
+        "fullName": "Jake Rogers",
+        "positions": "C"
+    },
+    {
+        "mlbId": 595879,
+        "fullName": "Javier B\u00e1ez",
+        "positions": "2B, 3B, OF, SS"
+    },
+    {
+        "mlbId": 434378,
+        "fullName": "Justin Verlander",
+        "positions": "P"
+    },
+    {
+        "mlbId": 672456,
+        "fullName": "Keider Montero",
+        "positions": "P"
+    },
+    {
+        "mlbId": 445276,
+        "fullName": "Kenley Jansen",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681481,
+        "fullName": "Kerry Carpenter",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 805808,
+        "fullName": "Kevin McGonigle",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 640448,
+        "fullName": "Kyle Finnegan",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663837,
+        "fullName": "Matt Vierling",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 678009,
+        "fullName": "Parker Meadows",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 681857,
+        "fullName": "Reese Olson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676568,
+        "fullName": "Ricky Vanasco",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682985,
+        "fullName": "Riley Greene",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 687830,
+        "fullName": "Sawyer Gipson-Long",
+        "positions": "P"
+    },
+    {
+        "mlbId": 679529,
+        "fullName": "Spencer Torkelson",
+        "positions": "1B, UT"
+    },
+    {
+        "mlbId": 669373,
+        "fullName": "Tarik Skubal",
+        "positions": "P"
+    },
+    {
+        "mlbId": 699073,
+        "fullName": "Thayron Liranzo",
+        "positions": "C"
+    },
+    {
+        "mlbId": 669360,
+        "fullName": "Trei Cruz",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 700242,
+        "fullName": "Trey Sweeney",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 675512,
+        "fullName": "Troy Melton",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680744,
+        "fullName": "Ty Madden",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663947,
+        "fullName": "Tyler Holton",
+        "positions": "P"
+    },
+    {
+        "mlbId": 672761,
+        "fullName": "Wenceel P\u00e9rez",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 676684,
+        "fullName": "Will Vest",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656716,
+        "fullName": "Zach McKinstry",
+        "positions": "3B, OF, SS"
+    },
+    {
+        "mlbId": 670097,
+        "fullName": "Zack Short",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 805123,
+        "fullName": "AJ Blubaugh",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656986,
+        "fullName": "Bennett Sousa",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669699,
+        "fullName": "Braden Shewmake",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 687888,
+        "fullName": "Brandon Walter",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694728,
+        "fullName": "Brice Matthews",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 650556,
+        "fullName": "Bryan Abreu",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687911,
+        "fullName": "Bryan King",
+        "positions": "P"
+    },
+    {
+        "mlbId": 701358,
+        "fullName": "Cam Smith",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 621043,
+        "fullName": "Carlos Correa",
+        "positions": "3B, SS"
+    },
+    {
+        "mlbId": 663967,
+        "fullName": "C\u00e9sar Salazar",
+        "positions": "C"
+    },
+    {
+        "mlbId": 543877,
+        "fullName": "Christian V\u00e1zquez",
+        "positions": "C"
+    },
+    {
+        "mlbId": 572233,
+        "fullName": "Christian Walker",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 675989,
+        "fullName": "Cody Bolton",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676467,
+        "fullName": "Colton Gordon",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664299,
+        "fullName": "Cristian Javier",
+        "positions": "P"
+    },
+    {
+        "mlbId": 660853,
+        "fullName": "Enyel De Los Santos",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669713,
+        "fullName": "Hayden Wesneski",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686613,
+        "fullName": "Hunter Brown",
+        "positions": "P"
+    },
+    {
+        "mlbId": 670623,
+        "fullName": "Isaac Paredes",
+        "positions": "3B, UT"
+    },
+    {
+        "mlbId": 676694,
+        "fullName": "Jake Meyers",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 669920,
+        "fullName": "Jason Alexander",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681151,
+        "fullName": "Jayden Murray",
+        "positions": "P"
+    },
+    {
+        "mlbId": 665161,
+        "fullName": "Jeremy Pe\u00f1a",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 694388,
+        "fullName": "Joey Loperfido",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 514888,
+        "fullName": "Jose Altuve",
+        "positions": "2B, OF, UT"
+    },
+    {
+        "mlbId": 623352,
+        "fullName": "Josh Hader",
+        "positions": "P"
+    },
+    {
+        "mlbId": 678906,
+        "fullName": "Kai-Wei Teng",
+        "positions": "P"
+    },
+    {
+        "mlbId": 621121,
+        "fullName": "Lance McCullers Jr.",
+        "positions": "P"
+    },
+    {
+        "mlbId": 701121,
+        "fullName": "Logan VanWey",
+        "positions": "P"
+    },
+    {
+        "mlbId": 699044,
+        "fullName": "Miguel Ullola",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681347,
+        "fullName": "Mike Burrows",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663878,
+        "fullName": "Nate Pearson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669397,
+        "fullName": "Nick Allen",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 663567,
+        "fullName": "Peter Lambert",
+        "positions": "P"
+    },
+    {
+        "mlbId": 689041,
+        "fullName": "Rhylan Thomas",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 669854,
+        "fullName": "Ronel Blanco",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680802,
+        "fullName": "Ryan Weiss",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694376,
+        "fullName": "Shay Whitcomb",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 681293,
+        "fullName": "Spencer Arrighetti",
+        "positions": "P"
+    },
+    {
+        "mlbId": 595345,
+        "fullName": "Steven Okert",
+        "positions": "P"
+    },
+    {
+        "mlbId": 837227,
+        "fullName": "Tatsuya Imai",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666211,
+        "fullName": "Taylor Trammell",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 673237,
+        "fullName": "Yainer Diaz",
+        "positions": "C, UT"
+    },
+    {
+        "mlbId": 670541,
+        "fullName": "Yordan Alvarez",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 805904,
+        "fullName": "Zach Cole",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 701305,
+        "fullName": "Zach Dezenzo",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 679525,
+        "fullName": "Alec Marsh",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656638,
+        "fullName": "Alex Lange",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663559,
+        "fullName": "Bailey Falter",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695667,
+        "fullName": "Ben Kudrna",
+        "positions": "P"
+    },
+    {
+        "mlbId": 677951,
+        "fullName": "Bobby Witt Jr.",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 608032,
+        "fullName": "Carlos Est\u00e9vez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695600,
+        "fullName": "Carter Jensen",
+        "positions": "C"
+    },
+    {
+        "mlbId": 666142,
+        "fullName": "Cole Ragans",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663738,
+        "fullName": "Daniel Lynch IV",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669212,
+        "fullName": "Eli Morgan",
+        "positions": "P"
+    },
+    {
+        "mlbId": 553869,
+        "fullName": "Elias D\u00edaz",
+        "positions": "C"
+    },
+    {
+        "mlbId": 672021,
+        "fullName": "Eric Cerantola",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686555,
+        "fullName": "Isaac Collins",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 695506,
+        "fullName": "Jac Caglianone",
+        "positions": "1B, OF"
+    },
+    {
+        "mlbId": 663704,
+        "fullName": "James McArthur",
+        "positions": "P"
+    },
+    {
+        "mlbId": 670231,
+        "fullName": "John Rave",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 670167,
+        "fullName": "John Schreiber",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663697,
+        "fullName": "Jonathan India",
+        "positions": "2B, 3B, OF, UT"
+    },
+    {
+        "mlbId": 670224,
+        "fullName": "Kameron Misner",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 663460,
+        "fullName": "Kris Bubic",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664728,
+        "fullName": "Kyle Isbel",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 657041,
+        "fullName": "Lane Thomas",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 668674,
+        "fullName": "Lucas Erceg",
+        "positions": "P"
+    },
+    {
+        "mlbId": 679883,
+        "fullName": "Luinder Avila",
+        "positions": "P"
+    },
+    {
+        "mlbId": 672580,
+        "fullName": "Maikel Garcia",
+        "positions": "2B, 3B, SS"
+    },
+    {
+        "mlbId": 696131,
+        "fullName": "Mason Black",
+        "positions": "P"
+    },
+    {
+        "mlbId": 621381,
+        "fullName": "Matt Strahm",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686681,
+        "fullName": "Michael Massey",
+        "positions": "2B, OF"
+    },
+    {
+        "mlbId": 608379,
+        "fullName": "Michael Wacha",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687765,
+        "fullName": "Mitch Spence",
+        "positions": "P"
+    },
+    {
+        "mlbId": 679845,
+        "fullName": "Nick Loftin",
+        "positions": "2B, 3B, OF"
+    },
+    {
+        "mlbId": 683232,
+        "fullName": "Nick Mears",
+        "positions": "P"
+    },
+    {
+        "mlbId": 702070,
+        "fullName": "Noah Cameron",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686701,
+        "fullName": "Ryan Bergert",
+        "positions": "P"
+    },
+    {
+        "mlbId": 521692,
+        "fullName": "Salvador Perez",
+        "positions": "1B, C, UT"
+    },
+    {
+        "mlbId": 607625,
+        "fullName": "Seth Lugo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 516782,
+        "fullName": "Starling Marte",
+        "positions": "UT"
+    },
+    {
+        "mlbId": 663568,
+        "fullName": "Stephen Kolek",
+        "positions": "P"
+    },
+    {
+        "mlbId": 674444,
+        "fullName": "Steven Cruz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686632,
+        "fullName": "Steven Zobac",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686475,
+        "fullName": "Tyler Tolbert",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 686469,
+        "fullName": "Vinnie Pasquantino",
+        "positions": "1B, UT"
+    },
+    {
+        "mlbId": 677950,
+        "fullName": "Alek Thomas",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 669743,
+        "fullName": "Alex Call",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 690976,
+        "fullName": "Alex Freeland",
+        "positions": "2B, 3B"
+    },
+    {
+        "mlbId": 681911,
+        "fullName": "Alex Vesia",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681624,
+        "fullName": "Andy Pages",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 676508,
+        "fullName": "Ben Casparius",
+        "positions": "P"
+    },
+    {
+        "mlbId": 605483,
+        "fullName": "Blake Snell",
+        "positions": "P"
+    },
+    {
+        "mlbId": 595014,
+        "fullName": "Blake Treinen",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676272,
+        "fullName": "Bobby Miller",
+        "positions": "P"
+    },
+    {
+        "mlbId": 592779,
+        "fullName": "Brock Stewart",
+        "positions": "P"
+    },
+    {
+        "mlbId": 660813,
+        "fullName": "Brusdar Graterol",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656212,
+        "fullName": "Charlie Barnes",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694646,
+        "fullName": "Chayce McDermott",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687221,
+        "fullName": "Dalton Rushing",
+        "positions": "C"
+    },
+    {
+        "mlbId": 683618,
+        "fullName": "Edgardo Henriquez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 621242,
+        "fullName": "Edwin D\u00edaz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 686218,
+        "fullName": "Emmet Sheehan",
+        "positions": "P"
+    },
+    {
+        "mlbId": 571771,
+        "fullName": "Enrique Hern\u00e1ndez",
+        "positions": "1B, 2B, 3B, OF"
+    },
+    {
+        "mlbId": 623465,
+        "fullName": "Evan Phillips",
+        "positions": "P"
+    },
+    {
+        "mlbId": 518692,
+        "fullName": "Freddie Freeman",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 694813,
+        "fullName": "Gavin Stone",
+        "positions": "P"
+    },
+    {
+        "mlbId": 808975,
+        "fullName": "Hyeseong Kim",
+        "positions": "2B, OF, SS"
+    },
+    {
+        "mlbId": 676263,
+        "fullName": "Jack Dreyer",
+        "positions": "P"
+    },
+    {
+        "mlbId": 664776,
+        "fullName": "Jake Cousins",
+        "positions": "P"
+    },
+    {
+        "mlbId": 671109,
+        "fullName": "Jake Eder",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680736,
+        "fullName": "Justin Wrobleski",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669165,
+        "fullName": "Kyle Hurt",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663656,
+        "fullName": "Kyle Tucker",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 689017,
+        "fullName": "Landon Knack",
+        "positions": "P"
+    },
+    {
+        "mlbId": 571970,
+        "fullName": "Max Muncy",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 500743,
+        "fullName": "Miguel Rojas",
+        "positions": "2B, 3B, SS"
+    },
+    {
+        "mlbId": 605141,
+        "fullName": "Mookie Betts",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 801434,
+        "fullName": "Paul Gervase",
+        "positions": "P"
+    },
+    {
+        "mlbId": 689981,
+        "fullName": "River Ryan",
+        "positions": "P"
+    },
+    {
+        "mlbId": 808963,
+        "fullName": "Roki Sasaki",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691947,
+        "fullName": "Ronan Kopp",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669899,
+        "fullName": "Ryan Ward",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 669289,
+        "fullName": "Santiago Espinal",
+        "positions": "2B, 3B, OF"
+    },
+    {
+        "mlbId": 660271,
+        "fullName": "Shohei Ohtani",
+        "positions": "P, UT"
+    },
+    {
+        "mlbId": 656945,
+        "fullName": "Tanner Scott",
+        "positions": "P"
+    },
+    {
+        "mlbId": 606192,
+        "fullName": "Teoscar Hern\u00e1ndez",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 669242,
+        "fullName": "Tommy Edman",
+        "positions": "2B, 3B, OF"
+    },
+    {
+        "mlbId": 666149,
+        "fullName": "Tyler Fitzgerald",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 607192,
+        "fullName": "Tyler Glasnow",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694361,
+        "fullName": "Will Klein",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669257,
+        "fullName": "Will Smith",
+        "positions": "C"
+    },
+    {
+        "mlbId": 670090,
+        "fullName": "Wyatt Mills",
+        "positions": "P"
+    },
+    {
+        "mlbId": 808967,
+        "fullName": "Yoshinobu Yamamoto",
+        "positions": "P"
+    },
+    {
+        "mlbId": 694673,
+        "fullName": "Abimelec Ortiz",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 701552,
+        "fullName": "Andre Granillo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 665953,
+        "fullName": "Andr\u00e9s Chaparro",
+        "positions": "1B"
+    },
+    {
+        "mlbId": 674841,
+        "fullName": "Andrew Alvarez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695418,
+        "fullName": "Brad Lord",
+        "positions": "P"
+    },
+    {
+        "mlbId": 691781,
+        "fullName": "Brady House",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 682928,
+        "fullName": "CJ Abrams",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 676917,
+        "fullName": "Cade Cavalli",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681047,
+        "fullName": "Christian Franklin",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 690925,
+        "fullName": "Clayton Beeter",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669371,
+        "fullName": "Cole Henry",
+        "positions": "P"
+    },
+    {
+        "mlbId": 678554,
+        "fullName": "Curtis Mead",
+        "positions": "1B, 2B, 3B"
+    },
+    {
+        "mlbId": 687792,
+        "fullName": "DJ Herz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695734,
+        "fullName": "Daylen Lile",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 686452,
+        "fullName": "Drew Millas",
+        "positions": "C"
+    },
+    {
+        "mlbId": 686611,
+        "fullName": "Dylan Crews",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 656492,
+        "fullName": "Foster Griffin",
+        "positions": "P"
+    },
+    {
+        "mlbId": 681402,
+        "fullName": "Gus Varland",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695670,
+        "fullName": "Harry Ford",
+        "positions": "C"
+    },
+    {
+        "mlbId": 696285,
+        "fullName": "Jacob Young",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 663623,
+        "fullName": "Jake Irvin",
+        "positions": "P"
+    },
+    {
+        "mlbId": 695578,
+        "fullName": "James Wood",
+        "positions": "OF, UT"
+    },
+    {
+        "mlbId": 686894,
+        "fullName": "Joey Wiemer",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 678391,
+        "fullName": "Jorbit Vivas",
+        "positions": "2B, 3B"
+    },
+    {
+        "mlbId": 677588,
+        "fullName": "Jos\u00e9 Tena",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 680686,
+        "fullName": "Josiah Gray",
+        "positions": "P"
+    },
+    {
+        "mlbId": 642759,
+        "fullName": "Julian Fern\u00e1ndez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 660688,
+        "fullName": "Keibert Ruiz",
+        "positions": "C"
+    },
+    {
+        "mlbId": 686610,
+        "fullName": "Ken Waldichuk",
+        "positions": "P"
+    },
+    {
+        "mlbId": 671277,
+        "fullName": "Luis Garc\u00eda Jr.",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 691384,
+        "fullName": "Luis Perales",
+        "positions": "P"
+    },
+    {
+        "mlbId": 668820,
+        "fullName": "Max Kranick",
+        "positions": "P"
+    },
+    {
+        "mlbId": 571945,
+        "fullName": "Miles Mikolas",
+        "positions": "P"
+    },
+    {
+        "mlbId": 680730,
+        "fullName": "Mitchell Parker",
+        "positions": "P"
+    },
+    {
+        "mlbId": 683083,
+        "fullName": "Nasim Nu\u00f1ez",
+        "positions": "2B, SS"
+    },
+    {
+        "mlbId": 687377,
+        "fullName": "Orlando Ribalta",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676571,
+        "fullName": "PJ Poulin",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687606,
+        "fullName": "Paxton Schultz",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663992,
+        "fullName": "Richard Lovelady",
+        "positions": "P"
+    },
+    {
+        "mlbId": 683000,
+        "fullName": "Riley Cornelio",
+        "positions": "P"
+    },
+    {
+        "mlbId": 690987,
+        "fullName": "Robert Hassell III",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 592866,
+        "fullName": "Trevor Williams",
+        "positions": "P"
+    },
+    {
+        "mlbId": 641793,
+        "fullName": "Zack Littell",
+        "positions": "P"
+    },
+    {
+        "mlbId": 687849,
+        "fullName": "Zak Kent",
+        "positions": "P"
+    },
+    {
+        "mlbId": 805999,
+        "fullName": "A.J. Ewing",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 621345,
+        "fullName": "A.J. Minter",
+        "positions": "P"
+    },
+    {
+        "mlbId": 692024,
+        "fullName": "Alex Carrillo",
+        "positions": "P"
+    },
+    {
+        "mlbId": 596103,
+        "fullName": "Austin Slater",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 681810,
+        "fullName": "Austin Warren",
+        "positions": "P"
+    },
+    {
+        "mlbId": 666182,
+        "fullName": "Bo Bichette",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 683146,
+        "fullName": "Brett Baty",
+        "positions": "2B, 3B"
+    },
+    {
+        "mlbId": 548384,
+        "fullName": "Brooks Raley",
+        "positions": "P"
+    },
+    {
+        "mlbId": 701807,
+        "fullName": "Carson Benge",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 681035,
+        "fullName": "Christian Scott",
+        "positions": "P"
+    },
+    {
+        "mlbId": 605280,
+        "fullName": "Clay Holmes",
+        "positions": "P"
+    },
+    {
+        "mlbId": 518886,
+        "fullName": "Craig Kimbrel",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656849,
+        "fullName": "David Peterson",
+        "positions": "P"
+    },
+    {
+        "mlbId": 673380,
+        "fullName": "Dedniel N\u00fa\u00f1ez",
+        "positions": "P"
+    },
+    {
+        "mlbId": 642207,
+        "fullName": "Devin Williams",
+        "positions": "P"
+    },
+    {
+        "mlbId": 697811,
+        "fullName": "Dylan Ross",
+        "positions": "P"
+    },
+    {
+        "mlbId": 682626,
+        "fullName": "Francisco Alvarez",
+        "positions": "C"
+    },
+    {
+        "mlbId": 596019,
+        "fullName": "Francisco Lindor",
+        "positions": "SS"
+    },
+    {
+        "mlbId": 642547,
+        "fullName": "Freddy Peralta",
+        "positions": "P"
+    },
+    {
+        "mlbId": 663584,
+        "fullName": "Hayden Senger",
+        "positions": "C"
+    },
+    {
+        "mlbId": 623211,
+        "fullName": "Huascar Brazob\u00e1n",
+        "positions": "P"
+    },
+    {
+        "mlbId": 676724,
+        "fullName": "Jared Young",
+        "positions": "UT"
+    },
+    {
+        "mlbId": 680702,
+        "fullName": "Joey Gerber",
+        "positions": "P"
+    },
+    {
+        "mlbId": 804636,
+        "fullName": "Jonah Tong",
+        "positions": "P"
+    },
+    {
+        "mlbId": 702752,
+        "fullName": "Jonathan Pintaro",
+        "positions": "P"
+    },
+    {
+        "mlbId": 593871,
+        "fullName": "Jorge Polanco",
+        "positions": "2B, UT"
+    },
+    {
+        "mlbId": 665742,
+        "fullName": "Juan Soto",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 663795,
+        "fullName": "Justin Hagenman",
+        "positions": "P"
+    },
+    {
+        "mlbId": 673540,
+        "fullName": "Kodai Senga",
+        "positions": "P"
+    },
+    {
+        "mlbId": 673357,
+        "fullName": "Luis Robert Jr.",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 620443,
+        "fullName": "Luis Torrens",
+        "positions": "C"
+    },
+    {
+        "mlbId": 596133,
+        "fullName": "Luke Weaver",
+        "positions": "P"
+    },
+    {
+        "mlbId": 669004,
+        "fullName": "MJ Melendez",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 543760,
+        "fullName": "Marcus Semien",
+        "positions": "2B"
+    },
+    {
+        "mlbId": 668901,
+        "fullName": "Mark Vientos",
+        "positions": "3B, UT"
+    },
+    {
+        "mlbId": 703492,
+        "fullName": "Nick Morabito",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 690997,
+        "fullName": "Nolan McLean",
+        "positions": "P"
+    },
+    {
+        "mlbId": 657585,
+        "fullName": "Reed Garrett",
+        "positions": "P"
+    },
+    {
+        "mlbId": 677595,
+        "fullName": "Ronny Mauricio",
+        "positions": "3B"
+    },
+    {
+        "mlbId": 640455,
+        "fullName": "Sean Manaea",
+        "positions": "P"
+    },
+    {
+        "mlbId": 668964,
+        "fullName": "Tobias Myers",
+        "positions": "P"
+    },
+    {
+        "mlbId": 656731,
+        "fullName": "Tylor Megill",
+        "positions": "P"
+    },
+    {
+        "mlbId": 621438,
+        "fullName": "Tyrone Taylor",
+        "positions": "OF"
+    },
+    {
+        "mlbId": 660644,
+        "fullName": "Vidal Bruj\u00e1n",
+        "positions": "3B, SS"
+    }
+]
