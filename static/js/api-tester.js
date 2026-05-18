@@ -127,7 +127,9 @@ async function callEndpoint(endpoint) {
       url = "/value";
       method = "POST";
       body = {
-        relevant_stats: stats || undefined,
+        relevant_stats: stats
+          ? stats.split(",").map((p) => p.trim())
+          : undefined,
         budget: budget ? parseInt(budget) : undefined,
         players_left_to_draft: playersLeft ? parseInt(playersLeft) : undefined,
         unavailable_players: unavailable
